@@ -9,20 +9,21 @@ namespace HelloWorld
         {
             Console.WriteLine("Hello Rachael!");
             string name = "";
+            string favColor = "";
             int age = 0;
             int year = 0;
 
-            Console.WriteLine("Ple ase enter your name: ");
+            Console.WriteLine("Please enter your name: ");
             name = Console.ReadLine();
             Console.WriteLine("Please enter your age: ");
-            age= Convert.ToInt32(Console.ReadLine());
+            age = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Please enter the year: ");
-            year= Convert.ToInt32(Console.ReadLine());
+            year = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("What is your favorite color?");
-            favColor= Console.ReadLine();
+            favColor = Console.ReadLine();
 
             Console.WriteLine("Hello! My name is {0} and I am {1} years old. I was born in {2}.", name, age, year-age);
-            Console.WriteLine("My favorite color is {3}.", favColor);
+            Console.WriteLine("My favorite color is {0}.", favColor);
         }
     }
 }

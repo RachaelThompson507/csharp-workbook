@@ -10,8 +10,8 @@ namespace Quiz1
             Console.WriteLine("Hello World!");
             Console.WriteLine("Hello QUIZ 1!");
             Console.WriteLine("What is your name?");
-            Console.ReadLine(name);
-            Console.WriteLine("My name is ", name);
+            name = Console.ReadLine();
+            Console.WriteLine("My name is {0}. ", name);
         }
     }
 }

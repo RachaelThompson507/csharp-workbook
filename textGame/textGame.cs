@@ -24,6 +24,21 @@ namespace textGame
                 Console.WriteLine("You did not take the stick!");
                 Stick = 0;
             }
+            Console.WriteLine("As you proceed further into the cave, you see a small glowing object");
+            Console.WriteLine("Do you approach the object? [Y/N]");
+            String ch2 = Console.ReadLine();
+             if(ch2 == "y" || ch2 == "Y" || ch2 == "Yes" || ch2 == "yes") {
+                Console.WriteLine("You approach the object...");
+                Thread.Sleep(2000);
+                Console.WriteLine("As you draw closer, you begin to make out the object as an eye!");
+                Thread.Sleep(1000);
+                Console.WriteLine("The eye belongs to a giant spider!");
+                Console.WriteLine("Do you try to fight it? [Y/N]");
+            String ch3 = Console.ReadLine();
+            }else {
+                    // Console.WriteLine("You did not take the stick!");
+                    // Stick = 0;
+            }
         }
     }
 }

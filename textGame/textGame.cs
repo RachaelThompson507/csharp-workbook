@@ -30,17 +30,27 @@ namespace textGame
             Console.WriteLine("As you proceed further into the cave, you see a small glowing object");
             Console.WriteLine("Do you approach the object? [Y/N]");
             String ch2 = Console.ReadLine();
-             if(ch2 == "y" || ch2 == "Y" || ch2 == "Yes" || ch2 == "yes") {
+            if(ch2 == "y" || ch2 == "Y" || ch2 == "Yes" || ch2 == "yes")
+            {
                 Console.WriteLine("You approach the object...");
                 Thread.Sleep(2000);
                 Console.WriteLine("As you draw closer, you begin to make out the object as an eye!");
                 Thread.Sleep(1000);
                 Console.WriteLine("The eye belongs to a giant spider!");
                 Console.WriteLine("Do you try to fight it? [Y/N]");
-            String ch3 = Console.ReadLine();
-            }else {
-                    // Console.WriteLine("You did not take the stick!");
-                    // Stick = 0;
+                String ch3 = Console.ReadLine();
+                //fight spider with stick
+                if(ch2 == "y" || ch2 == "Y" || ch2 == "Yes" || ch2 == "yes")
+                { Console.WriteLine("You only have a stick to fight with!");
+                  Console.WriteLine("You quickly jab the spider in it's eye and gain an advantage");
+                  Thread.Sleep(2000);
+                  Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                  Console.WriteLine("                  Fighting...                   ");
+                  Console.WriteLine("   YOU MUST HIT ABOVE A 5 TO KILL THE SPIDER    ");
+                  Console.WriteLine("IF THE SPIDER HITS HIGHER THAN YOU, YOU WILL DIE");
+                  Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                  Thread.Sleep(2000);
+                }
             }
         }
     }

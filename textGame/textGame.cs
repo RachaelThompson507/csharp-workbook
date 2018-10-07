@@ -11,6 +11,7 @@ namespace textGame
             int stick = 0;
             Random fdmg1 = new Random();
             Random edmg1 = new Random();
+            int complete = 0;
             //game start
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Welcome to the cavern of secrets!");
@@ -53,19 +54,23 @@ namespace textGame
                   Console.WriteLine("IF THE SPIDER HITS HIGHER THAN YOU, YOU WILL DIE");
                   Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                   Thread.Sleep(2000);
-                  Console.WriteLine("You hit a {0}", fdmg1.Next(3,10));
-                  Console.WriteLine("The spider hits a {0}", edmg1.Next(3,10));
+                  Console.WriteLine("You hit a {0}", fdmg1.Next(3, 10));
+                  Console.WriteLine("The spider hits a {0}", edmg1.Next(1, 5));
                   Thread.Sleep(2000);
-
-                    // if()
-                    // {
-
-                    // }else if()
-                    // {
-
-                    // }else {
-
-                    // }
+                  int fdmgint = fdmg1.Next();
+                  int edmgint = edmg1.Next();
+                    if( edmgint > fdmgint )
+                    {
+                        Console.WriteLine("The spider has dealt more damage than you!");
+                        complete = 0;
+                    }else if( fdmgint < 5 )
+                    {
+                        Console.WriteLine("You didn't do enough damage to kill the spider, but you manage to escape");
+                        complete = 1;
+                    }else {
+                        Console.WriteLine("You killed the spider!");
+                        complete = 1;
+                    }
                 }
             }
         }

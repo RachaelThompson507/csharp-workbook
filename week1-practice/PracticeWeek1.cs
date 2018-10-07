@@ -35,6 +35,8 @@ namespace week1_practice
             Console.WriteLine("{0} yards * {1} inches = {2} inches", yards, inches, yards*inches);
             Thread.Sleep(2000);
             //3/4-boolean values
+            Console.WriteLine("Are there people that attend ACA? -- True or False");
+            Thread.Sleep(1000);
             bool people = true;
             bool f = false;
             if (people)
@@ -47,7 +49,16 @@ namespace week1_practice
             }
             Thread.Sleep(2000);
             //5/6-make var num a decimal and multiply it by itself
-            
+            Console.WriteLine("Let's multiply decimals!");
+            Thread.Sleep(1000);
+            Console.WriteLine("Please enter a decimal value:");
+            decimal num = Convert.ToDecimal(Console.ReadLine());
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("!!!!!!!! Multiplying !!!!!!!!");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Thread.Sleep(1000);
+            Console.WriteLine("{0} decimal * {1} decimal = {2} decimal squared", num, num, num*num);
+            Thread.Sleep(2000);
         }
     }
 }

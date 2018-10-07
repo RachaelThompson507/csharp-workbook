@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading; 
+using System.Threading;
 
 namespace textGame
 {
@@ -7,8 +7,11 @@ namespace textGame
     {
         static void Main(string[] args)
         {
-            //game start
+            //declare variables
             int stick = 0;
+            Random fdmg1 = new Random();
+            Random edmg1 = new Random();
+            //game start
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Welcome to the cavern of secrets!");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -50,6 +53,19 @@ namespace textGame
                   Console.WriteLine("IF THE SPIDER HITS HIGHER THAN YOU, YOU WILL DIE");
                   Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                   Thread.Sleep(2000);
+                  Console.WriteLine("You hit a {0}", fdmg1.Next(3,10));
+                  Console.WriteLine("The spider hits a {0}", edmg1.Next(3,10));
+                  Thread.Sleep(2000);
+
+                    // if()
+                    // {
+
+                    // }else if()
+                    // {
+
+                    // }else {
+
+                    // }
                 }
             }
         }

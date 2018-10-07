@@ -69,22 +69,23 @@ namespace textGame
                     Thread.Sleep(2000);
                     int fdmgint = fdmg1.Next();
                     int edmgint = edmg1.Next();
-                    if( edmgint > fdmgint )
-                    {
-                        Console.WriteLine("The spider has dealt more damage than you!");
-                        complete = 0;
-                        //return complete;
-                    }else if( fdmgint < 5 )
-                    {
-                        Console.WriteLine("You didn't do enough damage to kill the spider, but you manage to escape");
-                        complete = 1;
-                        //return complete;
-                    }else
-                    {
-                        Console.WriteLine("You killed the spider!");
-                        complete = 1;
-                        //return complete;
-                    }
+                        if( edmgint > fdmgint )
+                        {
+                            Console.WriteLine("The spider has dealt more damage than you!");
+                            complete = 0;
+                            //return complete;
+                        }else if( fdmgint < 5 )
+                        {
+                            Console.WriteLine("You didn't do enough damage to kill the spider, but you manage to escape");
+                            complete = 1;
+                            //return complete;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You killed the spider!");
+                            complete = 1;
+                            //return complete;
+                        }
             //without stick
                 }
                 else

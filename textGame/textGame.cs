@@ -22,18 +22,24 @@ namespace textGame
             Console.WriteLine("Do you take it [Y/N]");
             String ch1 = Console.ReadLine();
             //if take stick statement
-            if(ch1 == "y" || ch1 == "Y" || ch1 == "Yes" || ch1 == "yes") {
+            if(ch1 == "y" || ch1 == "Y" || ch1 == "Yes" || ch1 == "yes")
+            {
                 Console.WriteLine("You have taken the stick!");
                 Thread.Sleep(2000);
                 stick = 1;
-            }else {
+            }
+            else
+            {
                 Console.WriteLine("You did not take the stick.");
                 stick = 0;
             }
+
             //approach spider
+
             Console.WriteLine("As you proceed further into the cave, you see a small glowing object");
             Console.WriteLine("Do you approach the object? [Y/N]");
             String ch2 = Console.ReadLine();
+
             if(ch2 == "y" || ch2 == "Y" || ch2 == "Yes" || ch2 == "yes")
             {
                 Console.WriteLine("You approach the object...");
@@ -43,42 +49,14 @@ namespace textGame
                 Console.WriteLine("The eye belongs to a giant spider!");
                 Console.WriteLine("Do you try to fight it? [Y/N]");
                 String ch3 = Console.ReadLine();
+
                 //fight spider with stick
-                if(ch2 == "y" || ch2 == "Y" || ch2 == "Yes" || ch2 == "yes")
-                { Console.WriteLine("You only have a stick to fight with!");
-                  Console.WriteLine("You quickly jab the spider in it's eye and gain an advantage");
-                  Thread.Sleep(2000);
-                  Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                  Console.WriteLine("                  Fighting...                   ");
-                  Console.WriteLine("   YOU MUST HIT ABOVE A 5 TO KILL THE SPIDER    ");
-                  Console.WriteLine("IF THE SPIDER HITS HIGHER THAN YOU, YOU WILL DIE");
-                  Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                  Thread.Sleep(2000);
-                  Console.WriteLine("You hit a {0}", fdmg1.Next(3, 10));
-                  Console.WriteLine("The spider hits a {0}", edmg1.Next(1, 5));
-                  Thread.Sleep(2000);
-                  int fdmgint = fdmg1.Next();
-                  int edmgint = edmg1.Next();
-                    if( edmgint > fdmgint )
-                    {
-                        Console.WriteLine("The spider has dealt more damage than you!");
-                        complete = 0;
-                        //return complete;
-                    }else if( fdmgint < 5 )
-                    {
-                        Console.WriteLine("You didn't do enough damage to kill the spider, but you manage to escape");
-                        complete = 1;
-                        //return complete;
-                    }else
-                    {
-                        Console.WriteLine("You killed the spider!");
-                        complete = 1;
-                        //return complete;
-                    }
-                //without stick
-                else
+
+            if(ch3 == "y" || ch3 == "Y" || ch3 == "Yes" || ch3 == "yes")
+                if (stick == 1)
                 {
-                    Console.WriteLine("You don't have anything to fight with!");
+                    Console.WriteLine("You only have a stick to fight with!");
+                    Console.WriteLine("You quickly jab the spider in it's eye and gain an advantage");
                     Thread.Sleep(2000);
                     Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Console.WriteLine("                  Fighting...                   ");
@@ -86,7 +64,7 @@ namespace textGame
                     Console.WriteLine("IF THE SPIDER HITS HIGHER THAN YOU, YOU WILL DIE");
                     Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Thread.Sleep(2000);
-                    Console.WriteLine("You hit a {0}", fdmg1.Next(1, 8));
+                    Console.WriteLine("You hit a {0}", fdmg1.Next(3, 10));
                     Console.WriteLine("The spider hits a {0}", edmg1.Next(1, 5));
                     Thread.Sleep(2000);
                     int fdmgint = fdmg1.Next();
@@ -107,9 +85,64 @@ namespace textGame
                         complete = 1;
                         //return complete;
                     }
+            //without stick
                 }
+                else
+                {
+                    Console.WriteLine("You don't have anything to fight with!");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Console.WriteLine("                  Fighting...                   ");
+                    Console.WriteLine("   YOU MUST HIT ABOVE A 5 TO KILL THE SPIDER    ");
+                    Console.WriteLine("IF THE SPIDER HITS HIGHER THAN YOU, YOU WILL DIE");
+                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("You hit a {0}", fdmg1.Next(1, 8));
+                    Console.WriteLine("The spider hits a {0}", edmg1.Next(1, 5));
+                    Thread.Sleep(2000);
+                    int fdmgint = fdmg1.Next();
+                    int edmgint = edmg1.Next();
+                        if( edmgint > fdmgint )
+                        {
+                            Console.WriteLine("The spider has dealt more damage than you!");
+                            complete = 0;
+                            //return complete;
+                        }
+                        else if( fdmgint < 5 )
+                        {
+                            Console.WriteLine("You didn't do enough damage to kill the spider, but you manage to escape");
+                            complete = 1;
+                            //return complete;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You killed the spider!");
+                            complete = 1;
+                            //return complete;
+                        }
                 }
+                else
+                {
+                    Console.WriteLine("You choose not to fight the spider.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("As you turn away, it ambushes you.It impales you with it's fangs!!!");
+                    complete=0;
+                    //return complete;
+                }
+            //don't approach spider
+            }
+            else
+            {
+                Console.WriteLine("You turn away from the glowing object, and attempt to leave the cave...");
+                Thread.Sleep(1000);
+                Console.WriteLine("But something won't let you....");
+                Thread.Sleep(2000);
+                complete =0; 
+                //return complete
             }
         }
     }
 }
+
+
+

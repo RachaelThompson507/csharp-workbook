@@ -63,14 +63,51 @@ namespace textGame
                     {
                         Console.WriteLine("The spider has dealt more damage than you!");
                         complete = 0;
+                        //return complete;
                     }else if( fdmgint < 5 )
                     {
                         Console.WriteLine("You didn't do enough damage to kill the spider, but you manage to escape");
                         complete = 1;
-                    }else {
+                        //return complete;
+                    }else
+                    {
                         Console.WriteLine("You killed the spider!");
                         complete = 1;
+                        //return complete;
                     }
+                //without stick
+                else
+                {
+                    Console.WriteLine("You don't have anything to fight with!");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Console.WriteLine("                  Fighting...                   ");
+                    Console.WriteLine("   YOU MUST HIT ABOVE A 5 TO KILL THE SPIDER    ");
+                    Console.WriteLine("IF THE SPIDER HITS HIGHER THAN YOU, YOU WILL DIE");
+                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("You hit a {0}", fdmg1.Next(1, 8));
+                    Console.WriteLine("The spider hits a {0}", edmg1.Next(1, 5));
+                    Thread.Sleep(2000);
+                    int fdmgint = fdmg1.Next();
+                    int edmgint = edmg1.Next();
+                    if( edmgint > fdmgint )
+                    {
+                        Console.WriteLine("The spider has dealt more damage than you!");
+                        complete = 0;
+                        //return complete;
+                    }else if( fdmgint < 5 )
+                    {
+                        Console.WriteLine("You didn't do enough damage to kill the spider, but you manage to escape");
+                        complete = 1;
+                        //return complete;
+                    }else
+                    {
+                        Console.WriteLine("You killed the spider!");
+                        complete = 1;
+                        //return complete;
+                    }
+                }
                 }
             }
         }

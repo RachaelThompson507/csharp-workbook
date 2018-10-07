@@ -137,7 +137,7 @@ namespace textGame
                 Thread.Sleep(1000);
                 Console.WriteLine("But something won't let you....");
                 Thread.Sleep(2000);
-                complete =0; 
+                complete =0;
                 //return complete
             }
         }

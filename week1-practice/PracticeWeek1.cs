@@ -85,7 +85,20 @@ namespace week1_practice
             Console.WriteLine("My name is {0} {1} and I am {2} years old.", firstName, lastName, age);
             Console.WriteLine("My occupation is {0}.", job);
             Console.WriteLine("My favorite band is {0} and I enjoy watching the {1}.", favBand, favSportTeam);
-             Thread.Sleep(2000);
+            Thread.Sleep(2000);
+            //Convert var num to int
+            Console.WriteLine("We are going to divide integers.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Please enter a valid integer.");
+            num = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please enter another valid integer.");
+            num1 = Convert.ToInt32(Console.ReadLine());
+            Thread.Sleep(2000);
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("!!!!!!!! Dividing !!!!!!!!");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("{0} / {1} = {2} ", num, num1, num/num1);
+            Thread.Sleep(2000);
         }
     }
 }

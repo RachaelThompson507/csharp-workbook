@@ -59,6 +59,33 @@ namespace week1_practice
             Thread.Sleep(1000);
             Console.WriteLine("{0} decimal * {1} decimal = {2} decimal squared", num, num, num*num);
             Thread.Sleep(2000);
+            //7/8- personal information q&a
+            Console.WriteLine("I have some questions for you.");
+            Console.WriteLine("Can you answer these, please?");
+            Thread.Sleep(1000);
+            Console.WriteLine("What is your first name?");
+            string firstName = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("What is your last name?");
+            string lastName = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("What is your age?");
+            string age = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("What is your occupation?");
+            string job = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("What is your favorite band?");
+            string favBand = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("What is your favorite sports team?");
+            string favSportTeam = Convert.ToString(Console.ReadLine());
+            Thread.Sleep(1000);
+            Console.WriteLine("Let me out this information together for you.");
+            Thread.Sleep(2000);
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("!!!!!!!! Computing !!!!!!!!");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Thread.Sleep(2000);
+            Console.WriteLine("My name is {0} {1} and I am {2} years old.", firstName, lastName, age);
+            Console.WriteLine("My occupation is {0}.", job);
+            Console.WriteLine("My favorite band is {0} and I enjoy watching the {1}.", favBand, favSportTeam);
+             Thread.Sleep(2000);
         }
     }
 }

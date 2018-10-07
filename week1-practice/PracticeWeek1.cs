@@ -28,12 +28,26 @@ namespace week1_practice
             Console.WriteLine("Please enter the number of yards:");
             double yards = Convert.ToDouble(Console.ReadLine());
             double inches = 36;
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine("!!!!!!!!Converting!!!!!!!!");
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("!!!!!!!! Converting !!!!!!!!");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Thread.Sleep(1000);
             Console.WriteLine("{0} yards * {1} inches = {2} inches", yards, inches, yards*inches);
             Thread.Sleep(2000);
+            //3/4-boolean values
+            bool people = true;
+            bool f = false;
+            if (people)
+            {
+                Console.WriteLine("There are people that attend ACA: {0}", people);
+            }
+            else
+            {
+                Console.WriteLine(f);
+            }
+            Thread.Sleep(2000);
+            //5/6-make var num a decimal and multiply it by itself
+            
         }
     }
 }

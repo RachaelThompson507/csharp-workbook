@@ -76,7 +76,7 @@ namespace week1_practice
             Console.WriteLine("What is your favorite sports team?");
             string favSportTeam = Convert.ToString(Console.ReadLine());
             Thread.Sleep(1000);
-            Console.WriteLine("Let me out this information together for you.");
+            Console.WriteLine("Let me put this information together for you.");
             Thread.Sleep(2000);
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("!!!!!!!! Computing !!!!!!!!");
@@ -99,6 +99,19 @@ namespace week1_practice
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("{0} / {1} = {2} ", num, num1, num/num1);
             Thread.Sleep(2000);
+            //print a bunch of stuff to the console
+            Console.WriteLine("We are going to work with 100 and 10.");
+            Thread.Sleep(1000);
+            int num3 = 100;
+            int num4 = 10;
+            Console.WriteLine("Sum: {0} + {1} = {2}", num3, num4, num3+num4);
+            Console.WriteLine("Product: {0} * {1} = {2}", num3, num4, num3*num4);
+            Console.WriteLine("Difference: {0} - {1} = {2}", num3, num4, num3-num4);
+            Console.WriteLine("Quotient: {0} / {1} = {2}", num3, num4, num3/num4);
+            Thread.Sleep(2000);
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("!!!!!!!! Practice Complete !!!!!!!!");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }
 }

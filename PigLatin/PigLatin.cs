@@ -6,14 +6,13 @@ namespace PigLatin
     {
         public static void Main()
         {
-            //Declare variable string
-            String word = " ";
             //Welcome user to application
             Console.WriteLine("Converting Words to Pig Latin");
             Thread.Sleep(2000);
             //User enters a word
             Console.WriteLine("Please enter a Word: ");
-            word = Console.ReadLine();
+            //enter a string var for translation
+            String word = Convert.ToString(Console.ReadLine());
             //TranslateWord method is called and passed the word to translate.
             TranslateWord(word);
             //Translated word is displayed to the user.

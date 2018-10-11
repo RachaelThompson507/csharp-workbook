@@ -25,8 +25,17 @@ namespace week2_2practice
             {
                 Console.WriteLine("You did not pass.");
             }
-
             Console.WriteLine("End Program");
+
+            //bool logic example
+            String name = null;
+            if (name != null && name.Length > 6)
+            {
+                Console.WriteLine("your name is long");
+            } else
+            {
+                Console.WriteLine("Your name is short or you don't have a name.");
+            }
         }
     }
 }

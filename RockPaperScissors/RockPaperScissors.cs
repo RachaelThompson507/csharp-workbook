@@ -15,11 +15,28 @@ namespace RockPaperScissors
             // leave this command at the end so your program does not close automatically
             Console.ReadLine();
         }
-        
-        public static string CompareHands(string hand1, string hand2)
+        //return 1 if hand 1 wins
+        //returns 2 if hand 2 wins
+        // returns 0 if no one wins
+        public static int CompareHands(string hand1, string hand2)
         {
             // Your code here
             return hand1 + ' ' + hand2;
+        }
+        //returns true if all tests pass
+        //returns false if at least 1 test fails
+        public static bool tests()
+        {
+            return
+            //CompareHands("Paper", "Paper") == 0 &&
+            //CompareHands("Rock", "Rock") == 0 &&
+            //CompareHands("Scissors", "Scissors") == 0 &&
+            //CompareHands("Paper", "Rock") == 1 &&
+            //CompareHands("Paper", "Scissors") == 2 &&
+            //CompareHands("Rock", "Paper") == 2 &&
+            //CompareHands("Rock", "Scissors") == 1 &&
+            //CompareHands("Scissors", "Paper") == 1 &&
+            //CompareHands("Scissors", "Rock") == 2 ;
         }
     }
 }

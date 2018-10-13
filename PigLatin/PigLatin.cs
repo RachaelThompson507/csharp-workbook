@@ -54,11 +54,10 @@
                 {
                     word = string.Concat(word,addYay);
                     return word;
-                }
-                else if (!vowel.Contains(firstChar))
+
+                }else
                 {
-                    word = string.Concat(word, addAy);
-                   return word;
+                    
                 }
                 return word;
             }

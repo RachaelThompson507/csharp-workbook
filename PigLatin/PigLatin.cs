@@ -57,15 +57,19 @@
 
                 }else if (vowel.Contains(word))
                 {
-                   for (int i=0; i<word.Length; i++) {
+                    for (int i=0; i<word.Length; i++)
+                   {
 
-                    if (vowel.Contains(word[i])){
-                    string firstVowel = word[i].ToString();
-                    string firstHalf = word.Split(word[i])[0];
-                    string lastHalf = word.Split(word[i])[1];
-                    word = string.Concat(firstVowel, lastHalf,firstHalf, addAy);
-                    return word;
-                    break;
+                    if (vowel.Contains(word[i]))
+                    {
+                        string firstVowel = word[i].ToString();
+                        string firstHalf = word.Split(word[i])[0];
+                        string lastHalf = word.Split(word[i])[1];
+                        word = string.Concat(firstVowel, lastHalf,firstHalf, addAy);
+                        return word;
+                        break;
+                    }
+                   }
 
                 }else
                 {

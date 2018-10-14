@@ -50,17 +50,17 @@
                 string addAy = "ay";
                 string vowel = "aeiouy";
                 string firstChar = word[0].ToString();
-
+                //check for word begin with Y
                 if (firstChar == "y")
                 {
                     word = string.Concat(word,addYay);
                     return word;
-
+                //check for word with vowel first character
                 } else if (vowel.Contains(firstChar))
                 {
                     word = string.Concat(word,addYay);
                     return word;
-
+                //check for vowel in word and rearrange word
                 } else
                 {
                     for (int i=0; i<word.Length; i++)
@@ -76,6 +76,7 @@
                         }
                    }
                 }
+                //other wise return a word that adds AY
                 return word = string.Concat(word, addAy);
             }
              /**

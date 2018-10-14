@@ -42,7 +42,7 @@
                 //Declaring Variables
                 string addYay = "yay";
                 string addAy = "ay";
-                string vowel = "aeiou";
+                string vowel = "aeiouy";
                 string firstChar = word[0].ToString();
 
                 if (firstChar == "y")
@@ -55,11 +55,22 @@
                     word = string.Concat(word,addYay);
                     return word;
 
+                }else if (vowel.Contains(word))
+                {
+                   for (int i=0; i<word.Length; i++) {
+
+                    if (vowel.Contains(word[i])){
+                    string firstVowel = word[i].ToString();
+                    string firstHalf = word.Split(word[i])[0];
+                    string lastHalf = word.Split(word[i])[1];
+                    word = string.Concat(firstVowel, lastHalf,firstHalf, addAy);
+                    return word;
+                    break;
+
                 }else
                 {
-                    
+                    return word = string.Concat(word, addAy);
                 }
-                return word;
             }
         }
     }

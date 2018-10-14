@@ -26,6 +26,12 @@
 
                 // leave this command at the end so your program does not close automatically
                 Console.ReadLine();
+                // run tests and print out if tests passed or not
+                if(tests()){
+                    Console.WriteLine("Tests passed.");
+                } else {
+                    Console.WriteLine("Tests failed.");
+                }
             }
 
                 /*Logic:
@@ -64,14 +70,34 @@
                             string firstVowel = word[i].ToString();
                             string firstHalf = word.Split(word[i])[0];
                             string lastHalf = word.Split(word[i])[1];
-                            word = string.Concat(firstVowel, lastHalf,firstHalf, addAy);
+                            word = string.Concat(firstVowel, lastHalf, firstHalf, addAy);
                             return word;
                             break;
                         }
                    }
-
                 }
                 return word = string.Concat(word, addAy);
+            }
+             /**
+            This method tests some examples against the 5 following rules,
+            and returns true if all tests pass, otherwise returns false.
+
+            rule 1: if it starts with a vowel add "yay" to the end
+            rule 2: move all letter before the first vowel to the end, then add "ay" to the end
+            rule 3: if it starts with a "y", treat the "y" as a consonant
+            rule 4: if it does not start with a "y", treat the "y" as a vowel
+            rule 5: if there are no vowels, add "ay" to the end (this is the same as rule 2) 
+            */
+            public static bool tests()
+            {
+            return
+                TranslateWord("elephant") == "elephantyay" &&
+                TranslateWord("fox") == "oxfay" &&
+                TranslateWord("choice") == "oicechay" &&
+                TranslateWord("dye") == "yeday" &&
+                TranslateWord("bystander") == "ystanderbay" &&
+                TranslateWord("yellow") == "ellowyay" &&
+                TranslateWord("tsktsk") == "tsktskay";
             }
         }
     }

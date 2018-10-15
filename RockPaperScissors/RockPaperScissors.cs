@@ -40,17 +40,20 @@ namespace RockPaperScissors {
             int computerChoice = num.Next (0, 3);
             string computer = null;
             //if random number ='s ___ then choice for computer ='s ___
-            if (computerChoice < 2) {
+            if (computerChoice >= 2) {
                 computer = "scissors";
+                Console.WriteLine(computerChoice);
                 return computer;
-            } else if (computerChoice < 1) {
+            } else if (computerChoice >= 1) {
                 computer = "rock";
+                Console.WriteLine(computerChoice);
                 return computer;
-            } else if (computerChoice < 0) {
+            } else if (computerChoice >= 0) {
                 computer = "paper";
+                Console.WriteLine(computerChoice);
                 return computer;
             }
-            return computer;
+            return null;
         }
         // compare for win
         public static string CompareHands (string user, string computer, string gameEvent, string gameError) {

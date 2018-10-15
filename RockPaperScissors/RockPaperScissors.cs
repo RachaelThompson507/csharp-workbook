@@ -40,7 +40,7 @@ namespace RockPaperScissors {
             int computerChoice = num.Next (0, 3);
             string computer = null;
             //if random number ='s ___ then choice for computer ='s ___
-            if (computerChoice <= 2) {
+            if (computerChoice < 2) {
                 computer = "scissors";
                 return computer;
             } else if (computerChoice < 1) {

@@ -1,25 +1,26 @@
 ﻿using System;
 
-namespace arrayPractice
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace arrayPractice {
+    class Program {
+        static void Main (string[] args) {
             //Console.WriteLine("Hello World!");
-            String[] names = new String [4];
+            String[] names = new String[4];
             names[0] = "James";
             names[1] = "Mike";
             names[2] = "Adam";
             names[3] = "Jane";
 
-            String [] pets = { "Rocky", "Walter", "Tibs", "Bailey"};
+            String[] pets = { "Rocky", "Walter", "Tibs", "Bailey" };
 
-            String [] cities;
-            cities = new String[]{"Austin", "Dallas", "Houston"};
+            String[] cities;
+            cities = new String[] { "Austin", "Dallas", "Houston" };
 
-            Console.WriteLine("Names {0}, {1}, {2}, {3}.", names);
+            Console.WriteLine ("Names {0}, {1}, {2}, {3}.", names);
 
+            int sizeOfArray = names.Length;
+            int lastIndex = sizeOfArray - 1;
+            String last = names[names.Length - 1];
+            Console.WriteLine ("In the array of size {0}, {1} is at index {2}", sizeOfArray, last, lastIndex);
         }
     }
 }

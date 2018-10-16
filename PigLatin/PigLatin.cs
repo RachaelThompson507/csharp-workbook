@@ -26,6 +26,7 @@
                 // leave this command at the end so your program does not close automatically
                 Console.ReadLine();
                 // run tests and print out if tests passed or not
+
                 if(tests()){
                     Console.WriteLine("Tests passed.");
                 } else {
@@ -52,7 +53,10 @@
                 //check for word begin with Y
                 if (firstChar == "y")
                 {
-                    word = string.Concat(word,addYay);
+                    string y = word.Split(word[0])[1];
+                    string wordEnd = word.Split(word[0])[1];
+                    word = string.Concat(wordEnd,addYay);
+                    Console.WriteLine(word);
                     return word;
                 //check for word with vowel first character
                 } else if (vowel.Contains(firstChar))
@@ -71,7 +75,7 @@
                             string lastHalf = word.Split(word[i])[1];
                             word = string.Concat(firstVowel, lastHalf, firstHalf, addAy);
                             return word;
-                            break;
+                            //break;
                         }
                    }
                 }
@@ -86,7 +90,7 @@
             rule 2: move all letter before the first vowel to the end, then add "ay" to the end
             rule 3: if it starts with a "y", treat the "y" as a consonant
             rule 4: if it does not start with a "y", treat the "y" as a vowel
-            rule 5: if there are no vowels, add "ay" to the end (this is the same as rule 2) 
+            rule 5: if there are no vowels, add "ay" to the end (this is the same as rule 2)
             */
             public static bool tests()
             {

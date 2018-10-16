@@ -19,7 +19,6 @@
 
                 //TranslateWord method is called and passed the word to translate.
                 String translatedWord = TranslateWord(word);
-
                 //Translated word is displayed to the user.
                 //?-how to pass the translated word back to the user
                 Console.WriteLine(translatedWord);

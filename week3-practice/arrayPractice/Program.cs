@@ -13,7 +13,7 @@ namespace arrayPractice
             names[2] = "Adam";
             names[3] = "Jane";
 
-            String pets = { "Rocky", "Walter", "Tibs", "Bailey"};
+            String [] pets = { "Rocky", "Walter", "Tibs", "Bailey"};
 
             String [] cities;
             cities = new String[]{"Austin", "Dallas", "Houston"};

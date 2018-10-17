@@ -4,8 +4,8 @@ namespace RockPaperScissors {
     class Program {
         public static void Main () {
             //declare var
-            string gameEvent = " ";
-            string gameError = "An Error has occured.";
+            //string gameEvent = " ";
+            //string gameError = "An Error has occured.";
             //start
             Console.WriteLine ("Rock, Paper or Scissors - Let's Play!");
             //user input
@@ -19,10 +19,19 @@ namespace RockPaperScissors {
             Console.WriteLine ("Your choice was {0} and the computer's choice was {1}.", user, computer);
 
             //Compare choices
-            CompareHands (user, computer, gameEvent, gameError);
+            //CompareHands (user, computer);
+
+            //assign return
+            string winner = CompareHands(user,computer);
 
             //gameEvent action
-            Console.WriteLine (CompareHands (user, computer, gameEvent, gameError));
+            Console.WriteLine ("The you choose {0}, the computer choose {1}. {2} ", user, computer, winner);
+
+            // bool tests = true;
+            // if()
+            // {
+
+            // }
 
             /*
             This does not work for me:
@@ -56,31 +65,49 @@ namespace RockPaperScissors {
             return null;
         }
         // compare for win
-        public static string CompareHands (string user, string computer, string gameEvent, string gameError) {
+        public static string CompareHands (string user, string computer) {
             if (user == computer) {
-                gameEvent = "Tie";
-                return gameEvent;
+                //gameEvent = "Tie";
+                return "Tie";
             } else if (user == "paper" && computer == "rock") {
-                gameEvent = "You Win";
-                return gameEvent;
+                //gameEvent = "You Win";
+                return "You Win";
             } else if (user == "scissors" && computer == "paper") {
-                gameEvent = "You Win";
-                return gameEvent;
+                //gameEvent = "You Win";
+                return "You Win";
             } else if (user == "rock" && computer == "scissors") {
-                gameEvent = "You Win";
-                return gameEvent;
+                //gameEvent = "You Win";
+                return "You Win";
             } else if (computer == "paper" && user == "rock") {
-                gameEvent = "Computer Wins";
-                return gameEvent;
+                //gameEvent = "Computer Wins";
+                return "Computer Wins";
             } else if (computer == "scissors" && user == "paper") {
-                gameEvent = "Computer Wins";
-                return gameEvent;
+                //gameEvent = "Computer Wins";
+                return "Computer Wins";
             } else if (computer == "rock" && user == "scissors") {
-                gameEvent = "Computer Wins";
-                return gameEvent;
+                //gameEvent = "Computer Wins";
+                return "Computer Wins";
             }
-            return gameError;
+            return "gameError";
         }
+        // public static bool tests()
+        // {
+        //     return   ;
+        // }
+        
+        // public static bool test1()
+        // {
+        //     string user = "rock";
+        //     string computer = "rock";
+        //     if( user == computer && gameEvent = "Tie")
+        //     {
+        //         return true;
+        //     }
+        //     else
+        //     {
+        //         return false;
+        //     }
+        // }
         /*
         Going to use my own method- keeping for example:
         returns true if all tests pass

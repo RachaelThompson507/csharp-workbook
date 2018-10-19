@@ -13,25 +13,29 @@ namespace RockPaperScissors {
             string user = Console.ReadLine ().ToLower ();
 
             //computer input
-            string computer = ComputerChoice ();
+            string computer = ComputerChoice ().ToLower ();
 
             //declare choices
             Console.WriteLine ("Your choice was {0} and the computer's choice was {1}.", user, computer);
 
-            //Compare choices
-            //CompareHands (user, computer);
+            /*
+            No being used anymore, for reference:
+            Compare choices
+            CompareHands (user, computer);
+            */
 
             //assign return
-            string winner = CompareHands(user,computer);
+            string winner = CompareHands (user, computer);
 
             //gameEvent action
-            Console.WriteLine ("The you choose {0}, the computer choose {1}. {2} ", user, computer, winner);
+            Console.WriteLine ("Since, you chose {0}, and the computer chose {1}. {2} ", user, computer, winner);
 
-            // bool tests = true;
-            // if()
-            // {
-
-            // }
+            bool testing = true;
+            if (!testing == true) {
+                Console.WriteLine ("Your tests failed.");
+            } else {
+                Console.WriteLine ("Your tests Passed.");
+            }
 
             /*
             This does not work for me:
@@ -51,15 +55,15 @@ namespace RockPaperScissors {
             //if random number ='s ___ then choice for computer ='s ___
             if (computerChoice >= 2) {
                 computer = "scissors";
-                Console.WriteLine(computerChoice);
+                //Console.WriteLine (computerChoice);
                 return computer;
             } else if (computerChoice >= 1) {
                 computer = "rock";
-                Console.WriteLine(computerChoice);
+                //Console.WriteLine (computerChoice);
                 return computer;
             } else if (computerChoice >= 0) {
                 computer = "paper";
-                Console.WriteLine(computerChoice);
+                //Console.WriteLine (computerChoice);
                 return computer;
             }
             return null;
@@ -87,43 +91,26 @@ namespace RockPaperScissors {
             } else if (computer == "rock" && user == "scissors") {
                 //gameEvent = "Computer Wins";
                 return "Computer Wins";
+            } else {
+                return "WHO KNOWS???";
             }
-            return "gameError";
+            //return "gameError";
         }
-        // public static bool tests()
-        // {
-        //     return   ;
-        // }
-        
-        // public static bool test1()
-        // {
-        //     string user = "rock";
-        //     string computer = "rock";
-        //     if( user == computer && gameEvent = "Tie")
-        //     {
-        //         return true;
-        //     }
-        //     else
-        //     {
-        //         return false;
-        //     }
-        // }
-        /*
-        Going to use my own method- keeping for example:
-        returns true if all tests pass
-        returns false if at least 1 test fails
-        public static bool tests()
-        {
-             return
-            //CompareHands("Paper", "Paper") == 0 &&
-            //CompareHands("Rock", "Rock") == 0 &&
-            //CompareHands("Scissors", "Scissors") == 0 &&
-            //CompareHands("Paper", "Rock") == 1 &&
-            //CompareHands("Paper", "Scissors") == 2 &&
-            //CompareHands("Rock", "Paper") == 2 &&
-            //CompareHands("Rock", "Scissors") == 1 &&
-            //CompareHands("Scissors", "Paper") == 1 &&
-            //CompareHands("Scissors", "Rock") == 2 ;
-        }*/
+
+        // Going to use my own method- keeping for example:
+        // returns true if all tests pass
+        // returns false if at least 1 test fails
+        public static bool tests (bool testing) {
+            return
+            CompareHands ("Paper", "Paper") == "Tie" &&
+                CompareHands ("Rock", "Rock") == "Tie" &&
+                CompareHands ("Scissors", "Scissors") == "Tie" &&
+                CompareHands ("Paper", "Rock") == "You Win" &&
+                CompareHands ("Paper", "Scissors") == "Computer Wins" &&
+                CompareHands ("Rock", "Paper") == "Computer Wins" &&
+                CompareHands ("Rock", "Scissors") == "You Win" &&
+                CompareHands ("Scissors", "Paper") == "You Win" &&
+                CompareHands ("Scissors", "Rock") == "Computer Wins";
+        }
     }
 }

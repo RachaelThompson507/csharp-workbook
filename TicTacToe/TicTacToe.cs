@@ -7,9 +7,9 @@ namespace TicTacToe
         public static string playerTurn = "X";
         public static string[][] board = new string[][]
         {
-            new string[] {"0,0", "0,1", "0,2"},
-            new string[] {"1,0", "1,1", "1,2"},
-            new string[] {"2,0", "2,1", "2,2"}
+            new string[] {" ", " ", " "},
+            new string[] {" ", " ", " "},
+            new string[] {" ", " ", " "}
         };
 
         public static void Main()
@@ -52,7 +52,7 @@ namespace TicTacToe
 
             return false;
         }
-        
+
         public static bool HorizontalWin()
         {
         // check each row for same player input
@@ -77,11 +77,11 @@ namespace TicTacToe
 
         public static void DrawBoard()
         {
-            Console.WriteLine("   0   1   2  ");
+            Console.WriteLine("  0 1 2 ");
             Console.WriteLine("0 " + String.Join("|", board[0]));
-            Console.WriteLine("  ------------");
+            Console.WriteLine("  ------");
             Console.WriteLine("1 " + String.Join("|", board[1]));
-            Console.WriteLine("  ------------");
+            Console.WriteLine("  ------");
             Console.WriteLine("2 " + String.Join("|", board[2]));
         }
         //add unit tests

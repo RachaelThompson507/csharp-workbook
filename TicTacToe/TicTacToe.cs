@@ -2,32 +2,34 @@
 
 namespace TicTacToe {
     class Program {
+        //playerTurn will change between X and O as needed for game play
         public static string playerTurn = "X";
+        //board array is used to create the board and hold the data for X & O
         public static string[][] board = new string[][] {
             new string[] { " ", " ", " " },
             new string[] { " ", " ", " " },
             new string[] { " ", " ", " " }
         };
-
+        //this is the main fx that runs the game. it will keep playing until a win or tie.
         public static void Main () {
             do {
                 DrawBoard ();
                 GetInput ();
             } while (!CheckForWin () && !CheckForTie ());
-
-            if (CheckForWin()== true){
-                DrawBoard();
-                Console.WriteLine("There is a WINNER. It is NOT player {0}!", playerTurn);
+            //if win or tie is found then this will print a display to the players
+            if (CheckForWin () == true) {
+                DrawBoard ();
+                Console.WriteLine ("There is a WINNER. It is NOT player {0}!", playerTurn);
             } else if (CheckForTie () == true) {
-                DrawBoard();
-                Console.WriteLine("This game is a TIE!");
+                DrawBoard ();
+                Console.WriteLine ("This game is a TIE!");
             }
-
             // leave this command at the end so your program does not close automatically
-            Console.WriteLine("Press Enter to Close Application");
+            //wanted to ALERT users to close the app.
+            Console.WriteLine ("Press Enter to Close Application");
             Console.ReadLine ();
         }
-
+        //getInput fx takes user input and uses it to fill board and call PlaceMark
         public static void GetInput () {
             Console.WriteLine ("Player " + playerTurn);
             Console.WriteLine ("Enter Row:");
@@ -37,7 +39,7 @@ namespace TicTacToe {
             PlaceMark (row, column);
             playerTurn = (playerTurn == "X") ? "O" : "X";
         }
-
+        //this will reference the board and check for input, if input found prompts to try again.
         public static string PlaceMark (int row, int column) {
             //X is default using ternary operator
             if (board[row][column] == " ") {

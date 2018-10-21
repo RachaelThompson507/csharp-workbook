@@ -143,6 +143,9 @@ namespace TicTacToe {
             Console.WriteLine ("  ------");
             Console.WriteLine ("2 " + String.Join ("|", board[2]));
         }
-        //add unit tests
+        //add tests
+        // public bool tests() {
+        //     return ;
+        // }
     }
 }

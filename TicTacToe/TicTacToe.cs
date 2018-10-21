@@ -10,22 +10,21 @@ namespace TicTacToe {
         };
 
         public static void Main () {
-
             do {
                 DrawBoard ();
                 GetInput ();
-
             } while (!CheckForWin () && !CheckForTie ());
 
             if (CheckForWin()== true){
                 DrawBoard();
-                Console.WriteLine("There is a winner. It is not player {0}!", playerTurn);
+                Console.WriteLine("There is a WINNER. It is NOT player {0}!", playerTurn);
             } else if (CheckForTie () == true) {
                 DrawBoard();
-                Console.WriteLine("These is a tie!");
+                Console.WriteLine("This game is a TIE!");
             }
 
             // leave this command at the end so your program does not close automatically
+            Console.WriteLine("Press Enter to Close Application");
             Console.ReadLine ();
         }
 
@@ -37,8 +36,6 @@ namespace TicTacToe {
             int column = int.Parse (Console.ReadLine ());
             PlaceMark (row, column);
             playerTurn = (playerTurn == "X") ? "O" : "X";
-            //CheckForWin();
-            //CheckForTie(row, column);
         }
 
         public static string PlaceMark (int row, int column) {
@@ -49,8 +46,9 @@ namespace TicTacToe {
             } else if (board[row][column] == "X" || board[row][column] == "O") {
                 Console.WriteLine ("This space is taken...try again.");
                 GetInput ();
+                //ternary opporator changes the player.
+                playerTurn = (playerTurn == "X") ? "O" : "X";
             }
-            //playerTurn = (playerTurn == "X") ? "O" : "X";
             return playerTurn;
         }
 

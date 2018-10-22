@@ -28,6 +28,14 @@ namespace TicTacToe {
             //wanted to ALERT users to close the app.
             Console.WriteLine ("Press Enter to Close Application");
             Console.ReadLine ();
+
+            bool test = true;
+            if (!test){
+               test = testTicTacToe () ;
+               Console.WriteLine("Your test is {0}", test);
+            } else {
+                Console.WriteLine ("Your test is {0}", test);
+            }
         }
         //getInput fx takes user input and uses it to fill board and call PlaceMark
         public static void GetInput () {
@@ -53,7 +61,7 @@ namespace TicTacToe {
             }
             return playerTurn;
         }
-
+        //checks all win conditions for a win.
         public static bool CheckForWin () {
             // your code goes here
             if (HorizontalWin () == true) {
@@ -66,7 +74,7 @@ namespace TicTacToe {
                 return false;
             }
         }
-
+        //looks at the number of spaces - player keep playing until you win or there are no spaces left and you tie.
         public static bool CheckForTie () {
             // your code goes here
             int spaceAvail = 9;
@@ -145,9 +153,23 @@ namespace TicTacToe {
             Console.WriteLine ("  ------");
             Console.WriteLine ("2 " + String.Join ("|", board[2]));
         }
-        //add tests
-        // public bool tests() {
-        //     return ;
-        // }
+        //add tests 1 per main method.
+        public static bool testTicTacToe () {
+            PlaceMark(0,0);
+            PlaceMark(1,0);
+            PlaceMark(0,1);
+            PlaceMark(1,1);
+            PlaceMark(0,2);
+            if (CheckForWin() == true) {
+                if (HorizontalWin () == true) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+            return false;
+        }
+
+        
     }
 }

@@ -169,7 +169,5 @@ namespace TicTacToe {
             }
             return false;
         }
-
-        
     }
 }

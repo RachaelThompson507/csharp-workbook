@@ -24,7 +24,7 @@ namespace RockPaperScissors {
                 if (user == "crazy eyes") {
                     goto InstantWin;
                     InstantWin:
-                        Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Console.WriteLine ("You scared the bytes of the computer... You win!");
                     Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 } else {

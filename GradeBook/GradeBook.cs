@@ -11,7 +11,7 @@ namespace GradeBook {
         public static void dataEntry () {
 
             while (true) {
-                Beginning : Console.WriteLine ("Select 'Y' to enter data, 'N' to return calculations.");
+                Beginning : Console.WriteLine ("Select Y to enter data, N to return calculations.");
                 string inputYN = Console.ReadLine ().ToUpper ();
 
                 if (inputYN == "Y") {

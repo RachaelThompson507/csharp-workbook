@@ -62,11 +62,21 @@ namespace GradeBook {
             Console.WriteLine ("_________________________________________________________");
         }
         public static int returnCalc (Dictionary gradeBook) {
+        //for each student in gradeBook do the following calculations on the Value String (studentGrades)
             foreach (KeyValuePair <String, String> student in gradeBook){
-
+                //calculate max grade
+                if (student.Value == String){
+                    var gradeSplit = student.Value.Split(',');
+                    //assumption first number could be largest number
+                    var max = Convert.ToInt32 (gradeSplit[0]);
+                    //use for each again to check each number if it the greatest number
+                    foreach (int grade in gradeSplit){
+                        
+                    }
+                }
             }
             //min grade
-            //max grade
+            
             //avg all
             //foreach loop for each calc
         }

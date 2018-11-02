@@ -14,7 +14,7 @@ namespace GradeBook {
         /*
         The return calculations method takes in the dictionary to be computed.
         */
-            returnCalc();
+            returnCalc(Dictionary<String, String> gradeBook);
         }
         /*
         Contract:
@@ -62,42 +62,44 @@ namespace GradeBook {
                 }
             Console.WriteLine ("_________________________________________________________");
         }
-        public static int returnCalc (Dictionary gradeBook) {
+        public static void returnCalc (Dictionary<String,String> gradeBook) {
         //for each student in gradeBook do the following calculations on the Value String (studentGrades)
-            foreach (KeyValuePair <String, String> student in gradeBook){
-                //calculate max grade
-                if (student.Value == String){
-                    var gradeSplit = student.Value.Split(',');
-                    //assumption first number could be largest number
-                    var max = Convert.ToInt32 (gradeSplit[0]);
-                    //use for each again to check each number if it the greatest number
-                    foreach (int grades in gradeSplit){
-                        int grade = Convert.ToInt32 (grades);
-                        if (grade > max) {
-                            max = grade;
-                        }
-                    }
-                    return String.Format(student.Key, max);
-                } if (student.Value == String) {
-                    var gradeSplitMin = student.Value.Split(',');
-                    //assumption first number could be smallest number
-                    var min = Convert.ToInt32 (gradeSplit[0]);
-                    //use for each again to check each number if it the number that is the least
-                    foreach (int gradesMin in gradeSplit){
-                        int gradeMin = Convert.ToInt32 (gradesMin);
-                        if (gradeMin < min) {
-                            min = gradeMin;
-                        }
-                    }
-                    return String.Format(student.Key, min);
-                } if (student.Value == String) {
-                    var gradeSplitAvg = student.Value.Split(',').Convert.ToInt32.ToArray();
-                    foreach (int gradeAvg in gradeSplitAvg){
-                        int gradeAvg = gradeSplitAvg.Average();
-                    }
-                    return String.Format(student.Key, gradeAvg);
-                }
-            }
+            
         }
     }
 }
+            // foreach (KeyValuePair <String, String> student in gradeBook){
+            //     bool check = student.Value.Any(" ");
+            //     //calculate max grade
+            //     if (student.Value != check ){
+            //         var gradeSplit = student.Value.Split(',');
+            //         //assumption first number could be largest number
+            //         var max = Convert.ToInt32 (gradeSplit[0]);
+            //         //use for each again to check each number if it the greatest number
+            //         foreach (string grades in gradeSplit){
+            //             int grade = Convert.ToInt32 (grades);
+            //             if (grade > max) {
+            //                 max = grade;
+            //             }
+            //         }
+            //         return String.Format(student.Key, max);
+            //     } if (student.Value != check) {
+            //         var gradeSplitMin = student.Value.Split(',');
+            //         //assumption first number could be smallest number
+            //         var min = Convert.ToInt32 (gradeSplit[0]);
+            //         //use for each again to check each number if it the number that is the least
+            //         foreach (string gradesMin in gradeSplit){
+            //             int gradeMin = Convert.ToInt32 (gradesMin);
+            //             if (gradeMin < min) {
+            //                 min = gradeMin;
+            //             }
+            //         }
+            //         return String.Format(student.Key, min);
+            //     } if (student.Value != check) {
+            //         var gradeSplitAvg = student.Value.Split(',').Convert.ToInt32.ToArray();
+            //         foreach (int gradeAvg in gradeSplitAvg){
+            //             int gradeAvg = gradeSplitAvg.Average();
+            //         }
+            //         return String.Format(student.Key, gradeAvg);
+            //     }
+            // }

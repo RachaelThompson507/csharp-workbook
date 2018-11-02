@@ -6,11 +6,14 @@ namespace GradeBook {
     class Program {
         static void Main (string[] args) {
             Console.WriteLine ("Grade Book an Application by GradePro");
-            /*
-            The data entry method takes in the data to be analyzed.
-            */
+        /*
+        The data entry method takes in the data to be analyzed.
+        */
             dataEntry ();
-
+        /*
+        The return calculations method takes in the dictionary to be computed.
+        */
+            returnCalc();
         }
         /*
         Contract:
@@ -55,8 +58,17 @@ namespace GradeBook {
             Console.WriteLine ("_________________________________________________________");
             foreach (KeyValuePair <String, String> student in gradeBook) {
                 Console.WriteLine ($" Students: {student.Key} | Grades: {student.Value} ");
-            }
+                }
             Console.WriteLine ("_________________________________________________________");
+        }
+        public static int returnCalc (Dictionary gradeBook) {
+            foreach (KeyValuePair <String, String> student in gradeBook){
+
+            }
+            //min grade
+            //max grade
+            //avg all
+            //foreach loop for each calc
         }
     }
 }

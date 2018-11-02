@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -70,15 +71,33 @@ namespace GradeBook {
                     //assumption first number could be largest number
                     var max = Convert.ToInt32 (gradeSplit[0]);
                     //use for each again to check each number if it the greatest number
-                    foreach (int grade in gradeSplit){
-                        
+                    foreach (int grades in gradeSplit){
+                        int grade = Convert.ToInt32 (grades);
+                        if (grade > max) {
+                            max = grade;
+                        }
                     }
+                    return String.Format(student.Key, max);
+                } if (student.Value == String) {
+                    var gradeSplitMin = student.Value.Split(',');
+                    //assumption first number could be smallest number
+                    var min = Convert.ToInt32 (gradeSplit[0]);
+                    //use for each again to check each number if it the number that is the least
+                    foreach (int gradesMin in gradeSplit){
+                        int gradeMin = Convert.ToInt32 (gradesMin);
+                        if (gradeMin < min) {
+                            min = gradeMin;
+                        }
+                    }
+                    return String.Format(student.Key, min);
+                } if (student.Value == String) {
+                    var gradeSplitAvg = student.Value.Split(',').Convert.ToInt32.ToArray();
+                    foreach (int gradeAvg in gradeSplitAvg){
+                        int gradeAvg = gradeSplitAvg.Average();
+                    }
+                    return String.Format(student.Key, gradeAvg);
                 }
             }
-            //min grade
-            
-            //avg all
-            //foreach loop for each calc
         }
     }
 }

@@ -49,10 +49,12 @@ namespace GradeBook {
             maxGrade (gradeBook);
         }
 
-        public static void maxGrade (Dictionary<String, String> gradeBook) {
+        public static String maxGrade (Dictionary<String, String> gradeBook) {
+            Dictionary <String, int> MaxGradePerStudent = new Dictionary <String, int> ();
+            String maxDisplay = " ";
             //for each student in gradeBook do the following max grade on the Value String (studentGrades)
             foreach (KeyValuePair<String, String> student in gradeBook) {
-                string[] splitMax = student.Value.Split (',');
+                string [] splitMax = student.Value.Split (',');
                 int max1 = Convert.ToInt32 (splitMax[0]);
                 foreach (var maxCheck in splitMax) {
                     int splitMaxGrade = Convert.ToInt32 (maxCheck);
@@ -60,9 +62,12 @@ namespace GradeBook {
                         max1 = splitMaxGrade;
                     }
                 }
-                var MaxGradePerStudent = String.Format ($"Studnet: {student.Key} | Max Grade: {max1}");
-                Console.WriteLine (MaxGradePerStudent);
+                MaxGradePerStudent.Add(student.Key, max1);
             }
+            foreach (KeyValuePair <String, int> studentMax in MaxGradePerStudent){
+                maxDisplay = String.Format($"Student: {studentMax.Key}, Max Grade: {studentMax.Value}");
+            }
+            return maxDisplay;
         }
     }
 }

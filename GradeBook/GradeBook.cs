@@ -40,15 +40,17 @@ namespace GradeBook {
                     goto Beginning;
                 }
             }
-            Console.WriteLine ("_________________________________________________________");
+            Console.WriteLine ("__________");
             foreach (KeyValuePair<String, String> student in gradeBook) {
                 Console.WriteLine ($" Students: {student.Key} | Grades: {student.Value} ");
             }
-            Console.WriteLine ("_________________________________________________________");
+            Console.WriteLine ("__________");
 
             maxGrade (gradeBook);
 
             minGrade (gradeBook);
+
+            avgGrade (gradeBook);
         }
 
         public static void maxGrade (Dictionary<String, String> gradeBook) {
@@ -64,9 +66,9 @@ namespace GradeBook {
                         max1 = splitMaxGrade;
                     }
                 }
-                Console.WriteLine ("_________________________________________________________");
+                Console.WriteLine ("__________");
                 Console.WriteLine ($" Student: {student.Key} | Max Grade: {max1}");
-                Console.WriteLine ("_________________________________________________________");
+                Console.WriteLine ("__________");
             }
         }
         public static void minGrade (Dictionary<String, String> gradeBook) {
@@ -80,19 +82,20 @@ namespace GradeBook {
                         min1 = splitMinGrade;
                     }
                 }
-                Console.WriteLine ("_________________________________________________________");
+                Console.WriteLine ("__________");
                 Console.WriteLine ($" Student: {student.Key} | Min Grade: {min1}");
-                Console.WriteLine ("_________________________________________________________");
+                Console.WriteLine ("__________");
             }
         }
         public static void avgGrade (Dictionary<String, String> gradeBook) {
             foreach (KeyValuePair<String, String> student in gradeBook) {
-                String[] studentAvgSplit = student.Value.Split(',');
-                decimal studentAvg = Convert.ToDecimal(studentAvgSplit);
-                decimal avg1 = 
-                Console.WriteLine ("_________________________________________________________");
-                Console.WriteLine ($" Student: {student.Key} | Min Grade: {avg1}");
-                Console.WriteLine ("_________________________________________________________");
+                String[] studentAvgSplit = student.Value.Split (',');
+                decimal[] studentAvg = studentAvgSplit.Select (x => Convert.ToDecimal (x)).ToArray ();
+                decimal avg1 = studentAvg.Average ();
+                Console.WriteLine ("__________");
+                Console.WriteLine ($" Student: {student.Key} | Average Grade: {avg1}");
+                Console.WriteLine ("__________");
             }
+        }
     }
 }

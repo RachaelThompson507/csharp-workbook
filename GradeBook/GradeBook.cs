@@ -47,14 +47,16 @@ namespace GradeBook {
             Console.WriteLine ("_________________________________________________________");
 
             maxGrade (gradeBook);
+
+            minGrade (gradeBook);
         }
 
-        public static String maxGrade (Dictionary<String, String> gradeBook) {
-            Dictionary <String, int> MaxGradePerStudent = new Dictionary <String, int> ();
-            String maxDisplay = " ";
+        public static void maxGrade (Dictionary<String, String> gradeBook) {
+            //Dictionary<String, int> MaxGradePerStudent = new Dictionary<String, int> ();
+            //String maxDisplay = null;
             //for each student in gradeBook do the following max grade on the Value String (studentGrades)
             foreach (KeyValuePair<String, String> student in gradeBook) {
-                string [] splitMax = student.Value.Split (',');
+                string[] splitMax = student.Value.Split (',');
                 int max1 = Convert.ToInt32 (splitMax[0]);
                 foreach (var maxCheck in splitMax) {
                     int splitMaxGrade = Convert.ToInt32 (maxCheck);
@@ -62,12 +64,35 @@ namespace GradeBook {
                         max1 = splitMaxGrade;
                     }
                 }
-                MaxGradePerStudent.Add(student.Key, max1);
+                Console.WriteLine ("_________________________________________________________");
+                Console.WriteLine ($" Student: {student.Key} | Max Grade: {max1}");
+                Console.WriteLine ("_________________________________________________________");
             }
-            foreach (KeyValuePair <String, int> studentMax in MaxGradePerStudent){
-                maxDisplay = String.Format($"Student: {studentMax.Key}, Max Grade: {studentMax.Value}");
-            }
-            return maxDisplay;
         }
+        public static void minGrade (Dictionary<String, String> gradeBook) {
+
+            foreach (KeyValuePair<String, String> student in gradeBook) {
+                string[] splitMin = student.Value.Split (',');
+                int min1 = Convert.ToInt32 (splitMin[0]);
+                foreach (var minCheck in splitMin) {
+                    int splitMinGrade = Convert.ToInt32 (minCheck);
+                    if (splitMinGrade < min1) {
+                        min1 = splitMinGrade;
+                    }
+                }
+                Console.WriteLine ("_________________________________________________________");
+                Console.WriteLine ($" Student: {student.Key} | Min Grade: {min1}");
+                Console.WriteLine ("_________________________________________________________");
+            }
+        }
+        public static void avgGrade (Dictionary<String, String> gradeBook) {
+            foreach (KeyValuePair<String, String> student in gradeBook) {
+                String[] studentAvgSplit = student.Value.Split(',');
+                decimal studentAvg = Convert.ToDecimal(studentAvgSplit);
+                decimal avg1 = 
+                Console.WriteLine ("_________________________________________________________");
+                Console.WriteLine ($" Student: {student.Key} | Min Grade: {avg1}");
+                Console.WriteLine ("_________________________________________________________");
+            }
     }
 }

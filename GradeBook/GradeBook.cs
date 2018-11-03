@@ -1,36 +1,20 @@
 ﻿using System;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GradeBook {
     class Program {
         static void Main (string[] args) {
-            Console.WriteLine ("Grade Book an Application by GradePro");
-        /*
-        The data entry method takes in the data to be analyzed.
-        */
-            dataEntry ();
-        /*
-        The return calculations method takes in the dictionary to be computed.
-        */
-            returnCalc(Dictionary<String, String> gradeBook);
-        }
-        /*
-        Contract:
-        1. User input here.
-        2. Loop through adding a name and grades.
-        3. Stop when user is ready.
-        4. Can names and grades be put into a dictionary for calling pairs of data?
-         */
-        public static void dataEntry () {
-            // I started using Stacks- which worked but I could not get to work with a dictionary.
-            // I cannot get the lists to work either-- any ideas?
+            //declare variables
             String studentName = " ";
-            string studentGrades = " ";
+            String studentGrades = " ";
             String studentInputYN = " ";
             Dictionary<String, String> gradeBook = new Dictionary<String, String> ();
 
+            //intro gradebook
+            Console.WriteLine ("Grade Book an Application by GradePro");
+            //while conditionals are true the app continues to get data
             while (true) {
                 //if the user does not enter a Y || N they will be directed back here to try again
                 Beginning : Console.WriteLine ("Select Y to enter data, N to return calculations.");
@@ -57,49 +41,28 @@ namespace GradeBook {
                 }
             }
             Console.WriteLine ("_________________________________________________________");
-            foreach (KeyValuePair <String, String> student in gradeBook) {
+            foreach (KeyValuePair<String, String> student in gradeBook) {
                 Console.WriteLine ($" Students: {student.Key} | Grades: {student.Value} ");
-                }
+            }
             Console.WriteLine ("_________________________________________________________");
+
+            maxGrade (gradeBook);
         }
-        public static void returnCalc (Dictionary<String,String> gradeBook) {
-        //for each student in gradeBook do the following calculations on the Value String (studentGrades)
-            
+
+        public static void maxGrade (Dictionary<String, String> gradeBook) {
+            //for each student in gradeBook do the following max grade on the Value String (studentGrades)
+            foreach (KeyValuePair<String, String> student in gradeBook) {
+                string[] splitMax = student.Value.Split (',');
+                int max1 = Convert.ToInt32 (splitMax[0]);
+                foreach (var maxCheck in splitMax) {
+                    int splitMaxGrade = Convert.ToInt32 (maxCheck);
+                    if (splitMaxGrade > max1) {
+                        max1 = splitMaxGrade;
+                    }
+                }
+                var MaxGradePerStudent = String.Format ($"Studnet: {student.Key} | Max Grade: {max1}");
+                Console.WriteLine (MaxGradePerStudent);
+            }
         }
     }
 }
-            // foreach (KeyValuePair <String, String> student in gradeBook){
-            //     bool check = student.Value.Any(" ");
-            //     //calculate max grade
-            //     if (student.Value != check ){
-            //         var gradeSplit = student.Value.Split(',');
-            //         //assumption first number could be largest number
-            //         var max = Convert.ToInt32 (gradeSplit[0]);
-            //         //use for each again to check each number if it the greatest number
-            //         foreach (string grades in gradeSplit){
-            //             int grade = Convert.ToInt32 (grades);
-            //             if (grade > max) {
-            //                 max = grade;
-            //             }
-            //         }
-            //         return String.Format(student.Key, max);
-            //     } if (student.Value != check) {
-            //         var gradeSplitMin = student.Value.Split(',');
-            //         //assumption first number could be smallest number
-            //         var min = Convert.ToInt32 (gradeSplit[0]);
-            //         //use for each again to check each number if it the number that is the least
-            //         foreach (string gradesMin in gradeSplit){
-            //             int gradeMin = Convert.ToInt32 (gradesMin);
-            //             if (gradeMin < min) {
-            //                 min = gradeMin;
-            //             }
-            //         }
-            //         return String.Format(student.Key, min);
-            //     } if (student.Value != check) {
-            //         var gradeSplitAvg = student.Value.Split(',').Convert.ToInt32.ToArray();
-            //         foreach (int gradeAvg in gradeSplitAvg){
-            //             int gradeAvg = gradeSplitAvg.Average();
-            //         }
-            //         return String.Format(student.Key, gradeAvg);
-            //     }
-            // }

@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/obj/Debug/netcoreapp2.0/RockPaperScissors.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/obj/Debug/netcoreapp2.0/RockPaperScissors.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/obj/Debug/netcoreapp2.0/RockPaperScissors.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/obj/Debug/netcoreapp2.0/RockPaperScissors.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/bin/Debug/netcoreapp2.0/RockPaperScissors.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/bin/Debug/netcoreapp2.0/RockPaperScissors.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/bin/Debug/netcoreapp2.0/RockPaperScissors.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/bin/Debug/netcoreapp2.0/RockPaperScissors.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/bin/Debug/netcoreapp2.0/RockPaperScissors.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/obj/Debug/netcoreapp2.0/RockPaperScissors.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/RockPaperScissors/obj/Debug/netcoreapp2.0/RockPaperScissors.pdb

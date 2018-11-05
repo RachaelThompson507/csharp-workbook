@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/obj/Debug/netcoreapp2.0/PigLatin.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/obj/Debug/netcoreapp2.0/PigLatin.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/obj/Debug/netcoreapp2.0/PigLatin.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/obj/Debug/netcoreapp2.0/PigLatin.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/bin/Debug/netcoreapp2.0/PigLatin.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/bin/Debug/netcoreapp2.0/PigLatin.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/bin/Debug/netcoreapp2.0/PigLatin.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/bin/Debug/netcoreapp2.0/PigLatin.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/bin/Debug/netcoreapp2.0/PigLatin.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/obj/Debug/netcoreapp2.0/PigLatin.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/PigLatin/obj/Debug/netcoreapp2.0/PigLatin.pdb

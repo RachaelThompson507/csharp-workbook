@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/bin/Debug/netcoreapp2.1/week2-2practice.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/bin/Debug/netcoreapp2.1/week2-2practice.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/bin/Debug/netcoreapp2.1/week2-2practice.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/bin/Debug/netcoreapp2.1/week2-2practice.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/bin/Debug/netcoreapp2.1/week2-2practice.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/obj/Debug/netcoreapp2.1/week2-2practice.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/obj/Debug/netcoreapp2.1/week2-2practice.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/obj/Debug/netcoreapp2.1/week2-2practice.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/obj/Debug/netcoreapp2.1/week2-2practice.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/obj/Debug/netcoreapp2.1/week2-2practice.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week2-2practice/obj/Debug/netcoreapp2.1/week2-2practice.pdb

@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/bin/Debug/netcoreapp2.0/TicTacToe.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/bin/Debug/netcoreapp2.0/TicTacToe.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/bin/Debug/netcoreapp2.0/TicTacToe.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/bin/Debug/netcoreapp2.0/TicTacToe.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/bin/Debug/netcoreapp2.0/TicTacToe.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/obj/Debug/netcoreapp2.0/TicTacToe.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/obj/Debug/netcoreapp2.0/TicTacToe.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/obj/Debug/netcoreapp2.0/TicTacToe.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/obj/Debug/netcoreapp2.0/TicTacToe.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/obj/Debug/netcoreapp2.0/TicTacToe.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/TicTacToe/obj/Debug/netcoreapp2.0/TicTacToe.pdb

@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/bin/Debug/netcoreapp2.1/textGame.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/bin/Debug/netcoreapp2.1/textGame.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/bin/Debug/netcoreapp2.1/textGame.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/bin/Debug/netcoreapp2.1/textGame.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/bin/Debug/netcoreapp2.1/textGame.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/obj/Debug/netcoreapp2.1/textGame.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/obj/Debug/netcoreapp2.1/textGame.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/obj/Debug/netcoreapp2.1/textGame.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/obj/Debug/netcoreapp2.1/textGame.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/obj/Debug/netcoreapp2.1/textGame.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/textGame/obj/Debug/netcoreapp2.1/textGame.pdb

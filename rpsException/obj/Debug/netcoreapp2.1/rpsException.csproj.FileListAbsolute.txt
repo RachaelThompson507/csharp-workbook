@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/bin/Debug/netcoreapp2.1/rpsException.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/bin/Debug/netcoreapp2.1/rpsException.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/bin/Debug/netcoreapp2.1/rpsException.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/bin/Debug/netcoreapp2.1/rpsException.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/bin/Debug/netcoreapp2.1/rpsException.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/obj/Debug/netcoreapp2.1/rpsException.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/obj/Debug/netcoreapp2.1/rpsException.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/obj/Debug/netcoreapp2.1/rpsException.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/obj/Debug/netcoreapp2.1/rpsException.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/obj/Debug/netcoreapp2.1/rpsException.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/rpsException/obj/Debug/netcoreapp2.1/rpsException.pdb

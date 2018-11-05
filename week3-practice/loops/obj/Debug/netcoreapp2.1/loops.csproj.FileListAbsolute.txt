@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/bin/Debug/netcoreapp2.1/loops.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/bin/Debug/netcoreapp2.1/loops.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/bin/Debug/netcoreapp2.1/loops.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/bin/Debug/netcoreapp2.1/loops.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/bin/Debug/netcoreapp2.1/loops.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/obj/Debug/netcoreapp2.1/loops.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/obj/Debug/netcoreapp2.1/loops.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/obj/Debug/netcoreapp2.1/loops.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/obj/Debug/netcoreapp2.1/loops.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/obj/Debug/netcoreapp2.1/loops.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/loops/obj/Debug/netcoreapp2.1/loops.pdb

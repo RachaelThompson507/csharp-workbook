@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/obj/Debug/netcoreapp2.1/listPractice.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/obj/Debug/netcoreapp2.1/listPractice.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/obj/Debug/netcoreapp2.1/listPractice.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/obj/Debug/netcoreapp2.1/listPractice.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/bin/Debug/netcoreapp2.1/listPractice.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/bin/Debug/netcoreapp2.1/listPractice.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/bin/Debug/netcoreapp2.1/listPractice.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/bin/Debug/netcoreapp2.1/listPractice.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/bin/Debug/netcoreapp2.1/listPractice.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/obj/Debug/netcoreapp2.1/listPractice.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/listPractice/obj/Debug/netcoreapp2.1/listPractice.pdb

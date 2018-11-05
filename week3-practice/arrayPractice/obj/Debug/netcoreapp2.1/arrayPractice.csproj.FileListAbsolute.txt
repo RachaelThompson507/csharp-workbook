@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/obj/Debug/netcoreapp2.1/arrayPractice.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/obj/Debug/netcoreapp2.1/arrayPractice.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/obj/Debug/netcoreapp2.1/arrayPractice.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/obj/Debug/netcoreapp2.1/arrayPractice.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/bin/Debug/netcoreapp2.1/arrayPractice.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/bin/Debug/netcoreapp2.1/arrayPractice.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/bin/Debug/netcoreapp2.1/arrayPractice.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/bin/Debug/netcoreapp2.1/arrayPractice.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/bin/Debug/netcoreapp2.1/arrayPractice.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/obj/Debug/netcoreapp2.1/arrayPractice.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/week3-practice/arrayPractice/obj/Debug/netcoreapp2.1/arrayPractice.pdb

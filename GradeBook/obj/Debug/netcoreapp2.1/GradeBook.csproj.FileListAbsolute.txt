@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/bin/Debug/netcoreapp2.1/GradeBook.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/bin/Debug/netcoreapp2.1/GradeBook.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/bin/Debug/netcoreapp2.1/GradeBook.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/bin/Debug/netcoreapp2.1/GradeBook.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/bin/Debug/netcoreapp2.1/GradeBook.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/obj/Debug/netcoreapp2.1/GradeBook.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/obj/Debug/netcoreapp2.1/GradeBook.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/obj/Debug/netcoreapp2.1/GradeBook.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/obj/Debug/netcoreapp2.1/GradeBook.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/obj/Debug/netcoreapp2.1/GradeBook.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/GradeBook/obj/Debug/netcoreapp2.1/GradeBook.pdb

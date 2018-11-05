@@ -1,0 +1,11 @@
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/obj/Debug/netcoreapp2.0/Checkpoint1.csprojAssemblyReference.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/obj/Debug/netcoreapp2.0/Checkpoint1.csproj.CoreCompileInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/obj/Debug/netcoreapp2.0/Checkpoint1.AssemblyInfoInputs.cache
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/obj/Debug/netcoreapp2.0/Checkpoint1.AssemblyInfo.cs
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/bin/Debug/netcoreapp2.0/Checkpoint1.deps.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/bin/Debug/netcoreapp2.0/Checkpoint1.runtimeconfig.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/bin/Debug/netcoreapp2.0/Checkpoint1.runtimeconfig.dev.json
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/bin/Debug/netcoreapp2.0/Checkpoint1.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/bin/Debug/netcoreapp2.0/Checkpoint1.pdb
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/obj/Debug/netcoreapp2.0/Checkpoint1.dll
+/Users/rachael_thompson/Desktop/Dev/csharp-workbook/Checkpoint1/obj/Debug/netcoreapp2.0/Checkpoint1.pdb

@@ -116,11 +116,11 @@ class Station {
     public void ExitStation (int spot) {
         this.port[spot] = null;
     }
-    // public void Roster (Ship name, Ship passengers) {
-    //     List<String> Roster = new List<string> ();
-    //     foreach (var name in Ship) {
-    //         Roster.Add (passengers);
-    //     }
-    //     return Roster;
+    //roster will have the passengers by ship enterStation
+    public string Roster () {
+        foreach () {
+
+        }
+        return ;
     }
 }

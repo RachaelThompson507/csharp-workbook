@@ -75,11 +75,12 @@ class Ship {
 
     public string Passengers {
         get {
+            String formatted = " ";
             foreach (var person in passengers) {
-                return String.Format ("{0}", person.FullName);
+                formatted += person + "\n";
             }
 
-            return "That's Everybody!";
+            return formatted;
         }
     }
 

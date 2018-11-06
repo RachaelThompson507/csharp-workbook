@@ -64,7 +64,7 @@ namespace GradeBook {
             while (true) {
                 //if the user does not enter a Y || N they will be directed back here to try again
                 Console.WriteLine ("Select Y to enter data, N to return calculations.");
-                studentInputYN = Console.ReadLine ().ToUpper ();
+                studentInputYN = Console.ReadLine ().ToUpper ().Trim();
                 // if user is entering data do --- else if break ---else goto top
                 if (studentInputYN == "Y") {
                     Console.WriteLine ("Enter students name in format 'last name , first name'.");

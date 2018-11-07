@@ -79,7 +79,6 @@ class Ship {
             foreach (var person in passengers) {
                 formatted += person + "\n";
             }
-
             return formatted;
         }
     }
@@ -96,7 +95,7 @@ class Ship {
 //you can enter a station, leave a station- upon entering or leaving you need to update the roster.
 class Station {
     public string StationName;
-    private Ship [] port;
+    private Ship[] port;
     public Station (string StationName, string alliance, int spot) {
         this.StationName = StationName;
         this.Alliance = alliance;
@@ -118,10 +117,12 @@ class Station {
         this.port[spot] = null;
     }
     //roster will have the passengers by ship enterStation
-    public string Roster () {
-        foreach () {
-
-        }
-        return ;
-    }
+    //public string Roster () {
+        //     var roster = " ";
+        //     foreach (Ship passengers in port) {
+        //         roster += Ship.passengers + "\n";
+        //     }
+        //     return ;
+        // }
+    //}
 }

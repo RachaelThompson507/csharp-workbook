@@ -21,6 +21,8 @@ public class Program {
         Station deathStar = new Station ("Death Star", "Imperial", 2);
 
         //place people onto ships
+        falcon.EnterShip(leia,0);
+        tie.EnterShip(darth, 0);
         
         //place ships onto stations
 
@@ -118,11 +120,11 @@ class Station {
     }
     //roster will have the passengers by ship enterStation
     //public string Roster () {
-        //     var roster = " ";
-        //     foreach (Ship passengers in port) {
-        //         roster += Ship.passengers + "\n";
-        //     }
-        //     return ;
-        // }
+    //     var roster = " ";
+    //     foreach (Ship passengers in port) {
+    //         roster += Ship.passengers + "\n";
+    //     }
+    //     return ;
+    // }
     //}
 }

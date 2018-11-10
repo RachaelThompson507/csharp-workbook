@@ -4,8 +4,21 @@ public class Program {
 
     public static void Main () {
         // instantiating a new instance of car, and  passing "blue" to the constructor;
-        Car blueCar = new Car ("blue");
-        Car goldCar = new Car ("gold");
+        Car blueCar = new Car ("blue", 4);
+        Car goldCar = new Car ("gold", 2);
+        Person rachael = new Person ("Rachael");
+        Person corey = new Person ("Corey");
+
+        //put people in cars
+        try {
+            blueCar.peopleInCar(rachael, 0);
+            goldCar.peopleInCar(corey, 0);
+        } catch {
+            Console.WriteLine ("Exception Caught: {0}", e);
+        } finally {
+            Console.WriteLine (blueCar.Persons);
+            Console.WriteLine (goldCar.Persons);
+        }
 
         // instantiating a new instaice of Garage class, and passing in 2 to the constructor;
         Garage smallGarage = new Garage (2);
@@ -26,9 +39,13 @@ public class Program {
 class Car {
     // constructor
     // takes in a strin that is the intial string
-    public Car (string initialColor) {
+    public Car (string initialColor, int seatsTaken) {
         // setting the color of the car to be the string passed into the constructor
         Color = initialColor;
+         // setting the size of this car
+        Seats = seatsTaken;
+        // instantiating an array of Cars, of size initialsize
+        this.persons = new Person[seatsTaken];
     }
 
     // changes the color of the car, even though it is a private attribute/variable
@@ -38,12 +55,39 @@ class Car {
 
     // once the color is set i cannt change it, outisde of this class
     public string Color { get; private set; }
+
+    private Person [] persons;
+
+    public int Seats {get; private set;}
+
+    public void peopleInCar (Person person, int seats) {
+        if (persons[seats] == null) {
+            persons[seats] = person;
+        } else if (persons[seats] != null) {
+            throw new System.ArgumentException ("You cannot sit here, this seat is taken.");
+        } else {
+            throw new System.ArgumentException ("You have made a choice that is outside of the car.");
+        }
+    }
+    public string Persons {
+        get {
+            String personsString = "";
+            for (int i = 0; i < persons.Length; i++) {
+                if (persons[i] != null) {
+                    personsString += String.Format ("The {0} car is in spot {1}.", persons[i], i + 1);
+                    personsString += "\n";
+                }
+            }
+            return personsString;
+        }
+    }
 }
 class Person {
     //constructor
-    public Person (String name){
-        
+    public Person (String name) {
+        Name = name;
     }
+    public String Name {get; set;}
 }
 
 class Garage {

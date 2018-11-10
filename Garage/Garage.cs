@@ -14,11 +14,20 @@ public class Program
 		Garage smallGarage = new Garage(2);
 
         // calling a method Parkcar of the smallGarage instance, with inputs of blueCar and 0
-		smallGarage.ParkCar(blueCar, 0);
-        smallGarage.ParkCar(goldCar,0);
-
-        // printint out the cars attribute of the small garage
-		Console.WriteLine(smallGarage.Cars);
+        try
+        {
+            smallGarage.ParkCar(blueCar, 0);
+            smallGarage.ParkCar(goldCar,1);
+        }
+        catch (System.ArgumentException e)
+        {
+            Console.WriteLine ("Exception Caught: {0}", e);
+        }
+        finally
+        {
+            // printint out the cars attribute of the small garage
+            Console.WriteLine(smallGarage.Cars);
+        }
 	}
 }
 
@@ -64,17 +73,14 @@ class Garage
     // a method that adds a car to the spot in the cars array
     public void ParkCar (Car car, int spot)
     {
-        // what if there is a car already in the spot?
-        // what if the spot passed in is outside the array?
-        string spotSelected = " ";
-        if (car[spot] == null) {
-        cars[spot] = car;
-        } else if (car[spot] != null) {
-            spotSelected += String.Format("The {0} spot is taken, try to park elsewhere.", car[spot]);
+        if (cars[spot] == null) {
+            cars[spot] = car;
+        } else if (cars[spot] != null) {
+            throw new System.ArgumentException ("You cannot park here, this spot is taken.");
         } else {
-            throw new System.ArgumentException("You did not choose an appropriate place to try and park.");
+            throw new System.ArgumentException ("You have made a choice that is outside of the garage.");
         }
-    }
+     }
     
     public string Cars {
 		get {
@@ -82,7 +88,7 @@ class Garage
 			for (int i = 0; i < cars.Length; i++)
 			{
 				if (cars[i] != null) {
-					carsString += String.Format("The {0} car is in spot {1}.", cars[i].Color, i);
+					carsString += String.Format("The {0} car is in spot {1}.", cars[i].Color, i+1);
                     carsString += "\n";
 				}
 			}

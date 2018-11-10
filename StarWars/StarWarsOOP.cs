@@ -13,6 +13,7 @@ public class Program {
     public static void Main () {
         //variables
         Person leia = new Person ("Leia", "Organa", "Rebel");
+        Person hansolo = new Person ("Han", "Solo", "Rebel");
         Person darth = new Person ("Darth", "Vader", "Imperial");
         Ship falcon = new Ship ("Millennium Falcon", "Rebel", "Smuggling", 2);
         Ship tie = new Ship ("Tie Fighter", "Imperial", "Fighter", 1);
@@ -22,11 +23,15 @@ public class Program {
 
         //place people onto ships
         falcon.EnterShip(leia,0);
+        falcon.EnterShip(hansolo,1);
         tie.EnterShip(darth, 0);
-        
+
         //place ships onto stations
+        class1.EnterStation(falcon,0);
+        deathStar.EnterStation(tie,0);
 
         //roll call for each station
+        class1.roster(falcon);
 
     }
 }
@@ -57,7 +62,7 @@ class Person {
 //Passenger allows you to see who is onboard the ship
 class Ship {
     private string name;
-    private Person[] passengers;
+    public Person[] passengers;
     public Ship (string name, string alliance, string type, int size) {
         this.name = name;
         this.Type = type;
@@ -119,12 +124,11 @@ class Station {
         this.port[spot] = null;
     }
     //roster will have the passengers by ship enterStation
-    //public string Roster () {
-    //     var roster = " ";
-    //     foreach (Ship passengers in port) {
-    //         roster += Ship.passengers + "\n";
-    //     }
-    //     return ;
-    // }
-    //}
+    public string roster (Ship name) {
+        string rosterNames = "";
+        for (int i = 0; i< Ship.passengers.length; i++){
+            rosterNames += String.Format("Passenger {0} is on Ship {1}.", passengers, name);
+        }
+        return rosterNames;
+    }
 }

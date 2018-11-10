@@ -33,7 +33,7 @@ public class Program {
         //roll call for each station
         // class1.roster(falcon);
         Console.WriteLine(class1.roster(falcon));
-
+        Console.WriteLine(deathStar.roster(tie));
     }
 }
 //creates a person with a first & last name, their alliance

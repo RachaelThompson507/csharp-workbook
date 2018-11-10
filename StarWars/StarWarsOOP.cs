@@ -31,7 +31,8 @@ public class Program {
         deathStar.EnterStation(tie,0);
 
         //roll call for each station
-        class1.roster(falcon);
+        // class1.roster(falcon);
+        Console.WriteLine(class1.roster(falcon));
 
     }
 }
@@ -61,7 +62,7 @@ class Person {
 //creates ships that can hold people, Type and Alliance can be changed.
 //Passenger allows you to see who is onboard the ship
 class Ship {
-    private string name;
+    public string name;
     public Person[] passengers;
     public Ship (string name, string alliance, string type, int size) {
         this.name = name;
@@ -126,8 +127,8 @@ class Station {
     //roster will have the passengers by ship enterStation
     public string roster (Ship name) {
         string rosterNames = "";
-        for (int i = 0; i< Ship.passengers.length; i++){
-            rosterNames += String.Format("Passenger {0} is on Ship {1}.", passengers, name);
+        for (int i = 0; i< name.passengers.Length; i++){
+            rosterNames += String.Format("Passenger {0} is on Ship {1}.\n", name.passengers[i].FullName, name.name);
         }
         return rosterNames;
     }

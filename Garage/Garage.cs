@@ -13,7 +13,7 @@ public class Program {
         try {
             blueCar.peopleInCar(rachael, 0);
             goldCar.peopleInCar(corey, 0);
-        } catch {
+        } catch (System.ArgumentException e){
             Console.WriteLine ("Exception Caught: {0}", e);
         } finally {
             Console.WriteLine (blueCar.Persons);
@@ -72,10 +72,11 @@ class Car {
     public string Persons {
         get {
             String personsString = "";
+            String carColor = Color;
             for (int i = 0; i < persons.Length; i++) {
                 if (persons[i] != null) {
-                    personsString += String.Format ("The {0} car is in spot {1}.", persons[i], i + 1);
-                    personsString += "\n";
+                    personsString += String.Format ("The {0} is in seat {1} of the {2} car.", persons[i].Name, i + 1, carColor);
+                    //personsString += "\n";
                 }
             }
             return personsString;

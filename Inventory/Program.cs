@@ -85,12 +85,16 @@ namespace Inheritance {
                         Console.WriteLine ("Enter number of wheels (ie- 4):");
                         int numWheels = Convert.ToInt32 (Console.ReadLine ());
 
-                        // Console.Write("Is hatch back?(y/n) ");
-                        // String isHatchback = Console.ReadLine().ToLower();
-                        // Vehicle newOne = new Car(color, make, model, isHatchback == "y");
-                        // return newOne;
+                        //return a value here - determine type?
+                        if (numWheels < 4) {
+                                
+                        } else if (numWheels >= 4) {
+
+                        } else {
+                                
+                        }
                 }
-                
+
                 // ask the user for a valid  input and reutrn it
                 // we do not valid that option
                 public static String getUserOption () {

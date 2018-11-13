@@ -24,8 +24,8 @@ namespace TowersOfHanoi {
         }
     }
     class Game {
-        public Dictionary<Towers, Blocks> gameTowersBlocks {get; private set;}
-        
+        public Dictionary<Towers, Stack<Blocks>> gameTowersBlocks {get; private set;}
+
 
     }
 }

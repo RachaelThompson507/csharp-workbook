@@ -9,24 +9,23 @@ namespace TowersOfHanoi {
         }
     }
     class Blocks {
-        public string block {get; private set;}
-        //do I need to specify the number of blocks
-        //public int numBlocks {get; private set;}
-        public Stack<string> ofBlocks {get; private set;}
-        public Blocks (string block, Stack<string> ofBlocks) {
+        public int block {get; private set;}
+        
+        public Blocks (int block) {
             this.block = block;
-            //how to create a stack of blocks
-            //this.ofBlocks = new ;
         }
     }
     class Towers {
         public string tower { get; private set;}
-        public Towers (string tower) {
+        public Stack<Blocks> blocks4 {get; private set;}
+        public Towers (string tower, Stack<Blocks> blocks4) {
             this.tower = tower;
+            this.blocks4 = blocks4;
         }
     }
     class Game {
-
+        public Dictionary<Towers, Blocks> gameTowersBlocks {get; private set;}
+        
 
     }
 }

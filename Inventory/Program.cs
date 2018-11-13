@@ -85,14 +85,24 @@ namespace Inheritance {
                         Console.WriteLine ("Enter number of wheels (ie- 4):");
                         int numWheels = Convert.ToInt32 (Console.ReadLine ());
 
-                        //return a value here - determine type?
-                        if (numWheels < 4) {
-                                
-                        } else if (numWheels >= 4) {
+                        Vehicle vehicle = new Car (color, make, model, numWheels, true);
 
-                        } else {
-                                
+                        //return a value here - determine type?
+                        if (numWheels <= 1) {
+                                throw new Exception ("Not enough wheels.");
+                        } else if (numWheels <= 3) {
+                                vehicle = new Motorcycle (color, make, model, numWheels, true);
+                        } else if (numWheels >= 4) {
+                                //nested if statement to determine car or truck;
+                                Console.WriteLine ("Does this Vehicle have a truck bed? (y/n)");
+                                String carOrTruck = Console.ReadLine ().ToLower ();
+                                if (carOrTruck == "n") {
+                                        vehicle = new Car (color, make, model, numWheels, true);
+                                } else if (carOrTruck == "y") {
+                                        vehicle = new Truck (color, make, model, numWheels, true);
+                                }
                         }
+                        return vehicle;
                 }
 
                 // ask the user for a valid  input and reutrn it
@@ -113,7 +123,7 @@ namespace Inheritance {
                         }
 
                         // we start at position 1, so the inventory has nice numbers
-                        // we should remeber that the user sees the numbers starting as 1,
+                        // we should remember that the user sees the numbers starting as 1,
                         // so when asking for item to delete, we need to automatically
                         // handle that the index into the list starts at 0.
                         int index = 1;
@@ -153,7 +163,7 @@ namespace Inheritance {
                 bool isCar;
 
                 // callin the base constructor in vehicle
-                public Car (String color, String make, String model, int numWheels, bool isCar) : base (color, make, model, 4) {
+                public Car (String color, String make, String model, int numWheels, bool isCar) : base (color, make, model, numWheels) {
                         this.isCar = isCar;
                 }
         }
@@ -161,7 +171,7 @@ namespace Inheritance {
                 bool isTruck;
 
                 // callin the base constructor in vehicle
-                public Truck (String color, String make, String model, int numWheels, bool isTruck) : base (color, make, model, 4) {
+                public Truck (String color, String make, String model, int numWheels, bool isTruck) : base (color, make, model, numWheels) {
                         this.isTruck = isTruck;
                 }
         }
@@ -169,7 +179,7 @@ namespace Inheritance {
                 bool isMotorcycle;
 
                 // callin the base constructor in vehicle
-                public Motorcycle (String color, String make, String model, int numWheels, bool isMotorcycle) : base (color, make, model, 2) {
+                public Motorcycle (String color, String make, String model, int numWheels, bool isMotorcycle) : base (color, make, model, numWheels) {
                         this.isMotorcycle = isMotorcycle;
                 }
         }

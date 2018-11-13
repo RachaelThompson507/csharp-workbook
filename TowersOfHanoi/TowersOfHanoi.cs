@@ -17,15 +17,14 @@ namespace TowersOfHanoi {
     }
     class Towers {
         public string tower { get; private set;}
-        public Stack<Blocks> blocks4 {get; private set;}
-        public Towers (string tower, Stack<Blocks> blocks4) {
+        public Stack<Blocks> fourBlocks {get; set;}
+        public Towers (string tower, Stack<Blocks> fourBlocks) {
             this.tower = tower;
-            this.blocks4 = blocks4;
+            this.fourBlocks = fourBlocks;
         }
     }
     class Game {
-        public Dictionary<Towers, Stack<Blocks>> gameTowersBlocks {get; private set;}
-
-
+        public Dictionary<Towers, Stack<Blocks>> towersForGame {get; private set;}
+        
     }
 }

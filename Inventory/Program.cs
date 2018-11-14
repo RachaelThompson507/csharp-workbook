@@ -137,10 +137,10 @@ namespace Inheritance {
 
         // abstract vehicle class, cannot be  instantiated
         public abstract class Vehicle {
-                String make;
-                String model;
-                String color;
-                int numWheels;
+                public String make;
+                public String model;
+                public String color;
+                public int numWheels;
 
                 public Vehicle (String color, String make, String model, int numWheels) {
                         this.color = color;
@@ -166,6 +166,11 @@ namespace Inheritance {
                 public Car (String color, String make, String model, int numWheels, bool isCar) : base (color, make, model, numWheels) {
                         this.isCar = isCar;
                 }
+                override
+                public String ToString () {
+                        String formated = String.Format ("Car : {0} {1} {2} {3}", color, make, model, numWheels);
+                        return formated;
+                }
         }
         public class Truck : Vehicle {
                 bool isTruck;
@@ -174,6 +179,13 @@ namespace Inheritance {
                 public Truck (String color, String make, String model, int numWheels, bool isTruck) : base (color, make, model, numWheels) {
                         this.isTruck = isTruck;
                 }
+
+                override
+                public String ToString () {
+                        String formated = String.Format ("Truck : {0} {1} {2} {3}", color, make, model, numWheels);
+                        return formated;
+
+                }
         }
         public class Motorcycle : Vehicle {
                 bool isMotorcycle;
@@ -181,6 +193,11 @@ namespace Inheritance {
                 // callin the base constructor in vehicle
                 public Motorcycle (String color, String make, String model, int numWheels, bool isMotorcycle) : base (color, make, model, numWheels) {
                         this.isMotorcycle = isMotorcycle;
+                }
+                override
+                public String ToString () {
+                        String formated = String.Format ("Motorcycle : {0} {1} {2} {3}", color, make, model, numWheels);
+                        return formated;
                 }
         }
 }

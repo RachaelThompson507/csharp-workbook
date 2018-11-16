@@ -24,11 +24,6 @@ namespace TowersOfHanoi {
     class Towers {
         public string tower { get; private set; }
         
-        public Towers A = new Towers ("A", AStackBlocks);
-        public Towers B = new Towers ("B", BStackBlocks);
-        public static Stack<Blocks> AStackBlocks { get; set; }
-        public static Stack<Blocks> BStackBlocks { get; set; }
-        public static Stack<Blocks> CStackBlocks { get; set; }
         public Towers (string tower, Stack<Blocks> StackOfBlocks) {
             this.tower = tower;
         }

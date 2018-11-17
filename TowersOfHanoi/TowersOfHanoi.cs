@@ -172,9 +172,9 @@ namespace TowersOfHanoi {
                 try {
                     MoveBlock ();
                 } catch (Exception) {
-                    Console.WriteLine ();
+                    Console.WriteLine ("-------------------------------------------------------");
                     Console.WriteLine ("You either tried to:\n A- move a block from an empty tower \nor \n B- tried to place a bigger block on a smaller one. \nTry another move.");
-                    Console.WriteLine ();
+                    Console.WriteLine ("-------------------------------------------------------");
                     goto TryAgain;
                 }
                 CheckForWin ();

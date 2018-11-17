@@ -86,6 +86,7 @@ namespace TowersOfHanoi {
         }
         //This is what the user chooses to move from.
         public string UserMoveFrom () {
+            Console.WriteLine ();
             Console.WriteLine ("What tower are you moving your block from? Choose 'A'  'B' or 'C' ");
             userChoice1 = Console.ReadLine ().ToUpper ().Trim ();
             //Console.WriteLine ();

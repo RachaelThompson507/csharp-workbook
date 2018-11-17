@@ -67,6 +67,7 @@ namespace TowersOfHanoi {
         //creates the board to play with- uses stacks for blocks and dictionary of Towers for towers
         public void PrintBoard () {
             foreach (String name in MakeTowers.Keys) {
+                Console.WriteLine ();
                 Console.Write (name + ": ");
                 Towers tower = MakeTowers[name];
                 Stack<Blocks> stackOfBlocks = tower.towerBlocks;
@@ -87,7 +88,7 @@ namespace TowersOfHanoi {
         public string UserMoveFrom () {
             Console.WriteLine ("What tower are you moving your block from? Choose 'A'  'B' or 'C' ");
             userChoice1 = Console.ReadLine ().ToUpper ().Trim ();
-            Console.WriteLine ();
+            //Console.WriteLine ();
             return userChoice1;
         }
         //validates choice
@@ -102,7 +103,7 @@ namespace TowersOfHanoi {
         public string UserMoveTo () {
             Console.WriteLine ("What tower are you moving your block to? Choose 'A'  'B' or 'C' ");
             userChoice2 = Console.ReadLine ().ToUpper ().Trim ();
-            Console.WriteLine ();
+            //Console.WriteLine ();
             return userChoice2;
         }
         //validates choice

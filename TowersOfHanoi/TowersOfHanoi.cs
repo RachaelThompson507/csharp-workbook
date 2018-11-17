@@ -129,7 +129,7 @@ namespace TowersOfHanoi {
         public void MoveBlock () {
             //checks to see if from is empty
             if (MakeTowers[moveFrom].towerBlocks.Count == 0) {
-                throw new Exception ("You are trying to move from a tower that does not contain blocks.");
+                throw new Exception ();
             }
             var MovingPiece = MakeTowers[moveFrom].towerBlocks.Peek ();
             //check for moved To if empty
@@ -141,7 +141,7 @@ namespace TowersOfHanoi {
                 MakeTowers[moveFrom].towerBlocks.Pop ();
                 MakeTowers[movedTo].towerBlocks.Push (MovingPiece);
             } else {
-                throw new Exception ("You are trying to move a bigger block onto a smaller one, this is not valid.");
+                throw new Exception ();
             }
 
         }
@@ -159,8 +159,11 @@ namespace TowersOfHanoi {
         //time to play the game
         public void Play () {
             while (!win) {
+                //print board if person does not make valid choices try again
                 TryAgain : PrintBoard ();
+                //User Move From Tower ___
                 UserMoveFrom ();
+                //While not a valid move - keep asking for a move.
                 while (!validMoveFrom) {
                     try {
                         ValidMoveFrom (userChoice1);
@@ -170,20 +173,27 @@ namespace TowersOfHanoi {
                     }
                     UserMoveFrom () ;
                 }
+                //User Move block to tower ___
                 UserMoveTo ();
-                try {
-                    ValidMoveTo (userChoice2);
-                } catch (Exception) {
-                    Console.WriteLine ("Sorry, that input is invalid. Please try again.");
-                    Console.WriteLine ();
+                //while not a valid move - keep asking where to move
+                while (!validMoveTo) {
+                    try {
+                        ValidMoveTo (userChoice2);
+                    } catch (Exception) {
+                        Console.WriteLine ("Sorry, that input is invalid. Please try again.");
+                        Console.WriteLine ();
+                    }
                     UserMoveTo ();
                 }
+
                 try {
                     MoveBlock ();
                 } catch (Exception) {
-                    Console.WriteLine ("-------------------------------------------------------");
-                    Console.WriteLine ("You either tried to:\n A- move a block from an empty tower \nor \n B- tried to place a bigger block on a smaller one. \nTry another move.");
-                    Console.WriteLine ("-------------------------------------------------------");
+                    if (MakeTowers[moveFrom].towerBlocks.Count == 0) {
+                        Console.WriteLine ("You are trying to move from a tower that does not contain blocks. Try Again");
+                    } else {
+                        Console.WriteLine ("You are trying to move a bigger block onto a smaller one, this is not valid. Try Again");
+                    }
                     goto TryAgain;
                 }
                 CheckForWin ();

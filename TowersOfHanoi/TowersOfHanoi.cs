@@ -31,7 +31,7 @@ namespace TowersOfHanoi {
             this.tower = tower;
             this.towerBlocks = towerBlocks;
         }
-        public void InitialBlocks (Stack <Blocks> towerBlocks) {
+        public void InitialBlocks (Stack<Blocks> towerBlocks) {
             Blocks four = new Blocks (4);
             Blocks three = new Blocks (3);
             Blocks two = new Blocks (2);

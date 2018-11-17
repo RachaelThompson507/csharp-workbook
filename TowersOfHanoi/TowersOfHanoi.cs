@@ -7,6 +7,8 @@ namespace TowersOfHanoi {
         static void Main (string[] args) {
             //enter game
             Console.WriteLine ("Let's Play Tower of Hanoi");
+            Game towerOfHanoiGame = new Game ();
+            towerOfHanoiGame.Play ();
         }
     }
     /*
@@ -15,9 +17,9 @@ namespace TowersOfHanoi {
     Blocks need to be linked to a tower. 4 needs to be the first block in so 1 can be moved first.
      */
     class Blocks {
-        public int block { get; set; }
-        public Blocks (int block) {
-            this.block = block;
+        public int weightedBlock { get; set; }
+        public Blocks (int weightedBlock) {
+            this.weightedBlock = weightedBlock;
         }
     }
     /*
@@ -25,26 +27,9 @@ namespace TowersOfHanoi {
     User then moves blocks between 3 towers.
      */
     class Towers {
-        public string tower { get; set; }
         public Stack<Blocks> towerBlocks { get; set; }
-        public Towers (string tower, Stack<Blocks> towerBlocks) {
-            this.tower = tower;
-            this.towerBlocks = towerBlocks;
-        }
-        public void InitialBlocks (Stack<Blocks> towerBlocks) {
-            Blocks four = new Blocks (4);
-            Blocks three = new Blocks (3);
-            Blocks two = new Blocks (2);
-            Blocks one = new Blocks (1);
-            towerBlocks.Push (four);
-            towerBlocks.Push (three);
-            towerBlocks.Push (two);
-            towerBlocks.Push (one);
-        }
-        public void InitialTowers () {
-            Towers A = new Towers ("A", towerBlocks);
-            Towers B = new Towers ("B", towerBlocks);
-            Towers C = new Towers ("C", towerBlocks);
+        public Towers () {
+            this.towerBlocks = new Stack<Blocks> ();
         }
 
     }
@@ -55,6 +40,33 @@ namespace TowersOfHanoi {
     Allows the user to choose towers.
      */
     class Game {
+        //variables &&|| definitions
+        Dictionary<String, Towers> MakeTowers = new Dictionary<String, Towers> ();
+        bool win = false;
+        String moveTo = "";
+        String moved = "";
+        //game constructor
+        public Game () {
+            //make towers for dictionary
+            MakeTowers["A"] = new Towers();
+            MakeTowers["B"] = new Towers();
+            MakeTowers["C"] = new Towers();
+            //make blocks for the towers
+            Blocks block1 = new Blocks(1);
+            Blocks block2 = new Blocks(2);
+            Blocks block3 = new Blocks(3);
+            Blocks block4 = new Blocks(4);
+            //add blocks to tower A for the initial start of the game
+            MakeTowers["A"].towerBlocks.Push(block4);
+            MakeTowers["A"].towerBlocks.Push(block3);
+            MakeTowers["A"].towerBlocks.Push(block2);
+            MakeTowers["A"].towerBlocks.Push(block1);
+        }
+
+        public void PlaceMove () {
+            Console.WriteLine ("Where would you like to place your move?");
+            string userChoice = Console.ReadLine ();
+        }
 
     }
 }

@@ -55,9 +55,6 @@ namespace TowersOfHanoi {
     Allows the user to choose towers.
      */
     class Game {
-        public Dictionary<Towers, Stack<towerBlocks>> TowerBlocks () {
-            Dictionary<Towers, Stack<towerBlocks>> towerBlocks = new Dictionary <Towers, Stack<towerBlocks>> ();
 
-        }
     }
 }

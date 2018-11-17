@@ -115,7 +115,6 @@ namespace TowersOfHanoi {
             //checks to see if from is empty
             if (MakeTowers[moveFrom].towerBlocks.Count == 0) {
                 throw new Exception ("You are trying to move from a tower that does not contain blocks.");
-                return;
             }
             var MovingPiece = MakeTowers[moveFrom].towerBlocks.Peek ();
             //check for moved To if empty
@@ -146,12 +145,28 @@ namespace TowersOfHanoi {
         //time to play the game
         public void Play () {
             while (!win) {
+                TryAgain:
                 PrintBoard ();
                 UserMoveFrom ();
+                try {
                 ValidMoveFrom (userChoice1);
+                } catch (Exception e) {
+                    Console.WriteLine ("Sorry, that input is invalid. Please try again.");
+                    UserMoveFrom ();
+                }
                 UserMoveTo ();
+                try {
                 ValidMoveTo (userChoice2);
+                } catch (Exception e) {
+                    Console.WriteLine ("Sorry, that input is invalid. Please try again.");
+                    UserMoveTo ();
+                }
+                try {
                 MoveBlock ();
+                } catch (Exception e) {
+                    Console.WriteLine ("You either tried to:\n A- move a block from an empty tower \nor \n B- tried to place a bigger block on a smaller one. \nTry another move.");
+                    goto TryAgain;
+                }
                 CheckForWin ();
             }
         }

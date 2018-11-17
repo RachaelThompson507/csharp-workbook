@@ -162,28 +162,30 @@ namespace TowersOfHanoi {
                 //print board if person does not make valid choices try again
                 TryAgain : PrintBoard ();
                 //User Move From Tower ___
-                UserMoveFrom ();
+                // UserMoveFrom ();
                 //While not a valid move - keep asking for a move.
                 while (!validMoveFrom) {
+                    UserMoveFrom ();
                     try {
                         ValidMoveFrom (userChoice1);
                     } catch (Exception) {
                         Console.WriteLine ("Sorry, that input is invalid. Please try again.");
                         Console.WriteLine ();
                     }
-                    UserMoveFrom () ;
+                    // UserMoveFrom () ;
                 }
                 //User Move block to tower ___
-                UserMoveTo ();
+                // UserMoveTo ();
                 //while not a valid move - keep asking where to move
                 while (!validMoveTo) {
+                    UserMoveTo ();
                     try {
                         ValidMoveTo (userChoice2);
                     } catch (Exception) {
                         Console.WriteLine ("Sorry, that input is invalid. Please try again.");
                         Console.WriteLine ();
                     }
-                    UserMoveTo ();
+                    // UserMoveTo ();
                 }
 
                 try {

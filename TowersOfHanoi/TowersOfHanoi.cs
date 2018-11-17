@@ -6,9 +6,9 @@ namespace TowersOfHanoi {
     class Program {
         static void Main (string[] args) {
             //enter game
-            Console.WriteLine ("-------------------------------------------------------");
+            Console.WriteLine ("---------------------------------");
             Console.WriteLine ("Let's Play Tower of Hanoi");
-            Console.WriteLine ("-------------------------------------------------------");
+            Console.WriteLine ("---------------------------------");
             Game towerOfHanoiGame = new Game ();
             towerOfHanoiGame.Play ();
         }
@@ -46,8 +46,10 @@ namespace TowersOfHanoi {
         Dictionary<String, Towers> MakeTowers = new Dictionary<String, Towers> ();
         bool win = false;
         string userChoice1 = "";
+        bool validMoveFrom = false;
         String moveFrom = "";
         String userChoice2 = "";
+        bool validMoveTo = false;
         String movedTo = "";
         //game constructor
         public Game () {
@@ -94,12 +96,16 @@ namespace TowersOfHanoi {
             return userChoice1;
         }
         //validates choice
-        public void ValidMoveFrom (string userChoice1) {
+        public bool ValidMoveFrom (string userChoice1) {
+            // bool validMoveFrom;
             if ((userChoice1 == "A") || (userChoice1 == "B") || (userChoice1 == "C")) {
                 moveFrom = userChoice1;
+                validMoveFrom = true;
             } else {
-                throw new Exception ("Sorry, that input is invalid.");
+                validMoveFrom = false;
+                throw new Exception ();
             }
+            return validMoveFrom;
         }
         //This is what user chooses to move to.
         public string UserMoveTo () {
@@ -109,12 +115,16 @@ namespace TowersOfHanoi {
             return userChoice2;
         }
         //validates choice
-        public void ValidMoveTo (string userChoice2) {
+        public bool ValidMoveTo (string userChoice2) {
+            // bool validMoveTo;
             if ((userChoice2 == "A") || (userChoice2 == "B") || (userChoice2 == "C")) {
                 movedTo = userChoice2;
+                validMoveTo = true;
             } else {
-                throw new Exception ("Sorry, that input is invalid.");
+                validMoveTo = false;
+                throw new Exception ();
             }
+            return validMoveTo;
         }
         public void MoveBlock () {
             //checks to see if from is empty
@@ -137,15 +147,10 @@ namespace TowersOfHanoi {
         }
         //time to check for a win
         public void CheckForWin () {
-            if (MakeTowers["C"].towerBlocks.Count >= 4) {
-                Console.WriteLine ("````````''''''''````````");
+            if ((MakeTowers["C"].towerBlocks.Count >= 4) || (MakeTowers["D"].towerBlocks.Count >= 4)) {
+                Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~");
                 Console.WriteLine ("        You Win!        ");
-                Console.WriteLine ("````````''''''''````````");
-                win = true;
-            } else if (MakeTowers["B"].towerBlocks.Count >= 4) {
-                Console.WriteLine ("````````''''''''````````");
-                Console.WriteLine ("        You Win!        ");
-                Console.WriteLine ("````````''''''''````````");
+                Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~");
                 win = true;
             } else {
                 win = false;
@@ -156,12 +161,14 @@ namespace TowersOfHanoi {
             while (!win) {
                 TryAgain : PrintBoard ();
                 UserMoveFrom ();
-                try {
-                    ValidMoveFrom (userChoice1);
-                } catch (Exception) {
-                    Console.WriteLine ("Sorry, that input is invalid. Please try again.");
-                    Console.WriteLine ();
-                    UserMoveFrom ();
+                while (!validMoveFrom) {
+                    try {
+                        ValidMoveFrom (userChoice1);
+                    } catch (Exception) {
+                        Console.WriteLine ("Sorry, that input is invalid. Please try again.");
+                        Console.WriteLine ();
+                    }
+                    UserMoveFrom () ;
                 }
                 UserMoveTo ();
                 try {

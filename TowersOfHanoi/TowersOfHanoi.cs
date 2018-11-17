@@ -67,7 +67,7 @@ namespace TowersOfHanoi {
         //creates the board to play with- uses stacks for blocks and dictionary of Towers for towers
         public void PrintBoard () {
             foreach (String name in MakeTowers.Keys) {
-                Console.WriteLine (name + ": ");
+                Console.Write (name + ": ");
                 Towers tower = MakeTowers[name];
                 Stack<Blocks> stackOfBlocks = tower.towerBlocks;
                 Stack<Blocks> stackPrinted = new Stack<Blocks> ();
@@ -78,7 +78,7 @@ namespace TowersOfHanoi {
                 }
                 //another foreach loop for weighted distribution
                 foreach (Blocks z in stackPrinted) {
-                    Console.WriteLine (z.weightedBlock);
+                    Console.Write (z.weightedBlock);
                 }
                 Console.WriteLine ();
             }
@@ -87,6 +87,7 @@ namespace TowersOfHanoi {
         public string UserMoveFrom () {
             Console.WriteLine ("What tower are you moving your block from? Choose 'A'  'B' or 'C' ");
             userChoice1 = Console.ReadLine ().ToUpper ().Trim ();
+            Console.WriteLine ();
             return userChoice1;
         }
         //validates choice
@@ -101,6 +102,7 @@ namespace TowersOfHanoi {
         public string UserMoveTo () {
             Console.WriteLine ("What tower are you moving your block to? Choose 'A'  'B' or 'C' ");
             userChoice2 = Console.ReadLine ().ToUpper ().Trim ();
+            Console.WriteLine ();
             return userChoice2;
         }
         //validates choice
@@ -145,26 +147,28 @@ namespace TowersOfHanoi {
         //time to play the game
         public void Play () {
             while (!win) {
-                TryAgain:
-                PrintBoard ();
+                TryAgain : PrintBoard ();
                 UserMoveFrom ();
                 try {
-                ValidMoveFrom (userChoice1);
-                } catch (Exception e) {
+                    ValidMoveFrom (userChoice1);
+                } catch (Exception) {
                     Console.WriteLine ("Sorry, that input is invalid. Please try again.");
+                    Console.WriteLine ();
                     UserMoveFrom ();
                 }
                 UserMoveTo ();
                 try {
-                ValidMoveTo (userChoice2);
-                } catch (Exception e) {
+                    ValidMoveTo (userChoice2);
+                } catch (Exception) {
                     Console.WriteLine ("Sorry, that input is invalid. Please try again.");
+                    Console.WriteLine ();
                     UserMoveTo ();
                 }
                 try {
-                MoveBlock ();
-                } catch (Exception e) {
+                    MoveBlock ();
+                } catch (Exception) {
                     Console.WriteLine ("You either tried to:\n A- move a block from an empty tower \nor \n B- tried to place a bigger block on a smaller one. \nTry another move.");
+                    Console.WriteLine ();
                     goto TryAgain;
                 }
                 CheckForWin ();

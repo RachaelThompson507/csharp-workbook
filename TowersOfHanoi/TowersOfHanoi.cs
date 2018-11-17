@@ -15,7 +15,7 @@ namespace TowersOfHanoi {
     Blocks need to be linked to a tower. 4 needs to be the first block in so 1 can be moved first.
      */
     class Blocks {
-        public int block { get; private set; }
+        public int block { get; set; }
         public Blocks (int block) {
             this.block = block;
         }
@@ -25,13 +25,13 @@ namespace TowersOfHanoi {
     User then moves blocks between 3 towers.
      */
     class Towers {
-        public string tower { get; private set; }
-        public Stack<Blocks> towerBlocks { get; private set; }
+        public string tower { get; set; }
+        public Stack<Blocks> towerBlocks { get; set; }
         public Towers (string tower, Stack<Blocks> towerBlocks) {
             this.tower = tower;
             this.towerBlocks = towerBlocks;
         }
-        public void InitialBlocks (Blocks block) {
+        public void InitialBlocks (Stack <Blocks> towerBlocks) {
             Blocks four = new Blocks (4);
             Blocks three = new Blocks (3);
             Blocks two = new Blocks (2);

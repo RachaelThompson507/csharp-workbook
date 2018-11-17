@@ -137,10 +137,14 @@ namespace TowersOfHanoi {
         //time to check for a win
         public void CheckForWin () {
             if (MakeTowers["C"].towerBlocks.Count >= 4) {
-                Console.WriteLine ("You Win!");
+                Console.WriteLine ("````````''''''''````````");
+                Console.WriteLine ("        You Win!        ");
+                Console.WriteLine ("````````''''''''````````");
                 win = true;
             } else if (MakeTowers["B"].towerBlocks.Count >= 4) {
-                Console.WriteLine ("You Win!");
+                Console.WriteLine ("````````''''''''````````");
+                Console.WriteLine ("        You Win!        ");
+                Console.WriteLine ("````````''''''''````````");
                 win = true;
             } else {
                 win = false;

@@ -6,7 +6,9 @@ namespace TowersOfHanoi {
     class Program {
         static void Main (string[] args) {
             //enter game
+            Console.WriteLine ("-------------------------------------------------------");
             Console.WriteLine ("Let's Play Tower of Hanoi");
+            Console.WriteLine ("-------------------------------------------------------");
             Game towerOfHanoiGame = new Game ();
             towerOfHanoiGame.Play ();
         }

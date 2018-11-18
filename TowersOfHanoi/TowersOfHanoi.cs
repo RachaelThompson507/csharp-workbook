@@ -5,12 +5,15 @@ using System.Collections.Generic;
 namespace TowersOfHanoi {
     class Program {
         static void Main (string[] args) {
+            Game towerOfHanoiGame = new Game ();
             //enter game
             Console.WriteLine ("---------------------------------");
-            Console.WriteLine ("Let's Play Tower of Hanoi");
+            Console.WriteLine ("    Let's Play Tower of Hanoi    ");
             Console.WriteLine ("---------------------------------");
-            Game towerOfHanoiGame = new Game ();
+            Console.WriteLine (" ");
+            //create a loop to keep playing
             towerOfHanoiGame.Play ();
+            towerOfHanoiGame.PrintBoard ();
         }
     }
     /*
@@ -153,8 +156,10 @@ namespace TowersOfHanoi {
         public void Play () {
             while (!win) {
                 TryAgain:
-                    //print board if person does not make valid choices try again
-                    PrintBoard ();
+
+                //print board if person does not make valid choices try again
+
+                PrintBoard ();
                 //User Move From Tower ___
                 //While not a valid move - keep asking for a move.
 

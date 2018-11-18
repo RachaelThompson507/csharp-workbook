@@ -46,11 +46,10 @@ namespace TowersOfHanoi {
         Dictionary<String, Towers> MakeTowers = new Dictionary<String, Towers> ();
         bool win = false;
         string userChoice1 = "";
-        bool validMoveFrom = false;
         String moveFrom = "";
         String userChoice2 = "";
-        bool validMoveTo = false;
         String movedTo = "";
+
         //game constructor
         public Game () {
             //make towers for dictionary
@@ -92,39 +91,31 @@ namespace TowersOfHanoi {
         public string UserMoveFrom () {
             Console.WriteLine ("What tower are you moving your block from? Choose 'A'  'B' or 'C' ");
             userChoice1 = Console.ReadLine ().ToUpper ().Trim ();
-            //Console.WriteLine ();
             return userChoice1;
         }
         //validates choice
-        public bool ValidMoveFrom (string userChoice1) {
-            // bool validMoveFrom;
+        public void ValidMoveFrom (string userChoice1) {
+
             if ((userChoice1 == "A") || (userChoice1 == "B") || (userChoice1 == "C")) {
                 moveFrom = userChoice1;
-                validMoveFrom = true;
             } else {
-                validMoveFrom = false;
                 throw new Exception ();
             }
-            return validMoveFrom;
         }
         //This is what user chooses to move to.
         public string UserMoveTo () {
             Console.WriteLine ("What tower are you moving your block to? Choose 'A'  'B' or 'C' ");
             userChoice2 = Console.ReadLine ().ToUpper ().Trim ();
-            //Console.WriteLine ();
             return userChoice2;
         }
         //validates choice
-        public bool ValidMoveTo (string userChoice2) {
-            // bool validMoveTo;
+        public void ValidMoveTo (string userChoice2) {
+
             if ((userChoice2 == "A") || (userChoice2 == "B") || (userChoice2 == "C")) {
                 movedTo = userChoice2;
-                validMoveTo = true;
             } else {
-                validMoveTo = false;
                 throw new Exception ();
             }
-            return validMoveTo;
         }
         public void MoveBlock () {
             //checks to see if from is empty
@@ -136,10 +127,12 @@ namespace TowersOfHanoi {
             if (MakeTowers[movedTo].towerBlocks.Count == 0) {
                 MakeTowers[moveFrom].towerBlocks.Pop ();
                 MakeTowers[movedTo].towerBlocks.Push (MovingPiece);
+                //returnToUser = true;
                 //check if block in moved to is bigger
             } else if (MakeTowers[movedTo].towerBlocks.Peek ().weightedBlock > MovingPiece.weightedBlock) {
                 MakeTowers[moveFrom].towerBlocks.Pop ();
                 MakeTowers[movedTo].towerBlocks.Push (MovingPiece);
+                //returnToUser = true;
             } else {
                 throw new Exception ();
             }
@@ -147,7 +140,7 @@ namespace TowersOfHanoi {
         }
         //time to check for a win
         public void CheckForWin () {
-            if ((MakeTowers["C"].towerBlocks.Count >= 4) || (MakeTowers["D"].towerBlocks.Count >= 4)) {
+            if ((MakeTowers["C"].towerBlocks.Count >= 4) || (MakeTowers["B"].towerBlocks.Count >= 4)) {
                 Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~");
                 Console.WriteLine ("        You Win!        ");
                 Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -159,43 +152,39 @@ namespace TowersOfHanoi {
         //time to play the game
         public void Play () {
             while (!win) {
-                //print board if person does not make valid choices try again
-                TryAgain : PrintBoard ();
+                TryAgain:
+                    //print board if person does not make valid choices try again
+                    PrintBoard ();
                 //User Move From Tower ___
-                UserMoveFrom ();
                 //While not a valid move - keep asking for a move.
-                while (!validMoveFrom) {
-                    // UserMoveFrom ();
-                    try {
-                        ValidMoveFrom (userChoice1);
-                    } catch (Exception) {
-                        Console.WriteLine ("Sorry, that input is invalid. Please try again.");
-                        Console.WriteLine ();
-                        goto TryAgain;
-                    }
-                }
-                //User Move block to tower ___
-                UserMoveTo ();
-                //while not a valid move - keep asking where to move
-                while (!validMoveTo) {
-                    // UserMoveTo ();
-                    try {
-                        ValidMoveTo (userChoice2);
-                    } catch (Exception) {
-                        Console.WriteLine ("Sorry, that input is invalid. Please try again.");
-                        Console.WriteLine ();
-                        goto TryAgain;
-                    }
+
+                UserMoveFrom ();
+                try {
+                    ValidMoveFrom (userChoice1);
+                } catch (Exception) {
+                    Console.WriteLine ("Sorry, that input is an invalid Tower name. Please try again.");
+                    Console.WriteLine ();
+                    goto TryAgain;
                 }
 
+                //User Move block to tower ___
+                UserMoveTo ();
+                try {
+                    ValidMoveTo (userChoice2);
+                } catch (Exception) {
+                    Console.WriteLine ("Sorry, that input is an invalid Tower name. Please try again.");
+                    Console.WriteLine ();
+                    goto TryAgain;
+                }
+
+                //Move block
                 try {
                     MoveBlock ();
                 } catch (Exception) {
-                    if (MakeTowers[moveFrom].towerBlocks.Count == 0) {
-                        Console.WriteLine ("You are trying to move from a tower that does not contain blocks. Try Again");
-                    } else {
-                        Console.WriteLine ("You are trying to move a bigger block onto a smaller one, this is not valid. Try Again");
-                    }
+                    Console.WriteLine ("You have made a choice in error. There are rules to the game.");
+                    Console.WriteLine ("  Error A: move from a tower that does not contain blocks.");
+                    Console.WriteLine ("  Error B: move a bigger block onto a smaller one, this is not valid.");
+                    Console.WriteLine ("Try Again");
                     goto TryAgain;
                 }
                 CheckForWin ();

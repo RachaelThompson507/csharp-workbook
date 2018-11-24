@@ -6,10 +6,16 @@ using System.Threading;
 namespace Checkers {
     class Program {
         static void Main (string[] args) {
+            // intro game
             Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine ("~~~~~~~~CHECKERS~~~~~~~~~");
             Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~~");
             Thread.Sleep (2000);
+            //make sure encoding is instantiated
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Game game = new Game();
+
+            Console.ReadLine();
 
         }
     }
@@ -47,7 +53,7 @@ namespace Checkers {
         }
 
         public void CreateBoard () {
-            // Your code here
+            // create the grid where all the pieces will be placed
             this.Grid = new string[][] {
                 new string[] { " ", " ", " ", " ", " ", " ", " ", " " },
                 new string[] { " ", " ", " ", " ", " ", " ", " ", " " },
@@ -85,7 +91,7 @@ namespace Checkers {
         }
 
         public void PlaceCheckers () {
-            // Your code here
+            // this is a method to place checkers on a board when a position is declared
             foreach (var checker in Checkers) {
                 this.Grid[checker.Position[0]][checker.Position[1]] = checker.Symbol;
             }
@@ -93,35 +99,74 @@ namespace Checkers {
         }
 
         public void DrawBoard () {
-            // Your code here
+            // this will take the grid and draw a board
             Console.WriteLine ("  0 1 2 3 4 5 6 7");
-            for (int i = 0; i < 8; i++) {
-                Console.WriteLine (i + " " + String.Join (" ", this.Grid[i]));
+
+            for (var i = 0; i < Grid.Length; i++) // loop each Row
+            {
+                string column = $"{i} "; // Show the row index
+
+                for (var e = 0; e < Grid[i].Length; e++) // Column
+                {
+                    column += $"{Grid[i][e]} ";
+                }
+
+                Console.WriteLine (column);
             }
             return;
         }
-
-        public Checker SelectChecker () {
-            Console.WriteLine ("Select checker row");
-            int row = Convert.ToInt32 (Console.ReadLine ());
-            Console.WriteLine ("Select checker column");
-            int column = Convert.ToInt32 (Console.ReadLine ());
+        // selects a checker to be played
+        public Checker SelectChecker (int row, int column) {
             return Checkers.Find (x => x.Position.SequenceEqual (new List<int> { row, column }));
         }
-
+        //allows a checker to be removed
         public void RemoveChecker (int row, int column) {
-            // Your code here
-            return;
+            var c = SelectChecker (row, column);
+            Checkers.Remove (c);
         }
 
         public bool CheckForWin () {
-            return Checkers.All (x => x.Color == "white") || !Checkers.Exists (x => x.Color == "white");
+            return Checkers.All (x => x.Color == "red") || !Checkers.Exists (x => x.Color == "red");
         }
     }
 
     class Game {
         public Game () {
-            // Your code here
+            Board board = new Board ();
+            board.CreateBoard ();
+            board.GenerateCheckers ();
+            board.PlaceCheckers ();
+
+            do {
+                board.DrawBoard ();
+                // Make moves
+                Console.WriteLine ("Move or remove?");
+                string input = Console.ReadLine ();
+                Console.WriteLine ("Pickup Row:");
+                int row = Int32.Parse (Console.ReadLine ());
+                Console.WriteLine ("Pickup Column:");
+                int column = Int32.Parse (Console.ReadLine ());
+                var c = board.SelectChecker (row, column);
+                Console.WriteLine ("Place row:");
+                row = Int32.Parse (Console.ReadLine ());
+                Console.WriteLine ("Place column:");
+                column = Int32.Parse (Console.ReadLine ());
+                c.Position = new int[] { row, column };
+
+                if (input == "remove") {
+                    Console.WriteLine ("Remove row:");
+                    row = Int32.Parse (Console.ReadLine ());
+                    Console.WriteLine ("Remove column:");
+                    column = Int32.Parse (Console.ReadLine ());
+                    board.RemoveChecker (row, column);
+
+                }
+                board.CreateBoard ();
+                board.PlaceCheckers ();
+
+            }
+            while (!board.CheckForWin ());
+
         }
     }
 }

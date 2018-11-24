@@ -140,8 +140,9 @@ namespace Checkers {
             do {
                 board.DrawBoard ();
                 // Make moves
-                Console.WriteLine ("Move or remove?");
-                string input = Console.ReadLine ();
+                Console.WriteLine ("Would you like to move a piece or remove a piece?");
+                Console.WriteLine ("Type 'move' or 'remove'...");
+                string input = Console.ReadLine ().ToLower().Trim();
                 Console.WriteLine ("Pickup Row:");
                 int row = Int32.Parse (Console.ReadLine ());
                 Console.WriteLine ("Pickup Column:");
@@ -159,8 +160,7 @@ namespace Checkers {
                     Console.WriteLine ("Remove column:");
                     column = Int32.Parse (Console.ReadLine ());
                     board.RemoveChecker (row, column);
-
-                }
+                    
                 board.CreateBoard ();
                 board.PlaceCheckers ();
 

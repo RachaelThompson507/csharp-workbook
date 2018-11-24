@@ -76,9 +76,9 @@ namespace Checkers {
             };
             //for loop will assign color values to each checker that is in a position
             for (int i = 0; i < 12; i++) {
-                Checker white = new Checker ("white", redCheckers[i]);
+                Checker red = new Checker ("red", redCheckers[i]);
                 Checker black = new Checker ("black", blackCheckers[i]);
-                this.Checkers.Add (white);
+                this.Checkers.Add (red);
                 this.Checkers.Add (black);
             }
             return;
@@ -94,10 +94,18 @@ namespace Checkers {
 
         public void DrawBoard () {
             // Your code here
+            Console.WriteLine ("  0 1 2 3 4 5 6 7");
+            for (int i = 0; i < 8; i++) {
+                Console.WriteLine (i + " " + String.Join (" ", this.Grid[i]));
+            }
             return;
         }
 
-        public Checker SelectChecker (int row, int column) {
+        public Checker SelectChecker () {
+            Console.WriteLine ("Select checker row");
+            int row = Convert.ToInt32 (Console.ReadLine ());
+            Console.WriteLine ("Select checker column");
+            int column = Convert.ToInt32 (Console.ReadLine ());
             return Checkers.Find (x => x.Position.SequenceEqual (new List<int> { row, column }));
         }
 

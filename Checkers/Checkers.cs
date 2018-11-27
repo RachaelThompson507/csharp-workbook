@@ -160,7 +160,8 @@ namespace Checkers {
                     Console.WriteLine ("Remove column:");
                     column = Int32.Parse (Console.ReadLine ());
                     board.RemoveChecker (row, column);
-                    
+
+                }
                 board.CreateBoard ();
                 board.PlaceCheckers ();
 

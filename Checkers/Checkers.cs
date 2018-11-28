@@ -11,11 +11,12 @@ namespace Checkers {
             Console.WriteLine ("~~~~~~~~CHECKERS~~~~~~~~~");
             Console.WriteLine ("~~~~~~~~~~~~~~~~~~~~~~~~~");
             Thread.Sleep (2000);
-            //make sure encoding is instantiated
+            //make sure encoding is instantiated for printing checker objects
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Game game = new Game();
+            //instantiates a game object so that the game will run
+            Game game = new Game ();
 
-            Console.ReadLine();
+            Console.ReadLine ();
 
         }
     }
@@ -42,7 +43,9 @@ namespace Checkers {
     }
 
     public class Board {
+        //the grid is the array used to draw the board
         public string[][] Grid { get; set; }
+        //list of checker objects used to position checkers on the board
         public List<Checker> Checkers { get; set; }
 
         public Board () {
@@ -74,12 +77,14 @@ namespace Checkers {
                 new int[] { 1, 0 }, new int[] { 1, 2 }, new int[] { 1, 4 }, new int[] { 1, 6 },
                 new int[] { 2, 1 }, new int[] { 2, 3 }, new int[] { 2, 5 }, new int[] { 2, 7 }
             };
+
             //black checkers array (positions initial)
             int[][] blackCheckers = new int[][] {
                 new int[] { 5, 0 }, new int[] { 5, 2 }, new int[] { 5, 4 }, new int[] { 5, 6 },
                 new int[] { 6, 1 }, new int[] { 6, 3 }, new int[] { 6, 5 }, new int[] { 6, 7 },
                 new int[] { 7, 0 }, new int[] { 7, 2 }, new int[] { 7, 4 }, new int[] { 7, 6 }
             };
+
             //for loop will assign color values to each checker that is in a position
             for (int i = 0; i < 12; i++) {
                 Checker red = new Checker ("red", redCheckers[i]);
@@ -91,7 +96,15 @@ namespace Checkers {
         }
 
         public void PlaceCheckers () {
-            // this is a method to place checkers on a board when a position is declared
+            // this is a method to place checkers on a board when a position is declared (pre || post validation)
+            foreach (var checker in Checkers) {
+                this.Grid[checker.Position[0]][checker.Position[1]] = checker.Symbol;
+            }
+            return;
+        }
+        //overloaded method for validation
+        public void PlaceCheckers (int row, int column) {
+            // this is a method to place checkers on a board when a position is declared (pre || post validation)
             foreach (var checker in Checkers) {
                 this.Grid[checker.Position[0]][checker.Position[1]] = checker.Symbol;
             }
@@ -102,11 +115,11 @@ namespace Checkers {
             // this will take the grid and draw a board
             Console.WriteLine ("  0 1 2 3 4 5 6 7");
 
-            for (var i = 0; i < Grid.Length; i++) // loop each Row
+            for (int i = 0; i < Grid.Length; i++) // loop each Row
             {
                 string column = $"{i} "; // Show the row index
 
-                for (var e = 0; e < Grid[i].Length; e++) // Column
+                for (int e = 0; e < Grid[i].Length; e++) // loop Columns
                 {
                     column += $"{Grid[i][e]} ";
                 }
@@ -115,15 +128,28 @@ namespace Checkers {
             }
             return;
         }
-        // selects a checker to be played
-        public Checker SelectChecker (int row, int column) {
-            return Checkers.Find (x => x.Position.SequenceEqual (new List<int> { row, column }));
-        }
+
         //allows a checker to be removed
         public void RemoveChecker (int row, int column) {
-            var c = SelectChecker (row, column);
-            Checkers.Remove (c);
+            Checker cx = SelectChecker (row, column);
+            Checkers.Remove (cx);
         }
+
+        // queries a checker object and finds the checker the user asked for
+        public Checker SelectChecker (int row, int column) {
+            return Checkers.Find (sx => sx.Position.SequenceEqual (new List<int> { row, column }));
+        }
+        //takes in sx.position && cx.position and determines if move is on board
+
+        //takes in sx.position && cx.position and determines if the space is null (available)
+
+        /*
+            takes in sx.position && cx.position checks diagonal move
+            if diagonal and player can jump allow jump and remove checker
+            checker color and position
+         */
+
+        //master validation method contains all above checks and returns a checker object for moving
 
         public bool CheckForWin () {
             return Checkers.All (x => x.Color == "red") || !Checkers.Exists (x => x.Color == "red");
@@ -132,27 +158,30 @@ namespace Checkers {
 
     class Game {
         public Game () {
+            //initialize the game by creating a board object and apply board methods
             Board board = new Board ();
             board.CreateBoard ();
             board.GenerateCheckers ();
             board.PlaceCheckers ();
 
             do {
+                //draw the board to play. on loop checkers will remember they have new positions.
                 board.DrawBoard ();
                 // Make moves
                 Console.WriteLine ("Would you like to move a piece or remove a piece?");
                 Console.WriteLine ("Type 'move' or 'remove'...");
-                string input = Console.ReadLine ().ToLower().Trim();
+                string input = Console.ReadLine ().ToLower ().Trim ();
                 Console.WriteLine ("Pickup Row:");
                 int row = Int32.Parse (Console.ReadLine ());
                 Console.WriteLine ("Pickup Column:");
                 int column = Int32.Parse (Console.ReadLine ());
-                var c = board.SelectChecker (row, column);
+                Checker cx = board.SelectChecker (row, column);
                 Console.WriteLine ("Place row:");
                 row = Int32.Parse (Console.ReadLine ());
                 Console.WriteLine ("Place column:");
                 column = Int32.Parse (Console.ReadLine ());
-                c.Position = new int[] { row, column };
+                cx.Position = new int[] { row, column };
+                //need to put master check method here
 
                 if (input == "remove") {
                     Console.WriteLine ("Remove row:");
@@ -163,7 +192,7 @@ namespace Checkers {
 
                 }
                 board.CreateBoard ();
-                board.PlaceCheckers ();
+                board.PlaceCheckers (row, column);
 
             }
             while (!board.CheckForWin ());

@@ -43,6 +43,7 @@ namespace Checkers {
     }
 
     public class Board {
+
         //the grid is the array used to draw the board
         public string[][] Grid { get; set; }
         //list of checker objects used to position checkers on the board
@@ -95,22 +96,6 @@ namespace Checkers {
             return;
         }
 
-        public void PlaceCheckers () {
-            // this is a method to place checkers on a board when a position is declared (pre || post validation)
-            foreach (var checker in Checkers) {
-                this.Grid[checker.Position[0]][checker.Position[1]] = checker.Symbol;
-            }
-            return;
-        }
-        //overloaded method for validation
-        public void PlaceCheckers (int row, int column) {
-            // this is a method to place checkers on a board when a position is declared (pre || post validation)
-            foreach (var checker in Checkers) {
-                this.Grid[checker.Position[0]][checker.Position[1]] = checker.Symbol;
-            }
-            return;
-        }
-
         public void DrawBoard () {
             // this will take the grid and draw a board
             Console.WriteLine ("  0 1 2 3 4 5 6 7");
@@ -129,19 +114,33 @@ namespace Checkers {
             return;
         }
 
-        //allows a checker to be removed
-        public void RemoveChecker (int row, int column) {
-            Checker cx = SelectChecker (row, column);
-            Checkers.Remove (cx);
+        public void PlaceCheckers () {
+            // this is a method to place checkers on a board when a position is declared (pre || post validation)
+            foreach (var checker in Checkers) {
+                this.Grid[checker.Position[0]][checker.Position[1]] = checker.Symbol;
+            }
+            return;
         }
 
-        // queries a checker object and finds the checker the user asked for
-        public Checker SelectChecker (int row, int column) {
-            return Checkers.Find (sx => sx.Position.SequenceEqual (new List<int> { row, column }));
+        // if row or column are greater than array throw exception
+        // ELSE
+        //queries a checker object and finds the checker the user asked for
+        public Checker SelectChecker (int sourceRow, int sourceColumn) {
+            if (row > 7 || column > 7) {
+                throw new Exception ("Invalid row or column selection.");
+                //Console.WriteLine ("Invalid row or column selection.");
+            }
+            return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { row, column }));
         }
-        //takes in sx.position && cx.position and determines if move is on board
 
-        //takes in sx.position && cx.position and determines if the space is null (available)
+        //takes in row and column and determines if the space is null (available)
+        // if foreach checker in checkers any chosen position == an existing checker position throw exception otherwise valid
+        public void CheckerPreCheck (int sourceRow, int sourceColumn, int destRow, int destColumn) {
+            //if source row and column in array
+            // if dest row and dest col have a checker piece using select checker method passing dest
+
+            return;
+        }
 
         /*
             takes in sx.position && cx.position checks diagonal move
@@ -151,9 +150,15 @@ namespace Checkers {
 
         //master validation method contains all above checks and returns a checker object for moving
 
+        //allows a checker to be removed
+        public void RemoveChecker (int row, int column) {
+            Checker cx = SelectChecker (row, column);
+            Checkers.Remove (cx);
+        }
         public bool CheckForWin () {
             return Checkers.All (x => x.Color == "red") || !Checkers.Exists (x => x.Color == "red");
         }
+
     }
 
     class Game {
@@ -167,32 +172,34 @@ namespace Checkers {
             do {
                 //draw the board to play. on loop checkers will remember they have new positions.
                 board.DrawBoard ();
-                // Make moves
+                //Select a Checker
                 Console.WriteLine ("Would you like to move a piece or remove a piece?");
                 Console.WriteLine ("Type 'move' or 'remove'...");
                 string input = Console.ReadLine ().ToLower ().Trim ();
                 Console.WriteLine ("Pickup Row:");
-                int row = Int32.Parse (Console.ReadLine ());
+                int sourceRow = Int32.Parse (Console.ReadLine ());
                 Console.WriteLine ("Pickup Column:");
-                int column = Int32.Parse (Console.ReadLine ());
-                Checker cx = board.SelectChecker (row, column);
+                int sourceColumn = Int32.Parse (Console.ReadLine ());
+                Checker cx = board.SelectChecker (sourceRow, sourceColumn);
+                //Choose a move
                 Console.WriteLine ("Place row:");
-                row = Int32.Parse (Console.ReadLine ());
+                int destRow = Int32.Parse (Console.ReadLine ());
                 Console.WriteLine ("Place column:");
-                column = Int32.Parse (Console.ReadLine ());
-                cx.Position = new int[] { row, column };
+                int destColumn = Int32.Parse (Console.ReadLine ());
+                //board.PlaceCheckersPreCheck (row, column);
+                cx.Position = new int[] { destRow, destColumn };
                 //need to put master check method here
 
-                if (input == "remove") {
-                    Console.WriteLine ("Remove row:");
-                    row = Int32.Parse (Console.ReadLine ());
-                    Console.WriteLine ("Remove column:");
-                    column = Int32.Parse (Console.ReadLine ());
-                    board.RemoveChecker (row, column);
+                // if (input == "remove") {
+                //     Console.WriteLine ("Remove row:");
+                //     row = Int32.Parse (Console.ReadLine ());
+                //     Console.WriteLine ("Remove column:");
+                //     column = Int32.Parse (Console.ReadLine ());
+                //     board.RemoveChecker (row, column);
 
-                }
+                // }
                 board.CreateBoard ();
-                board.PlaceCheckers (row, column);
+                board.PlaceCheckers ();
 
             }
             while (!board.CheckForWin ());

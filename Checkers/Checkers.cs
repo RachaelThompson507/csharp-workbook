@@ -125,21 +125,32 @@ namespace Checkers {
         // if row or column are greater than array throw exception
         // ELSE
         //queries a checker object and finds the checker the user asked for
-        public Checker SelectChecker (int sourceRow, int sourceColumn) {
-            if (row > 7 || column > 7) {
-                throw new Exception ("Invalid row or column selection.");
-                //Console.WriteLine ("Invalid row or column selection.");
+        public Checker SelectCheckerSource (int sourceRow, int sourceColumn) {
+            //if source row and column in array
+            if ((sourceRow < 0 || sourceRow > 7) || (sourceColumn < 0 || sourceColumn > 7)) {
+                throw new Exception ("Your move is off the board.");
             }
-            return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { row, column }));
+            return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
         }
+
+        public Checker SelectCheckerDestination (int destRow, int destColumn) {
+            //if source row and column in array
+            if ((destRow < 0 || destRow > 7) || (destColumn < 0 || destColumn > 7)) {
+                throw new Exception ("Your move is off the board.");
+            }
+            return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
+        }
+
 
         //takes in row and column and determines if the space is null (available)
         // if foreach checker in checkers any chosen position == an existing checker position throw exception otherwise valid
-        public void CheckerPreCheck (int sourceRow, int sourceColumn, int destRow, int destColumn) {
-            //if source row and column in array
+        public Checker CheckerPreCheck (int sourceRow, int sourceColumn, int destRow, int destColumn) {
             // if dest row and dest col have a checker piece using select checker method passing dest
+            if (SelectCheckerDestination(destRow, destColumn) != null) {
+                throw new Exception ("That space is taken.");
+            }
 
-            return;
+            return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
         }
 
         /*
@@ -151,8 +162,8 @@ namespace Checkers {
         //master validation method contains all above checks and returns a checker object for moving
 
         //allows a checker to be removed
-        public void RemoveChecker (int row, int column) {
-            Checker cx = SelectChecker (row, column);
+        public void RemoveChecker (int destRow, int destColumn) {
+            Checker cx = SelectCheckerDestination (destRow, destColumn);
             Checkers.Remove (cx);
         }
         public bool CheckForWin () {
@@ -180,13 +191,14 @@ namespace Checkers {
                 int sourceRow = Int32.Parse (Console.ReadLine ());
                 Console.WriteLine ("Pickup Column:");
                 int sourceColumn = Int32.Parse (Console.ReadLine ());
-                Checker cx = board.SelectChecker (sourceRow, sourceColumn);
+                Checker cx = board.SelectCheckerSource (sourceRow, sourceColumn);
                 //Choose a move
                 Console.WriteLine ("Place row:");
                 int destRow = Int32.Parse (Console.ReadLine ());
                 Console.WriteLine ("Place column:");
                 int destColumn = Int32.Parse (Console.ReadLine ());
-                //board.PlaceCheckersPreCheck (row, column);
+                board.CheckerPreCheck (sourceRow, sourceColumn, destRow, destColumn);
+                
                 cx.Position = new int[] { destRow, destColumn };
                 //need to put master check method here
 

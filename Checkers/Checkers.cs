@@ -128,7 +128,9 @@ namespace Checkers {
         public Checker SelectCheckerSource (int sourceRow, int sourceColumn) {
             //if source row and column in array
             if ((sourceRow < 0 || sourceRow > 7) || (sourceColumn < 0 || sourceColumn > 7)) {
-                throw new Exception ("Your move is off the board.");
+                //throw new Exception ("Your move is off the board.");
+                Console.WriteLine ("Your move is off the board.");
+
             }
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
         }
@@ -136,18 +138,29 @@ namespace Checkers {
         public Checker SelectCheckerDestination (int destRow, int destColumn) {
             //if source row and column in array
             if ((destRow < 0 || destRow > 7) || (destColumn < 0 || destColumn > 7)) {
-                throw new Exception ("Your move is off the board.");
+                //throw new Exception ("Your move is off the board.");
+                Console.WriteLine ("Your move is off the board.");
             }
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
         }
-
 
         //takes in row and column and determines if the space is null (available)
         // if foreach checker in checkers any chosen position == an existing checker position throw exception otherwise valid
         public Checker CheckerPreCheck (int sourceRow, int sourceColumn, int destRow, int destColumn) {
             // if dest row and dest col have a checker piece using select checker method passing dest
-            if (SelectCheckerDestination(destRow, destColumn) != null) {
-                throw new Exception ("That space is taken.");
+            if (SelectCheckerDestination (destRow, destColumn) != null) {
+                //throw new Exception ("That space is taken.");
+                Console.WriteLine ("That space is taken.");
+            } else if (SelectCheckerDestination (destRow, destColumn) == null) {
+                //check for a diagonal move
+                if (Math.Abs (destRow - cx.Position[0]) == 1 &&
+                    Math.Abs (destColumn - cx.Position[1]) == 1) {
+                    return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
+                } else {
+                    //throw new Exception ("Move is not diagonal");
+                    Console.WriteLine ("Not Diagonal");
+                }
+
             }
 
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
@@ -198,7 +211,7 @@ namespace Checkers {
                 Console.WriteLine ("Place column:");
                 int destColumn = Int32.Parse (Console.ReadLine ());
                 board.CheckerPreCheck (sourceRow, sourceColumn, destRow, destColumn);
-                
+
                 cx.Position = new int[] { destRow, destColumn };
                 //need to put master check method here
 

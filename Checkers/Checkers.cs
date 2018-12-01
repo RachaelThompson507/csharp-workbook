@@ -238,7 +238,7 @@ namespace Checkers {
     class Game {
         public Game () {
             // turns
-            bool turn = false;
+            bool turn = true;
 
             //initialize the game by creating a board object and apply board methods
             Board board = new Board ();
@@ -253,7 +253,7 @@ namespace Checkers {
                 Console.WriteLine ("To play you will select rows and columns\nto move pieces throughout the field.");
                 if (turn) {
                     Console.WriteLine ("Red, Prepare to Move");
-                    turn = true;
+                    turn = false;
                 } else {
                     Console.WriteLine ("Black, Prepare to Move");
                 }

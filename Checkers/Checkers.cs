@@ -259,6 +259,7 @@ namespace Checkers {
                     turn = false;
                 } else {
                     Console.WriteLine ("Black, Prepare to Move");
+                    turn = true;
                 }
 
                 board.MoveCheckers ();

@@ -133,7 +133,9 @@ namespace Checkers {
             if ((sourceRow < 0 || sourceRow > 7) || (sourceColumn < 0 || sourceColumn > 7)) {
                 //throw new Exception ("Your move is off the board.");
                 Console.WriteLine ("Your move is off the board.");
-
+            } else if (Checkers.Find (cx => cx.Position.SequenceEqual(new List<int> {sourceRow, sourceColumn})) == null) {
+                Console.WriteLine ("You're trying to move a checker that doesn't exist.");
+                //throw new Exception ("There is not a checker at {0}, {1}.", sourceRow, source Column);
             }
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
         }

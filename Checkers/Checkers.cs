@@ -25,6 +25,7 @@ namespace Checkers {
         public string Symbol { get; set; }
         public int[] Position { get; set; }
         public string Color { get; set; }
+        public bool King { get; set; }
 
         public Checker (string color, int[] position) {
             int circleId;
@@ -39,11 +40,13 @@ namespace Checkers {
             this.Symbol = char.ConvertFromUtf32 (circleId);
             this.Position = position;
             this.Color = color;
+            this.King = false;
         }
     }
 
     public class Board {
-
+        //variable needed for jumping
+        public Checker check;
         //the grid is the array used to draw the board
         public string[][] Grid { get; set; }
         //list of checker objects used to position checkers on the board
@@ -116,7 +119,7 @@ namespace Checkers {
 
         public void PlaceCheckers () {
             // this is a method to place checkers on a board when a position is declared (pre || post validation)
-            foreach (var checker in Checkers) {
+            foreach (Checker checker in Checkers) {
                 this.Grid[checker.Position[0]][checker.Position[1]] = checker.Symbol;
             }
             return;
@@ -132,10 +135,11 @@ namespace Checkers {
                 Console.WriteLine ("Your move is off the board.");
 
             }
-            return Checkers.Find (cx=> cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
+            return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
         }
 
         public Checker SelectCheckerDestination (int destRow, int destColumn) {
+            Checker check = Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
             //if source row and column in array
             if ((destRow < 0 || destRow > 7) || (destColumn < 0 || destColumn > 7)) {
                 //throw new Exception ("Your move is off the board.");
@@ -145,51 +149,97 @@ namespace Checkers {
         }
 
         //takes in row and column and determines if the space is null (available)
-        // if foreach checker in checkers any chosen position == an existing checker position throw exception otherwise valid
-        public Checker CheckerPreCheck (int sourceRow, int sourceColumn, int destRow, int destColumn) {
-            Checker cx1 = Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> {sourceRow, sourceColumn }));
+        // if during checkers game any chosen position == an existing checker position throw exception otherwise valid
+        // if move is not diagonal throw and exception
+        public Checker CheckerPreCheck (int sourceRow, int sourceColumn, int destRow, int destColumn, Checker check) {
+            Checker cx1 = Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
             // if dest row and dest col have a checker piece using select checker method passing dest
             if (SelectCheckerDestination (destRow, destColumn) != null) {
                 //throw new Exception ("That space is taken.");
                 Console.WriteLine ("That space is taken.");
             }
             if (SelectCheckerDestination (destRow, destColumn) == null) {
-                //check for a diagonal move
+                //check for a diagonal move - regular
                 if (Math.Abs (destRow - cx1.Position[0]) == 1 &&
                     Math.Abs (destColumn - cx1.Position[1]) == 1) {
-                    Console.WriteLine ("Nice diagonal move");
+                    //if moving 2 diagonal spaces jump checker must be opposing
+                    //1. check if moving two spots
+                    //2. check if destination -1/-1 is not null
+                    //3. checker symbol for destination -1/-1
+                    if ((Math.Abs (destRow - cx1.Position[0]) == 2 && Math.Abs (destColumn - cx1.Position[1]) == 2) &&
+                        SelectCheckerDestination (destRow - 1, destColumn - 1) != null && check.Symbol != cx1.Symbol) {
+                        Console.WriteLine ("Nice Jump");
+                        RemoveChecker (destRow - 1, destColumn - 1);
+                    } else {
+                        Console.WriteLine ("You cannot jump.");
+                        //throw new Exception ("You can move here. There are requirements for jumping.");
+                    }
+                    Console.WriteLine ("Nice Move");
                     return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
                 } else {
+                    Console.WriteLine ("Not a Diagonal Move.");
                     //throw new Exception ("Move is not diagonal");
-                    Console.WriteLine ("Not Diagonal");
                 }
-
             }
-
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
         }
-
-        /*
-            takes in sx.position && cx.position checks diagonal move
-            if diagonal and player can jump allow jump and remove checker
-            checker color and position
-         */
-
-        //master validation method contains all above checks and returns a checker object for moving
 
         //allows a checker to be removed
         public void RemoveChecker (int destRow, int destColumn) {
             Checker cx = SelectCheckerDestination (destRow, destColumn);
             Checkers.Remove (cx);
         }
+        //king a checker takes in a checker object and a destRow to determine if the Checker is to be Kinged on that move
+        public void KingChecker (Checker checker, int destRow) {
+            if ((checker.Color == "red" && destRow == 7) || (checker.Color == "black" && destRow == 0)) {
+                checker.King = true;
+                if (checker.Color == "red") {
+                    int kingId = int.Parse ("24C7", System.Globalization.NumberStyles.HexNumber);
+                    string king = char.ConvertFromUtf32 (kingId);
+                    checker.Symbol = king;
+                } else {
+                    int kingId = int.Parse ("24B7", System.Globalization.NumberStyles.HexNumber);
+                    string king = char.ConvertFromUtf32 (kingId);
+                    checker.Symbol = king;
+                }
+                PlaceCheckers ();
+            }
+        }
         public bool CheckForWin () {
             return Checkers.All (x => x.Color == "red") || !Checkers.Exists (x => x.Color == "red");
+        }
+        public void MoveCheckers () {
+            //Asks user for a source row/column to get checker to play in the field
+            //validates that the checker is in the field of play
+            Console.WriteLine ("(Choose a number between 0-7)");
+            Console.WriteLine ("Pick up Checker on Row: ");
+            int sourceRow = Int32.Parse (Console.ReadLine ().Trim ());
+            Console.WriteLine ("Pick up Checker on Column: ");
+            int sourceColumn = Int32.Parse (Console.ReadLine ().Trim ());
+            Checker cx = SelectCheckerSource (sourceRow, sourceColumn);
+            //Asks user for a destination row/column to place checker in the field
+            //validates move for diagonal, jump and king
+            //return checker position played
+            Console.WriteLine ("Place Checker on Row: ");
+            int destRow = Int32.Parse (Console.ReadLine ().Trim ());
+            Console.WriteLine ("Place Checker on Column: ");
+            int destColumn = Int32.Parse (Console.ReadLine ().Trim ());
+            CheckerPreCheck (sourceRow, sourceColumn, destRow, destColumn, check);
+            cx.Position = new int[] { destRow, destColumn };
+            //creates the board again
+            CreateBoard ();
+            //places checkers on the newly created board
+            PlaceCheckers ();
+            return;
         }
 
     }
 
     class Game {
         public Game () {
+            // turns
+            bool turn = false;
+
             //initialize the game by creating a board object and apply board methods
             Board board = new Board ();
             board.CreateBoard ();
@@ -199,36 +249,16 @@ namespace Checkers {
             do {
                 //draw the board to play. on loop checkers will remember they have new positions.
                 board.DrawBoard ();
-                //Select a Checker
-                Console.WriteLine ("Would you like to move a piece or remove a piece?");
-                Console.WriteLine ("Type 'move' or 'remove'...");
-                string input = Console.ReadLine ().ToLower ().Trim ();
-                Console.WriteLine ("Pickup Row:");
-                int sourceRow = Int32.Parse (Console.ReadLine ());
-                Console.WriteLine ("Pickup Column:");
-                int sourceColumn = Int32.Parse (Console.ReadLine ());
-                Checker cx = board.SelectCheckerSource (sourceRow, sourceColumn);
-                //Choose a move
-                Console.WriteLine ("Place row:");
-                int destRow = Int32.Parse (Console.ReadLine ());
-                Console.WriteLine ("Place column:");
-                int destColumn = Int32.Parse (Console.ReadLine ());
-                board.CheckerPreCheck (sourceRow, sourceColumn, destRow, destColumn);
+                //Open how to play
+                Console.WriteLine ("To play you will select rows and columns\nto move pieces throughout the field.");
+                if (turn) {
+                    Console.WriteLine ("Red, Prepare to Move");
+                    turn = true;
+                } else {
+                    Console.WriteLine ("Black, Prepare to Move");
+                }
 
-                cx.Position = new int[] { destRow, destColumn };
-                //need to put master check method here
-
-                // if (input == "remove") {
-                //     Console.WriteLine ("Remove row:");
-                //     row = Int32.Parse (Console.ReadLine ());
-                //     Console.WriteLine ("Remove column:");
-                //     column = Int32.Parse (Console.ReadLine ());
-                //     board.RemoveChecker (row, column);
-
-                // }
-                board.CreateBoard ();
-                board.PlaceCheckers ();
-
+                board.MoveCheckers ();
             }
             while (!board.CheckForWin ());
 

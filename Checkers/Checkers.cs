@@ -172,6 +172,10 @@ namespace Checkers {
                         SelectCheckerDestination (destRow - 1, destColumn - 1) != null && check.Symbol != cx1.Symbol) {
                         Console.WriteLine ("Nice Jump");
                         RemoveChecker (destRow - 1, destColumn - 1);
+                    } else if ((Math.Abs (destRow - cx1.Position[0]) == -2 && Math.Abs (destColumn - cx1.Position[1]) == -2) &&
+                        SelectCheckerDestination (destRow + 1, destColumn + 1) != null && check.Symbol != cx1.Symbol) {
+                        Console.WriteLine ("Nice Jump");
+                        RemoveChecker (destRow + 1, destColumn +1);
                     } else {
                         Console.WriteLine ("You cannot jump.");
                         //throw new Exception ("You can move here. There are requirements for jumping.");

@@ -245,13 +245,14 @@ namespace Checkers {
             board.CreateBoard ();
             board.GenerateCheckers ();
             board.PlaceCheckers ();
-
+            Console.WriteLine ("To play you will select rows and columns\nto move pieces throughout the field.");
             do {
                 //draw the board to play. on loop checkers will remember they have new positions.
                 board.DrawBoard ();
                 //Open how to play
-                Console.WriteLine ("To play you will select rows and columns\nto move pieces throughout the field.");
+                //Console.WriteLine ("To play you will select rows and columns\nto move pieces throughout the field.");
                 if (turn) {
+                    Console.WriteLine ();
                     Console.WriteLine ("Red, Prepare to Move");
                     turn = false;
                 } else {

@@ -170,25 +170,25 @@ namespace Checkers {
                     SelectCheckerDestination (destRow - 1, destColumn - 1) != null) {
 
                     //remove the checker up  to right
-                    if (destRow - check.Position[0]== -2 && destColumn - check.Position[1]==2 ) {
-                        RemoveChecker(destRow +1, destColumn -1);
+                    if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == 2) {
+                        RemoveChecker (destRow + 1, destColumn - 1);
                     }
                     //remove the checker up to left
-                    if (destRow - check.Position[0] ==-2 && destColumn - check.Position[1] == -2) {
-                    RemoveChecker (destRow - 1, destColumn - 1);
+                    if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == -2) {
+                        RemoveChecker (destRow - 1, destColumn - 1);
                     }
                     Console.WriteLine ("Nice Jump");
                 } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2) &&
                     //for black checkers 
                     SelectCheckerDestination (destRow + 1, destColumn + 1) != null) {
-                    
+
                     //remove the checker down to right
-                    if (destRow - check.Position[0]== 2 && destColumn - check.Position[1]==2 ) {
-                        RemoveChecker(destRow -1, destColumn -1);
+                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == 2) {
+                        RemoveChecker (destRow - 1, destColumn - 1);
                     }
                     //remove the checker down to left
                     if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == -2) {
-                    RemoveChecker (destRow - 1, destColumn + 1);
+                        RemoveChecker (destRow - 1, destColumn + 1);
                     }
                     Console.WriteLine ("Nice Jump");
                     //check for a diagonal move - regular
@@ -276,6 +276,7 @@ namespace Checkers {
                     Console.WriteLine ("Red, Prepare to Move");
                     turn = false;
                 } else {
+                    Console.WriteLine ();
                     Console.WriteLine ("Black, Prepare to Move");
                     turn = true;
                 }

@@ -154,7 +154,7 @@ namespace Checkers {
         // if during checkers game any chosen position == an existing checker position throw exception otherwise valid
         // if move is not diagonal throw and exception
         public Checker CheckerPreCheck (int sourceRow, int sourceColumn, int destRow, int destColumn, Checker check) {
-            Checker cx1 = Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
+            check = Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
             // if dest row and dest col have a checker piece using select checker method passing dest
             if (SelectCheckerDestination (destRow, destColumn) != null) {
                 //throw new Exception ("That space is taken.");
@@ -165,17 +165,17 @@ namespace Checkers {
                 //1. check if moving two spots
                 //2. check if destination -1/-1 or +1/+1 is not null
                 //3. checker symbol being jumped is opposing 
-                if ((Math.Abs (destRow - cx1.Position[0]) == 2 && Math.Abs (destColumn - cx1.Position[1]) == 2) &&
+                if ((Math.Abs (destRow - check.Position[0]) == 2 && Math.Abs (destColumn - check.Position[1]) == 2) &&
                     SelectCheckerDestination (destRow - 1, destColumn - 1) != null ) {
                     Console.WriteLine ("Nice Jump");
                     RemoveChecker (destRow - 1, destColumn - 1);
-                } else if ((Math.Abs (destRow - cx1.Position[0]) == -2 && Math.Abs (destColumn - cx1.Position[1]) == -2) &&
+                } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2) &&
                     SelectCheckerDestination (destRow + 1, destColumn + 1) != null ) {
                     Console.WriteLine ("Nice Jump!");
                     RemoveChecker (destRow + 1, destColumn + 1);
                     //check for a diagonal move - regular
-                } else if (Math.Abs (destRow - cx1.Position[0]) == 1 &&
-                    Math.Abs (destColumn - cx1.Position[1]) == 1) {
+                } else if (Math.Abs (destRow - check.Position[0]) == 1 &&
+                    Math.Abs (destColumn - check.Position[1]) == 1) {
                         Console.WriteLine ("Nice diagonal move!");
                         return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
                 } else {

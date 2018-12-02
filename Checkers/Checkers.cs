@@ -171,12 +171,12 @@ namespace Checkers {
                     //remove the checker up  to right
                     if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == 2) {
                         RemoveChecker (destRow + 1, destColumn - 1);
-                        Console.WriteLine ("Nice Jump");
+                        Console.WriteLine ("Nice Jump, removed checker up and to right.");
                     }
                     //remove the checker up to left
                     else if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == -2) {
                         RemoveChecker (destRow - 1, destColumn - 1);
-                        Console.WriteLine ("Nice Jump");
+                        Console.WriteLine ("Nice Jump, removed checker up and to left.");
                     }
                     //Console.WriteLine ("Nice Jump");
                 } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2)) {
@@ -185,12 +185,12 @@ namespace Checkers {
                     //remove the checker down to right
                     if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == 2) {
                         RemoveChecker (destRow - 1, destColumn - 1);
-                        Console.WriteLine ("Nice Jump");
+                        Console.WriteLine ("Nice Jump, removed checker down and to right.");
                     }
                     //remove the checker down to left
                     else if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == -2) {
                         RemoveChecker (destRow - 1, destColumn + 1);
-                        Console.WriteLine ("Nice Jump");
+                        Console.WriteLine ("Nice Jump, removed checker down and to the left ");
                     }
                     //Console.WriteLine ("Nice Jump");
                     //check for a diagonal move - regular

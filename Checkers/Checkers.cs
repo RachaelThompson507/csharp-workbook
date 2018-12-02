@@ -133,7 +133,7 @@ namespace Checkers {
             if ((sourceRow < 0 || sourceRow > 7) || (sourceColumn < 0 || sourceColumn > 7)) {
                 //throw new Exception ("Your move is off the board.");
                 Console.WriteLine ("Your move is off the board.");
-            } else if (Checkers.Find (cx => cx.Position.SequenceEqual(new List<int> {sourceRow, sourceColumn})) == null) {
+            } else if (Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn })) == null) {
                 Console.WriteLine ("You're trying to move a checker that doesn't exist.");
                 //throw new Exception ("There is not a checker at {0}, {1}.", sourceRow, source Column);
             }
@@ -161,30 +161,26 @@ namespace Checkers {
                 Console.WriteLine ("That space is taken.");
             }
             if (SelectCheckerDestination (destRow, destColumn) == null) {
-                //check for a diagonal move - regular
-                if (Math.Abs (destRow - cx1.Position[0]) == 1 &&
+                //if moving 2 diagonal spaces jump checker must be opposing
+                //1. check if moving two spots
+                //2. check if destination -1/-1 is not null
+                //3. checker symbol for destination -1/-1
+                if ((Math.Abs (destRow - cx1.Position[0]) == 2 && Math.Abs (destColumn - cx1.Position[1]) == 2) &&
+                    SelectCheckerDestination (destRow - 1, destColumn - 1) != null && check.Symbol != cx1.Symbol) {
+                    Console.WriteLine ("Nice Jump");
+                    RemoveChecker (destRow - 1, destColumn - 1);
+                } else if ((Math.Abs (destRow - cx1.Position[0]) == -2 && Math.Abs (destColumn - cx1.Position[1]) == -2) &&
+                    SelectCheckerDestination (destRow + 1, destColumn + 1) != null && check.Symbol != cx1.Symbol) {
+                    Console.WriteLine ("Nice Jump!");
+                    RemoveChecker (destRow + 1, destColumn + 1);
+                    //check for a diagonal move - regular
+                } else if (Math.Abs (destRow - cx1.Position[0]) == 1 &&
                     Math.Abs (destColumn - cx1.Position[1]) == 1) {
-                    //if moving 2 diagonal spaces jump checker must be opposing
-                    //1. check if moving two spots
-                    //2. check if destination -1/-1 is not null
-                    //3. checker symbol for destination -1/-1
-                    if ((Math.Abs (destRow - cx1.Position[0]) == 2 && Math.Abs (destColumn - cx1.Position[1]) == 2) &&
-                        SelectCheckerDestination (destRow - 1, destColumn - 1) != null && check.Symbol != cx1.Symbol) {
-                        Console.WriteLine ("Nice Jump");
-                        RemoveChecker (destRow - 1, destColumn - 1);
-                    } else if ((Math.Abs (destRow - cx1.Position[0]) == -2 && Math.Abs (destColumn - cx1.Position[1]) == -2) &&
-                        SelectCheckerDestination (destRow + 1, destColumn + 1) != null && check.Symbol != cx1.Symbol) {
-                        Console.WriteLine ("Nice Jump");
-                        RemoveChecker (destRow + 1, destColumn +1);
-                    } else {
-                        Console.WriteLine ("You cannot jump.");
-                        //throw new Exception ("You can move here. There are requirements for jumping.");
-                    }
-                    Console.WriteLine ("Nice Move");
-                    return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
+                        Console.WriteLine ("Nice diagonal move!");
+                        return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
                 } else {
-                    Console.WriteLine ("Not a Diagonal Move.");
-                    //throw new Exception ("Move is not diagonal");
+                    Console.WriteLine ("You cannot move there - not diagonal or jump.");
+                    //throw new Exception ("You can move here. There are requirements for jumping.");
                 }
             }
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));

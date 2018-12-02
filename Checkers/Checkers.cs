@@ -161,36 +161,38 @@ namespace Checkers {
                 Console.WriteLine ("That space is taken.");
             }
             if (SelectCheckerDestination (destRow, destColumn) == null) {
-                //if moving 2 diagonal spaces jump checker must be opposing
-                //1. check if moving two spots
-                //2. check if destination -1/-1 or +1/+1 is not null
-                //3. checker symbol being jumped is opposing 
+                //if moving 2 diagonal spaces jump checker must be opposing (X)
+                //1. check if moving two spots (X)
+                //2. check if destination removal is not null (&& SelectCheckerDestination(destRow+1,destColumn -1) != null)
+                //3. checker symbol being jumped is opposing
                 if ((Math.Abs (destRow - check.Position[0]) == 2 && Math.Abs (destColumn - check.Position[1]) == 2)) {
-                    //for red checkers
-                    //SelectCheckerDestination (destRow - 1, destColumn - 1) != null) {
+                    // for red checkers
 
                     //remove the checker up  to right
-                    if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == 2 && SelectCheckerDestination(destRow+1,destColumn -1) != null) {
+                    if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == 2) {
                         RemoveChecker (destRow + 1, destColumn - 1);
+                        Console.WriteLine ("Nice Jump");
                     }
                     //remove the checker up to left
-                    if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == -2 && SelectCheckerDestination(destRow-1,destColumn -1) != null) {
+                    else if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == -2) {
                         RemoveChecker (destRow - 1, destColumn - 1);
+                        Console.WriteLine ("Nice Jump");
                     }
-                    Console.WriteLine ("Nice Jump");
-                } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2)){ //&&
-                    //for black checkers 
-                    //SelectCheckerDestination (destRow + 1, destColumn + 1) != null) {
+                    //Console.WriteLine ("Nice Jump");
+                } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2)) {
+                    //for black checkers
 
                     //remove the checker down to right
-                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == 2 && SelectCheckerDestination(destRow-1,destColumn -1) != null) {
+                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == 2) {
                         RemoveChecker (destRow - 1, destColumn - 1);
+                        Console.WriteLine ("Nice Jump");
                     }
                     //remove the checker down to left
-                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == -2 && SelectCheckerDestination(destRow-1,destColumn +1) != null) {
+                    else if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == -2) {
                         RemoveChecker (destRow - 1, destColumn + 1);
+                        Console.WriteLine ("Nice Jump");
                     }
-                    Console.WriteLine ("Nice Jump");
+                    //Console.WriteLine ("Nice Jump");
                     //check for a diagonal move - regular
                 } else if (Math.Abs (destRow - check.Position[0]) == 1 &&
                     Math.Abs (destColumn - check.Position[1]) == 1) {
@@ -246,6 +248,8 @@ namespace Checkers {
             int destColumn = Int32.Parse (Console.ReadLine ().Trim ());
             CheckerPreCheck (sourceRow, sourceColumn, destRow, destColumn, check);
             cx.Position = new int[] { destRow, destColumn };
+            // check for a king 
+            KingChecker (cx, destRow);
             //creates the board again
             CreateBoard ();
             //places checkers on the newly created board

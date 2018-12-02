@@ -163,14 +163,14 @@ namespace Checkers {
             if (SelectCheckerDestination (destRow, destColumn) == null) {
                 //if moving 2 diagonal spaces jump checker must be opposing
                 //1. check if moving two spots
-                //2. check if destination -1/-1 is not null
-                //3. checker symbol for destination -1/-1
+                //2. check if destination -1/-1 or +1/+1 is not null
+                //3. checker symbol being jumped is opposing 
                 if ((Math.Abs (destRow - cx1.Position[0]) == 2 && Math.Abs (destColumn - cx1.Position[1]) == 2) &&
-                    SelectCheckerDestination (destRow - 1, destColumn - 1) != null && check.Symbol != cx1.Symbol) {
+                    SelectCheckerDestination (destRow - 1, destColumn - 1) != null ) {
                     Console.WriteLine ("Nice Jump");
                     RemoveChecker (destRow - 1, destColumn - 1);
                 } else if ((Math.Abs (destRow - cx1.Position[0]) == -2 && Math.Abs (destColumn - cx1.Position[1]) == -2) &&
-                    SelectCheckerDestination (destRow + 1, destColumn + 1) != null && check.Symbol != cx1.Symbol) {
+                    SelectCheckerDestination (destRow + 1, destColumn + 1) != null ) {
                     Console.WriteLine ("Nice Jump!");
                     RemoveChecker (destRow + 1, destColumn + 1);
                     //check for a diagonal move - regular

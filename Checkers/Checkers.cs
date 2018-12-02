@@ -166,18 +166,20 @@ namespace Checkers {
                 //2. check if destination -1/-1 or +1/+1 is not null
                 //3. checker symbol being jumped is opposing 
                 if ((Math.Abs (destRow - check.Position[0]) == 2 && Math.Abs (destColumn - check.Position[1]) == 2) &&
-                    SelectCheckerDestination (destRow - 1, destColumn - 1) != null ) {
+                    SelectCheckerDestination (destRow - 1, destColumn - 1) != null) {
                     Console.WriteLine ("Nice Jump");
+                    //remove checker works - need if statements for each type of remove checker 
                     RemoveChecker (destRow - 1, destColumn - 1);
                 } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2) &&
-                    SelectCheckerDestination (destRow + 1, destColumn + 1) != null ) {
+                    SelectCheckerDestination (destRow + 1, destColumn + 1) != null) {
                     Console.WriteLine ("Nice Jump!");
+                    //remove checker works - need if statements for each type of remove checker 
                     RemoveChecker (destRow + 1, destColumn + 1);
                     //check for a diagonal move - regular
                 } else if (Math.Abs (destRow - check.Position[0]) == 1 &&
                     Math.Abs (destColumn - check.Position[1]) == 1) {
-                        Console.WriteLine ("Nice diagonal move!");
-                        return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
+                    Console.WriteLine ("Nice diagonal move!");
+                    return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
                 } else {
                     Console.WriteLine ("You cannot move there - not diagonal or jump.");
                     //throw new Exception ("You can move here. There are requirements for jumping.");

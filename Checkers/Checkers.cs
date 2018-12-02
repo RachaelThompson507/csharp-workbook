@@ -166,15 +166,31 @@ namespace Checkers {
                 //2. check if destination -1/-1 or +1/+1 is not null
                 //3. checker symbol being jumped is opposing 
                 if ((Math.Abs (destRow - check.Position[0]) == 2 && Math.Abs (destColumn - check.Position[1]) == 2) &&
+                    //for red checkers
                     SelectCheckerDestination (destRow - 1, destColumn - 1) != null) {
-                    Console.WriteLine ("Nice Jump");
-                    //remove checker works - need if statements for each type of remove checker 
+
+                    //remove the checker up  to right
+                    if (destRow - check.Position[0]== -2 && destColumn - check.Position[1]==2 ) {
+                        RemoveChecker(destRow +1, destColumn -1);
+                    }
+                    //remove the checker up to left
+                    if (destRow - check.Position[0] ==-2 && destColumn - check.Position[1] == -2) {
                     RemoveChecker (destRow - 1, destColumn - 1);
+                    }
+                    Console.WriteLine ("Nice Jump");
                 } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2) &&
+                    //for black checkers 
                     SelectCheckerDestination (destRow + 1, destColumn + 1) != null) {
-                    Console.WriteLine ("Nice Jump!");
-                    //remove checker works - need if statements for each type of remove checker 
-                    RemoveChecker (destRow + 1, destColumn + 1);
+                    
+                    //remove the checker down to right
+                    if (destRow - check.Position[0]== 2 && destColumn - check.Position[1]==2 ) {
+                        RemoveChecker(destRow -1, destColumn -1);
+                    }
+                    //remove the checker down to left
+                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == -2) {
+                    RemoveChecker (destRow - 1, destColumn + 1);
+                    }
+                    Console.WriteLine ("Nice Jump");
                     //check for a diagonal move - regular
                 } else if (Math.Abs (destRow - check.Position[0]) == 1 &&
                     Math.Abs (destColumn - check.Position[1]) == 1) {

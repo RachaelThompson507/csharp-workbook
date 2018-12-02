@@ -165,29 +165,29 @@ namespace Checkers {
                 //1. check if moving two spots
                 //2. check if destination -1/-1 or +1/+1 is not null
                 //3. checker symbol being jumped is opposing 
-                if ((Math.Abs (destRow - check.Position[0]) == 2 && Math.Abs (destColumn - check.Position[1]) == 2) &&
+                if ((Math.Abs (destRow - check.Position[0]) == 2 && Math.Abs (destColumn - check.Position[1]) == 2)) {
                     //for red checkers
-                    SelectCheckerDestination (destRow - 1, destColumn - 1) != null) {
+                    //SelectCheckerDestination (destRow - 1, destColumn - 1) != null) {
 
                     //remove the checker up  to right
-                    if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == 2) {
+                    if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == 2 && SelectCheckerDestination(destRow+1,destColumn -1) != null) {
                         RemoveChecker (destRow + 1, destColumn - 1);
                     }
                     //remove the checker up to left
-                    if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == -2) {
+                    if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == -2 && SelectCheckerDestination(destRow-1,destColumn -1) != null) {
                         RemoveChecker (destRow - 1, destColumn - 1);
                     }
                     Console.WriteLine ("Nice Jump");
-                } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2) &&
+                } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2)){ //&&
                     //for black checkers 
-                    SelectCheckerDestination (destRow + 1, destColumn + 1) != null) {
+                    //SelectCheckerDestination (destRow + 1, destColumn + 1) != null) {
 
                     //remove the checker down to right
-                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == 2) {
+                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == 2 && SelectCheckerDestination(destRow-1,destColumn -1) != null) {
                         RemoveChecker (destRow - 1, destColumn - 1);
                     }
                     //remove the checker down to left
-                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == -2) {
+                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == -2 && SelectCheckerDestination(destRow-1,destColumn +1) != null) {
                         RemoveChecker (destRow - 1, destColumn + 1);
                     }
                     Console.WriteLine ("Nice Jump");

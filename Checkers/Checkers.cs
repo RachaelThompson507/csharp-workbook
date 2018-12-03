@@ -159,8 +159,7 @@ namespace Checkers {
             if (SelectCheckerDestination (destRow, destColumn) != null) {
                 //throw new Exception ("That space is taken.");
                 Console.WriteLine ("That space is taken.");
-            }
-            else if (SelectCheckerDestination (destRow, destColumn) == null) {
+            } else if (SelectCheckerDestination (destRow, destColumn) == null) {
                 //if moving 2 diagonal spaces jump checker must be opposing (X)
                 //1. check if moving two spots (X)
                 //2. check if destination removal is not null (&& SelectCheckerDestination(destRow+1,destColumn -1) != null)
@@ -208,8 +207,8 @@ namespace Checkers {
 
         //allows a checker to be removed
         public void RemoveChecker (int destRow, int destColumn) {
-            Checker cx = SelectCheckerDestination (destRow, destColumn);
-            Checkers.Remove (cx);
+            Checker cx2 = SelectCheckerDestination (destRow, destColumn);
+            Checkers.Remove (cx2);
         }
         //king a checker takes in a checker object and a destRow to determine if the Checker is to be Kinged on that move
         public void KingChecker (Checker checker, int destRow) {

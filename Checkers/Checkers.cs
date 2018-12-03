@@ -170,24 +170,28 @@ namespace Checkers {
                     //remove the checker row up  to column right
                     if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == 2) {
                         RemoveChecker (destRow + 1, destColumn - 1);
-                        Console.WriteLine ("Nice Jump Black, removed checker up and to right.");
+                        //Console.WriteLine ("Nice Jump Black, removed checker up and to right.");
+                        Console.WriteLine ("Nice Jump");
                     }
                     //remove the checker row up to column left
                     else if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == -2) {
                         RemoveChecker (destRow + 1, destColumn + 1);
-                        Console.WriteLine ("Nice Jump Black, removed checker up and to left.");
+                        //Console.WriteLine ("Nice Jump Black, removed checker up and to left.");
+                        Console.WriteLine ("Nice Jump");
                     }
                     //for red checkers
 
                     //remove the checker row behind me to column right
                     else if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == 2) {
                         RemoveChecker (destRow - 1, destColumn - 1);
-                        Console.WriteLine ("Nice Jump Red, removed checker behind you and to right.");
+                        //Console.WriteLine ("Nice Jump Red, removed checker behind you and to right.");
+                        Console.WriteLine ("Nice Jump");
                     }
                     //remove the checker down to left
                     else if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == -2) {
                         RemoveChecker (destRow - 1, destColumn + 1);
-                        Console.WriteLine ("Nice Jump Red, removed checker behind you and to the left ");
+                        //Console.WriteLine ("Nice Jump Red, removed checker behind you and to the left ");
+                        Console.WriteLine ("Nice Jump");
                     }
                     //Console.WriteLine ("Nice Jump");
                     //check for a diagonal move - regular
@@ -196,8 +200,9 @@ namespace Checkers {
                     Console.WriteLine ("Nice diagonal move!");
                     return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
                 } else {
-                    Console.WriteLine ("You cannot move there - not diagonal or jump.");
-                    //throw new Exception ("You can move here. There are requirements for jumping.");
+                    Console.WriteLine (" ");
+                    //Console.WriteLine ("You cannot move there - not diagonal or jump.");
+                    throw new Exception ("You can move here. There are requirements for jumping.");
                 }
             }
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));

@@ -165,31 +165,29 @@ namespace Checkers {
                 //2. check if destination removal is not null (&& SelectCheckerDestination(destRow+1,destColumn -1) != null)
                 //3. checker symbol being jumped is opposing
                 if (Math.Abs (destRow - check.Position[0]) == 2 && Math.Abs (destColumn - check.Position[1]) == 2) {
-                    // for red checkers
+                    // for black checkers
 
-                    //remove the checker up  to right
+                    //remove the checker row up  to column right
                     if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == 2) {
                         RemoveChecker (destRow + 1, destColumn - 1);
-                        Console.WriteLine ("Nice Jump, removed checker up and to right.");
+                        Console.WriteLine ("Nice Jump Black, removed checker up and to right.");
                     }
-                    //remove the checker up to left
+                    //remove the checker row up to column left
                     else if (destRow - check.Position[0] == -2 && destColumn - check.Position[1] == -2) {
-                        RemoveChecker (destRow - 1, destColumn - 1);
-                        Console.WriteLine ("Nice Jump, removed checker up and to left.");
+                        RemoveChecker (destRow + 1, destColumn + 1);
+                        Console.WriteLine ("Nice Jump Black, removed checker up and to left.");
                     }
-                    //Console.WriteLine ("Nice Jump");
-                } else if (Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2) {
-                    //for black checkers
+                    //for red checkers
 
-                    //remove the checker down to right
-                    if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == 2) {
+                    //remove the checker row behind me to column right
+                    else if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == 2) {
                         RemoveChecker (destRow - 1, destColumn - 1);
-                        Console.WriteLine ("Nice Jump, removed checker down and to right.");
+                        Console.WriteLine ("Nice Jump Red, removed checker behind you and to right.");
                     }
                     //remove the checker down to left
                     else if (destRow - check.Position[0] == 2 && destColumn - check.Position[1] == -2) {
                         RemoveChecker (destRow - 1, destColumn + 1);
-                        Console.WriteLine ("Nice Jump, removed checker down and to the left ");
+                        Console.WriteLine ("Nice Jump Red, removed checker behind you and to the left ");
                     }
                     //Console.WriteLine ("Nice Jump");
                     //check for a diagonal move - regular

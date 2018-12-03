@@ -160,12 +160,12 @@ namespace Checkers {
                 //throw new Exception ("That space is taken.");
                 Console.WriteLine ("That space is taken.");
             }
-            if (SelectCheckerDestination (destRow, destColumn) == null) {
+            else if (SelectCheckerDestination (destRow, destColumn) == null) {
                 //if moving 2 diagonal spaces jump checker must be opposing (X)
                 //1. check if moving two spots (X)
                 //2. check if destination removal is not null (&& SelectCheckerDestination(destRow+1,destColumn -1) != null)
                 //3. checker symbol being jumped is opposing
-                if ((Math.Abs (destRow - check.Position[0]) == 2 && Math.Abs (destColumn - check.Position[1]) == 2)) {
+                if (Math.Abs (destRow - check.Position[0]) == 2 && Math.Abs (destColumn - check.Position[1]) == 2) {
                     // for red checkers
 
                     //remove the checker up  to right
@@ -179,7 +179,7 @@ namespace Checkers {
                         Console.WriteLine ("Nice Jump, removed checker up and to left.");
                     }
                     //Console.WriteLine ("Nice Jump");
-                } else if ((Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2)) {
+                } else if (Math.Abs (destRow - check.Position[0]) == -2 && Math.Abs (destColumn - check.Position[1]) == -2) {
                     //for black checkers
 
                     //remove the checker down to right

@@ -131,11 +131,11 @@ namespace Checkers {
         public Checker SelectCheckerSource (int sourceRow, int sourceColumn) {
             //if source row and column in array
             if ((sourceRow < 0 || sourceRow > 7) || (sourceColumn < 0 || sourceColumn > 7)) {
-                //throw new Exception ("Your move is off the board.");
-                Console.WriteLine ("Your move is off the board.");
+                throw new Exception ("Your move is off the board.");
+                //Console.WriteLine ("Your move is off the board.");
             } else if (Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn })) == null) {
-                Console.WriteLine ("You're trying to move a checker that doesn't exist.");
-                //throw new Exception ("There is not a checker at {0}, {1}.", sourceRow, source Column);
+                //Console.WriteLine ("You're trying to move a checker that doesn't exist.");
+                throw new Exception ("There is not a checker at the row and column you entered");
             }
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
         }
@@ -144,8 +144,8 @@ namespace Checkers {
             Checker check = Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
             //if source row and column in array
             if ((destRow < 0 || destRow > 7) || (destColumn < 0 || destColumn > 7)) {
-                //throw new Exception ("Your move is off the board.");
-                Console.WriteLine ("Your move is off the board.");
+                throw new Exception ("Your move is off the board.");
+                //Console.WriteLine ("Your move is off the board.");
             }
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
         }
@@ -157,8 +157,8 @@ namespace Checkers {
             check = Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { sourceRow, sourceColumn }));
             // if dest row and dest col have a checker piece using select checker method passing dest
             if (SelectCheckerDestination (destRow, destColumn) != null) {
-                //throw new Exception ("That space is taken.");
-                Console.WriteLine ("That space is taken.");
+                throw new Exception ("That space is taken.");
+                //Console.WriteLine ("That space is taken.");
             } else if (SelectCheckerDestination (destRow, destColumn) == null) {
                 //if moving 2 diagonal spaces jump checker must be opposing (X)
                 //1. check if moving two spots (X)
@@ -193,7 +193,7 @@ namespace Checkers {
                         //Console.WriteLine ("Nice Jump Red, removed checker behind you and to the left ");
                         Console.WriteLine ("Nice Jump");
                     }
-                    //Console.WriteLine ("Nice Jump");
+
                     //check for a diagonal move - regular
                 } else if (Math.Abs (destRow - check.Position[0]) == 1 &&
                     Math.Abs (destColumn - check.Position[1]) == 1) {
@@ -202,7 +202,7 @@ namespace Checkers {
                 } else {
                     Console.WriteLine (" ");
                     //Console.WriteLine ("You cannot move there - not diagonal or jump.");
-                    throw new Exception ("You can move here. There are requirements for jumping.");
+                    throw new Exception ("You cannot move here. Does not meet requirements to move.");
                 }
             }
             return Checkers.Find (cx => cx.Position.SequenceEqual (new List<int> { destRow, destColumn }));
@@ -230,6 +230,11 @@ namespace Checkers {
             }
         }
         public bool CheckForWin () {
+            if (Checkers.All (x=> x.Color == "red") || !Checkers.Exists (x=>x.Color=="red")) {
+                Console.WriteLine ("Red Won!");
+            } else {
+                Console.WriteLine ("Black Won!");
+            }
             return Checkers.All (x => x.Color == "red") || !Checkers.Exists (x => x.Color == "red");
         }
         public void MoveCheckers () {
@@ -274,6 +279,8 @@ namespace Checkers {
             Console.WriteLine ("To play you will select rows and columns\nto move pieces throughout the field.");
             do {
                 //draw the board to play. on loop checkers will remember they have new positions.
+                //try again for try catch exceptions.
+                TryAgain:
                 board.DrawBoard ();
                 //Open how to play
                 //Console.WriteLine ("To play you will select rows and columns\nto move pieces throughout the field.");
@@ -286,8 +293,15 @@ namespace Checkers {
                     Console.WriteLine ("Black, Prepare to Move");
                     turn = true;
                 }
-
-                board.MoveCheckers ();
+                try {
+                    board.MoveCheckers ();
+                }
+                catch (Exception e) {
+                    Console.WriteLine ();
+                    Console.WriteLine ("There was an error: {0}", e);
+                    Console.WriteLine ("Please try your move again.");
+                    goto TryAgain;
+                }
             }
             while (!board.CheckForWin ());
 

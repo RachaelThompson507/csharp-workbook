@@ -298,8 +298,9 @@ namespace Checkers {
                 }
                 catch (Exception e) {
                     Console.WriteLine ();
-                    Console.WriteLine ("There was an error: {0}", e);
+                    Console.WriteLine ("There was an error:\n{0}", e.Message);
                     Console.WriteLine ("Please try your move again.");
+                    Console.WriteLine ();
                     goto TryAgain;
                 }
             }

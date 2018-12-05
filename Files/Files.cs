@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Threading;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Files
 {
@@ -6,7 +10,19 @@ namespace Files
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("  ---> Hangman <---  ");
         }
+    }
+    class File
+    {
+        
+    }
+    class GameLogic
+    {
+
+    }
+    class Game
+    {
+
     }
 }

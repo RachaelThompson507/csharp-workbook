@@ -284,7 +284,6 @@ namespace Checkers {
             do {
                 //draw the board to play. on loop checkers will remember they have new positions.
                 //try again for try catch exceptions.
-                board.DrawBoard ();
                 //Open how to play
                 //Console.WriteLine ("To play you will select rows and columns\nto move pieces throughout the field.");
                 if (turn) {
@@ -296,7 +295,8 @@ namespace Checkers {
                     Console.WriteLine ("Black, Prepare to Move");
                     turn = true;
                 }
-                TryAgain : 
+                TryAgain : board.DrawBoard ();
+
                 try {
                     board.MoveCheckers ();
                 } catch (Exception e) {

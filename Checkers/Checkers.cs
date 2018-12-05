@@ -230,12 +230,16 @@ namespace Checkers {
             }
         }
         public bool CheckForWin () {
-            if (Checkers.All (x=> x.Color == "red") || !Checkers.Exists (x=>x.Color=="red")) {
+            if (Checkers.All (x => x.Color == "red") || !Checkers.Exists (x => x.Color == "red")) {
                 Console.WriteLine ("Red Won!");
-            } else {
+                return Checkers.All (x => x.Color == "red") || !Checkers.Exists (x => x.Color == "red");
+            } else if (Checkers.All (x => x.Color == "black") || !Checkers.Exists (x => x.Color == "black")) {
                 Console.WriteLine ("Black Won!");
+                return Checkers.All (x => x.Color == "black") || !Checkers.Exists (x => x.Color == "black");
+            } else {
+                Console.WriteLine ("The game continues.");
             }
-            return Checkers.All (x => x.Color == "red") || !Checkers.Exists (x => x.Color == "red");
+            return false;
         }
         public void MoveCheckers () {
             //Asks user for a source row/column to get checker to play in the field
@@ -280,7 +284,6 @@ namespace Checkers {
             do {
                 //draw the board to play. on loop checkers will remember they have new positions.
                 //try again for try catch exceptions.
-                TryAgain:
                 board.DrawBoard ();
                 //Open how to play
                 //Console.WriteLine ("To play you will select rows and columns\nto move pieces throughout the field.");
@@ -293,10 +296,10 @@ namespace Checkers {
                     Console.WriteLine ("Black, Prepare to Move");
                     turn = true;
                 }
+                TryAgain : 
                 try {
                     board.MoveCheckers ();
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     Console.WriteLine ();
                     Console.WriteLine ("There was an error:\n{0}", e.Message);
                     Console.WriteLine ("Please try your move again.");

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
+using System.Linq;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,7 +12,7 @@ namespace Files
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("  ---> Hangman <---  ");
+            Console.WriteLine(" ~~~ ---> Hangman <--- ~~~ ");
 
             //debug || test
             //Console.WriteLine (Files.generateRandom());
@@ -37,6 +39,7 @@ namespace Files
     }
     class Game
     {
+        
 
     }
 }

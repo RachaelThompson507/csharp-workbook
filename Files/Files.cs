@@ -41,7 +41,7 @@ namespace Files {
 
             //debug || test
             //Console.WriteLine (Files.generateRandom());
-            Console.WriteLine (GameLogic.DisplayWord ());
+            //Console.WriteLine (GameLogic.DisplayWord ());
         }
     }
     class Files {
@@ -65,6 +65,8 @@ namespace Files {
         // }
     }
     class GameLogic {
+        public char guess { get; set; }
+        public string wordGuessing { get; set; }
         //run method this method to generate random word from list and assign a value to object word;
         public static string DisplayWord () {
             //generate random word from list
@@ -80,8 +82,18 @@ namespace Files {
             string display = displayWord.ToString ();
             return display;
         }
+        //overloaded method for display word
+        public static string DisplayGuesses (char guess) {
+            //create display to user after a guess
+            StringBuilder displayWord = new StringBuilder (wordGuessing.Length);
+            for (int i = 0; i < wordGuessing.Length; i++) {
+                displayWord.Append ('_');
+            }
+            string newDisplay = displayWord.ToString ();
+            return newDisplay;
+        }
         public static void GuessGame (string wordToGuess) {
-            string wordGuessing = wordToGuess.ToLower();
+            wordGuessing = wordToGuess.ToLower ();
             List<char> correctLetter = new List<char> ();
             List<char> incorrectLetter = new List<char> ();
             // number of lives based on incorrect letters
@@ -105,10 +117,12 @@ namespace Files {
                 } else if (incorrectLetter.Contains (guess)) {
                     throw new Exception ($"The letter {guess} has already been guessed and was incorrect.");
                 } else {
-                    if (wordGuessing.Contains(guess)) {
-                        correctLetter.Add(guess);
-                        for (int i = 0; i<wordGuessing.Length; i++){
-                            if ()
+                    if (wordGuessing.Contains (guess)) {
+                        correctLetter.Add (guess);
+                        for (int i = 0; i < wordGuessing.Length; i++) {
+                            if (wordGuessing[i] == guess) {
+
+                            }
                         }
                     }
                 }

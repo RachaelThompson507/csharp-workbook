@@ -7,37 +7,11 @@ using System.Text;
 using System.Threading;
 
 namespace Files {
-    enum Alphabet {
-        a,
-        b,
-        c,
-        d,
-        e,
-        f,
-        g,
-        h,
-        i,
-        j,
-        k,
-        l,
-        m,
-        n,
-        o,
-        p,
-        q,
-        r,
-        s,
-        t,
-        u,
-        v,
-        w,
-        x,
-        y,
-        z
-    }
     class Program {
         static void Main (string[] args) {
             Console.WriteLine (" ~~~ ---> Hangman <--- ~~~ ");
+            Game game = new Game ();
+
 
             //debug || test
             //Console.WriteLine (Files.generateRandom());
@@ -66,7 +40,7 @@ namespace Files {
     }
     class GameLogic {
         public char guess { get; set; }
-        public string wordGuessing { get; set; }
+        public static string wordGuessing { get; set; }
         //run method this method to generate random word from list and assign a value to object word;
         public static string DisplayWord () {
             //generate random word from list
@@ -78,21 +52,11 @@ namespace Files {
             for (int i = 0; i < wordToGuess.Length; i++) {
                 displayWord.Append ("_ ");
             }
-
             string display = displayWord.ToString ();
             return display;
         }
-        //overloaded method for display word
-        public static string DisplayGuesses (char guess) {
-            //create display to user after a guess
-            StringBuilder displayWord = new StringBuilder (wordGuessing.Length);
-            for (int i = 0; i < wordGuessing.Length; i++) {
-                displayWord.Append ('_');
-            }
-            string newDisplay = displayWord.ToString ();
-            return newDisplay;
-        }
-        public static void GuessGame (string wordToGuess) {
+
+        public static void GuessGame (string wordToGuess, StringBuilder displayWord) {
             wordGuessing = wordToGuess.ToLower ();
             List<char> correctLetter = new List<char> ();
             List<char> incorrectLetter = new List<char> ();
@@ -121,16 +85,37 @@ namespace Files {
                         correctLetter.Add (guess);
                         for (int i = 0; i < wordGuessing.Length; i++) {
                             if (wordGuessing[i] == guess) {
-
+                                displayWord[i] = wordGuessing[i];
+                                letterRevealed++;
                             }
                         }
+                        if (letterRevealed == wordGuessing.Length) {
+                            win = true;
+                        }
+                    } else {
+                        incorrectLetter.Add (guess);
+                        Console.WriteLine ($"There is not {guess}, in this word.");
+                        lives--;
                     }
+                    Console.WriteLine (displayWord.ToString ());
+                }
+                if (win) {
+                    Console.WriteLine ("You win!");
+                } else {
+                    Console.WriteLine ($"You lost. The word is {wordGuessing}");
                 }
             }
         }
-
     }
     class Game {
-
+        public Game {
+            GameLogic.DisplayWord();
+            try {
+                GameLogic.GuessGame ();
+            } catch (Exception e) {
+                Console.WriteLine (e.message);
+                continue;
+            }
+        }
     }
 }

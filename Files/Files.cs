@@ -15,6 +15,7 @@ namespace Files {
             Thread.Sleep(2000);
             //while loop so you can keep playing.
             while (play){
+                Console.WriteLine ();
                 Console.WriteLine(@"Do you want to play? use ""y"" to play or ""n"" to exit.");
                 string input = Console.ReadLine().ToLower().Trim();
                 //if you want to keep playing or are done

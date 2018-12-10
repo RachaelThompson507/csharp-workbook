@@ -9,13 +9,34 @@ using System.Threading;
 namespace Files {
     class Program {
         static void Main (string[] args) {
+            //variables
+            bool play = true;
             Console.WriteLine (" ~~~ ---> Hangman <--- ~~~ ");
-            Game game = new Game ();
-
-
+            Thread.Sleep(2000);
+            //while loop so you can keep playing.
+            while (play){
+                Console.WriteLine(@"Do you want to play? use ""y"" to play or ""n"" to exit.");
+                string input = Console.ReadLine().ToLower().Trim();
+                //if you want to keep playing or are done
+                if (input == "y"){
+                    play = true;
+                } else if (input == "n"){
+                    play = false;
+                    break;
+                }
+                //instantiate game Logic to play the game through the guess game method.
+                //if there is a handled error this will display the error.
+                try{
+                    GameLogic.GuessGame();
+                } catch (Exception e) {
+                    Console.WriteLine (e.Message);
+                }
+            }
+            
             //debug || test
             //Console.WriteLine (Files.generateRandom());
             //Console.WriteLine (GameLogic.DisplayWord ());
+            //GameLogic.GuessGame();
         }
     }
     class Files {
@@ -39,29 +60,26 @@ namespace Files {
         // }
     }
     class GameLogic {
-        public char guess { get; set; }
-        public static string wordGuessing { get; set; }
-        //run method this method to generate random word from list and assign a value to object word;
-        public static string DisplayWord () {
+        public static void GuessGame () {
             //generate random word from list
             string wordToGuess = Files.generateRandom ();
             //This console.writeline is for debugging/validating the function works as intended.
-            Console.WriteLine (wordToGuess);
+            Console.WriteLine ($"The word you are trying to guess has {wordToGuess.Length} letters.");
+            Console.WriteLine ();
             //create display to user
             StringBuilder displayWord = new StringBuilder (wordToGuess.Length);
             for (int i = 0; i < wordToGuess.Length; i++) {
-                displayWord.Append ("_ ");
+                displayWord.Append ("_");
             }
             string display = displayWord.ToString ();
-            return display;
-        }
-
-        public static void GuessGame (string wordToGuess, StringBuilder displayWord) {
-            wordGuessing = wordToGuess.ToLower ();
+            Console.WriteLine (display);
+            Console.WriteLine ();
+            //move on to game action
+            string wordGuessing = wordToGuess.ToLower ();
             List<char> correctLetter = new List<char> ();
             List<char> incorrectLetter = new List<char> ();
             // number of lives based on incorrect letters
-            int lives = 5;
+            int lives = 7;
             //bool for win state
             bool win = false;
             // revealed letters starts at 0
@@ -78,8 +96,10 @@ namespace Files {
                 // if conditions for if letter already guessed or not
                 if (correctLetter.Contains (guess)) {
                     throw new Exception ($"The letter {guess} has already been guessed and was correct.");
+
                 } else if (incorrectLetter.Contains (guess)) {
                     throw new Exception ($"The letter {guess} has already been guessed and was incorrect.");
+
                 } else {
                     if (wordGuessing.Contains (guess)) {
                         correctLetter.Add (guess);
@@ -101,20 +121,11 @@ namespace Files {
                 }
                 if (win) {
                     Console.WriteLine ("You win!");
-                } else {
+                } else if (!win && lives <=0){
                     Console.WriteLine ($"You lost. The word is {wordGuessing}");
+                } else {
+                    Console.WriteLine ($"You have {lives} lives left. Try to guess again.");
                 }
-            }
-        }
-    }
-    class Game {
-        public Game {
-            GameLogic.DisplayWord();
-            try {
-                GameLogic.GuessGame ();
-            } catch (Exception e) {
-                Console.WriteLine (e.message);
-                continue;
             }
         }
     }

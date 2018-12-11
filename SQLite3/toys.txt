@@ -1,0 +1,35 @@
+Last login: Mon Dec 10 18:52:13 on ttys001
+Rachaels-MacBook-Pro:~ rachael_thompson$ sqlite3
+SQLite version 3.24.0 2018-06-04 14:10:15
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> .open practiceWeek10
+sqlite> create table toys (id int, name varchar(100), quantity int, price float);
+sqlite> select * from toys
+   ...> ;
+sqlite> .headers on
+sqlite> .mode column
+sqlite> select * from toys
+   ...> ;
+sqlite> insert into toys (id, name, quantity, price) values (1, 'legos', 12, 40.00);
+sqlite> select * from toys
+   ...> ;
+id          name        quantity    price     
+----------  ----------  ----------  ----------
+1           legos       12          40.0      
+sqlite> insert into toys (id, name, quantity, price) values (2, 'stuffed animal', 24, 20.00);
+sqlite> select * from toys
+   ...> ;
+id          name        quantity    price     
+----------  ----------  ----------  ----------
+1           legos       12          40.0      
+2           stuffed an  24          20.0      
+sqlite> insert into toys (id, name, quantity, price) values (3, 'balls', 204, 5.00);
+sqlite> select * from toys;
+id          name        quantity    price     
+----------  ----------  ----------  ----------
+1           legos       12          40.0      
+2           stuffed an  24          20.0      
+3           balls       204         5.0       
+sqlite> 

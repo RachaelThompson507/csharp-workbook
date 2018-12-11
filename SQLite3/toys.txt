@@ -32,4 +32,69 @@ id          name        quantity    price
 1           legos       12          40.0      
 2           stuffed an  24          20.0      
 3           balls       204         5.0       
-sqlite> 
+sqlite> sqlite> alter table toys add column (department_id int)
+   ...> ;
+Error: near "(": syntax error
+sqlite> select * from toys
+   ...> ;
+id          name        quantity    price     
+----------  ----------  ----------  ----------
+1           legos       12          40.0      
+2           stuffed an  24          20.0      
+3           balls       204         5.0       
+sqlite> alter table toys add column department_id int;
+sqlite> select * from toys;
+id          name        quantity    price       department_id
+----------  ----------  ----------  ----------  -------------
+1           legos       12          40.0                     
+2           stuffed an  24          20.0                     
+3           balls       204         5.0                      
+sqlite> create table departments (id int, name varchar(50));
+sqlite> select * from departments
+   ...> ;
+sqlite> insert into departments (id, name) values (101, 'big kids');
+sqlite> insert into departments (id, name) values (102, 'babies);
+   ...> 
+   ...> 
+   ...> 
+
+   ...> ;
+;
+   ...> '
+   ...> ;
+Error: near ";": syntax error
+sqlite> insert into departments (id, name) values (102, 'babies');
+sqlite> select * from departments;
+id          name      
+----------  ----------
+101         big kids  
+102         babies    
+sqlite> select * from toys
+   ...> ;
+id          name        quantity    price       department_id
+----------  ----------  ----------  ----------  -------------
+1           legos       12          40.0                     
+2           stuffed an  24          20.0                     
+3           balls       204         5.0                      
+sqlite> update toys set department_id = 101 where id = 1 and id = 3;
+sqlite> update toys set department_id = 102 where id = 2;
+sqlite> select * from toys
+   ...> ;
+id          name        quantity    price       department_id
+----------  ----------  ----------  ----------  -------------
+1           legos       12          40.0                     
+2           stuffed an  24          20.0        102          
+3           balls       204         5.0                      
+sqlite> update toys set department_id = 101 where id = 1;
+sqlite> update toys set department_id = 101 where id = 3;
+sqlite> select * from toys 
+   ...> ;
+id          name        quantity    price       department_id
+----------  ----------  ----------  ----------  -------------
+1           legos       12          40.0        101          
+2           stuffed an  24          20.0        102          
+3           balls       204         5.0         101          
+sqlite> clear
+   ...> ;
+Error: near "clear": syntax error
+sqlite> exit

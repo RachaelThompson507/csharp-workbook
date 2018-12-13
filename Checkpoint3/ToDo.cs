@@ -16,7 +16,7 @@ namespace ToDoApp {
             //Console.WriteLine ("Hello World!");
             //test for instantiation of ToDo
             //ToDo one = new ToDo (1,_Priority.low, _Status.@new, "This is a task.",DateTime.Now);
-            UserSays.optionsMenu ();
+            //UserSays.optionsMenu ();
         }
     }
     /* This is the "brains" of the operation. It is going to control
@@ -92,12 +92,13 @@ namespace ToDoApp {
         // ToDo Constructor
         public ToDo (int id, _Priority priority, _Status status, string task, DateTime createdDate) {
             this.id = id;
-            this.priority = priority;
-            this.status = status;
+            this.priority= _Priority.low;
+            this.status = _Status.@new;
             this.task = task;
             this.createdDate = createdDate;
             //test instantiation
             //Console.WriteLine ("I can be made.");
+            //Console.WriteLine ($"Test:\n{id}\n{priority}\n{status}\n{task}\n{createdDate}");
         }
     }
 }

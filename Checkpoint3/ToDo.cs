@@ -6,13 +6,14 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace ToDoApp {
-        // enum for priority
-        enum _Priority { high = 3, medium = 2, low = 1 };
-        // enum for status
-        enum _Status { @new, active, complete };
+    // enum for priority
+    public enum _Priority { high = 3, medium = 2, low = 1 };
+    // enum for status
+    public enum _Status { @new, active, complete };
     class Program {
-        /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
-         static void Main (string[] args) {
+ /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
+        static void Main (string[] args) {
+            Console.WriteLine ("Yet another ToDo application... By: Rachael Thompson");
             //keep for debug- comment out later
             //Console.WriteLine ("Hello World!");
             //test for instantiation of ToDo
@@ -59,6 +60,11 @@ namespace ToDoApp {
         also could be interface
     */
     class StoreDB {
+        public Context context;
+        public StoreDB(){
+            context = new Context();
+            context.Database.EnsureCreated();
+        }
         //Add a ToDo object set ID
 
         //Update a ToDo object
@@ -74,7 +80,7 @@ namespace ToDoApp {
        ie- Task, ID, status, created date, completed date, deleted date
        These could act as the the model for the database.
      */
-    class ToDo {
+    public class ToDo {
         /* COOKIE CUTTER - This is the model for the To-Do item. */
         //ID
         public int id { get; set; }
@@ -93,13 +99,21 @@ namespace ToDoApp {
         // ToDo Constructor
         public ToDo (int id, _Priority priority, _Status status, string task, DateTime createdDate) {
             this.id = id;
-            this.priority= _Priority.low;
+            this.priority = _Priority.low;
             this.status = _Status.@new;
             this.task = task;
-            this.createdDate = createdDate;
+            this.createdDate = DateTime.Now;
             //test instantiation
             //Console.WriteLine ("I can be made.");
             //Console.WriteLine ($"Test:\n{id}\n{priority}\n{status}\n{task}\n{createdDate}");
+        }
+    }
+    public class Context : DbContext {
+        public DbSet<ToDo> toDos { get; set; }
+
+        override
+        protected void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
+            optionsBuilder.UseSqlite ("Filename=./ToDo.db");
         }
     }
 }

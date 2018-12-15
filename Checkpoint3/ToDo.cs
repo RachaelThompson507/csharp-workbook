@@ -13,7 +13,8 @@ namespace ToDoApp {
     class Program {
         /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
         public static void Main (string[] args) {
-            Console.WriteLine ("Yet another ToDo application... By: Rachael Thompson");
+            Console.WriteLine ("Yet another ToDo application... \nBy: Rachael Thompson");
+
             //keep for debug- comment out later
             //Console.WriteLine ("Hello World!");
             //test for instantiation of ToDo
@@ -29,7 +30,7 @@ namespace ToDoApp {
 
     }
     class ConsoleUtils {
-        
+
     }
     /* This is to help the code to be cleaner so that the user interaction methods are here.*/
     class UserSays {
@@ -53,7 +54,9 @@ namespace ToDoApp {
             Console.WriteLine ("--------------------------------------------------------------------");
         }
         // method to select the right method from user input based on menu choice
+        public void userSelectOption () {
 
+        }
         //User Add (To-Do object)
         public void addToDoUser () {
             Console.Write ("Add a task ToDo: ");
@@ -97,7 +100,15 @@ namespace ToDoApp {
             return addList;
         }
 
-        //Update a ToDo object
+        //Update a ToDo object by getting one first
+        public ToDo findById (string findId) {
+            foreach (ToDo _id in context.toDos) {
+                if(_id.id.ToString() == findId){
+                    return _id;
+                }
+            }
+            return null;
+        }
         //update a task on a single Todo
         public void updateTask () {
 

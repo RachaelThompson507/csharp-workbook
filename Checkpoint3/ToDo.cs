@@ -7,26 +7,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ToDoApp {
     // enum for priority
-    public enum _Priority { high = 3, medium = 2, low = 1 };
- // enum for status
- public enum _Status { @new = 1, active = 2, complete = 3 };
- class Program {
- /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
- public static void Main (string[] args) {
- Console.WriteLine ("Yet another ToDo application... By: Rachael Thompson");
- //keep for debug- comment out later
- //Console.WriteLine ("Hello World!");
- //test for instantiation of ToDo
- //ToDo one = new ToDo (1,_Priority.low, _Status.@new, "This is a task.",DateTime.Now);
- //UserSays.optionsMenu ();
- //UserSays userInput = new UserSays ();
- //userInput.addToDoUser ();
+    public enum _Priority { high, medium, low };
+    // enum for status
+    public enum _Status { @new, active, complete };
+    class Program {
+        /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
+        public static void Main (string[] args) {
+            Console.WriteLine ("Yet another ToDo application... By: Rachael Thompson");
+            //keep for debug- comment out later
+            //Console.WriteLine ("Hello World!");
+            //test for instantiation of ToDo
+            //ToDo one = new ToDo (1,_Priority.low, _Status.@new, "This is a task.",DateTime.Now);
+            //UserSays.optionsMenu ();
+            //UserSays userInput = new UserSays ();
+            //userInput.addToDoUser ();
         }
     }
     /* This is the "brains" of the operation. It is going to control
     what happens and when it happens inside of a loop that will run based on the users input */
     class Controller {
 
+    }
+    class ConsoleUtils {
+        
     }
     /* This is to help the code to be cleaner so that the user interaction methods are here.*/
     class UserSays {
@@ -150,6 +153,11 @@ namespace ToDoApp {
             this.priority = priority;
             this.status = status;
             this.createdDate = createdDate;
+        }
+        //
+        public override string ToString() {
+            return
+                id+"|| "+task+" || Priority: "+priority+" || Status: "+status+" || Created on: "+createdDate;
         }
     }
     public class Context : DbContext {

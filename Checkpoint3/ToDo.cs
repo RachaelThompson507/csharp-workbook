@@ -8,19 +8,19 @@ using Microsoft.EntityFrameworkCore;
 namespace ToDoApp {
     // enum for priority
     public enum _Priority { high = 3, medium = 2, low = 1 };
-    // enum for status
-    public enum _Status { @new, active, complete };
-    class Program {
+ // enum for status
+ public enum _Status { @new = 1, active = 2, complete = 3 };
+ class Program {
  /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
-        public static void Main (string[] args) {
-            Console.WriteLine ("Yet another ToDo application... By: Rachael Thompson");
-            //keep for debug- comment out later
-            //Console.WriteLine ("Hello World!");
-            //test for instantiation of ToDo
-            //ToDo one = new ToDo (1,_Priority.low, _Status.@new, "This is a task.",DateTime.Now);
-            //UserSays.optionsMenu ();
-            UserSays userInput = new UserSays();
-            userInput.addToDoUser();
+ public static void Main (string[] args) {
+ Console.WriteLine ("Yet another ToDo application... By: Rachael Thompson");
+ //keep for debug- comment out later
+ //Console.WriteLine ("Hello World!");
+ //test for instantiation of ToDo
+ //ToDo one = new ToDo (1,_Priority.low, _Status.@new, "This is a task.",DateTime.Now);
+ //UserSays.optionsMenu ();
+ //UserSays userInput = new UserSays ();
+ //userInput.addToDoUser ();
         }
     }
     /* This is the "brains" of the operation. It is going to control
@@ -30,28 +30,35 @@ namespace ToDoApp {
     }
     /* This is to help the code to be cleaner so that the user interaction methods are here.*/
     class UserSays {
-        StoreDB theDao = new StoreDB();
+        StoreDB theDao = new StoreDB ();
+        //ToDo theToDo;
         //Menu (what the user can do: add, update, list, delete)
         public void optionsMenu () {
             Console.WriteLine ();
             Console.WriteLine ("Please choose from the following options: ");
             Console.WriteLine ("--------------------------------------------------------------------");
-            Console.WriteLine (" 1- Create:         Creates a new ToDo ");
+            Console.WriteLine (" 1- Add:            Adds a new ToDo to your list");
             Console.WriteLine (" 2- Update:         Updates an existing new ToDo, using ToDo's ID ");
-            Console.WriteLine (" 3- Delete:         Deletes an existing new ToDo, using ToDo's ID ");
+            Console.WriteLine (" 3- Complete:       Completes an existing new ToDo, using ToDo's ID ");
             Console.WriteLine (" 4- Show New:       Shows only the ToDo's with a STATUS of NEW ");
             Console.WriteLine (" 5- Show Active:    Shows only the ToDo's with a STATUS of ACTIVE ");
             Console.WriteLine (" 6- Show Complete:  Shows only the ToDo's with a STATUS of COMPLETE ");
             Console.WriteLine (" 7- Show High:      Shows only the ToDo's with a PRIORITY of HIGH ");
             Console.WriteLine (" 8- Show Medium:    Shows only the ToDo's with a PRIORITY of MEDIUM ");
             Console.WriteLine (" 9- Show Low:       Shows only the ToDo's with a PRIORITY of LOW ");
+            Console.WriteLine ("10- Show All:       Shows all ToDos ");
             Console.WriteLine ("--------------------------------------------------------------------");
         }
+        // method to select the right method from user input based on menu choice
+
         //User Add (To-Do object)
         public void addToDoUser () {
             Console.Write ("Add a task ToDo: ");
-            string task = Console.ReadLine();
-            theDao.addNew(task);
+            string task = Console.ReadLine ();
+            _Priority priority = _Priority.low;
+            _Status status = _Status.@new;
+            DateTime createdDate = DateTime.Now;
+            theDao.addNew (task, priority, status, createdDate);
         }
 
         //User Update (any part of To-Do)
@@ -69,25 +76,37 @@ namespace ToDoApp {
     */
     class StoreDB {
         public Context context;
-        public StoreDB(){
-            context = new Context();
-            context.Database.EnsureCreated();
+        //public ToDo createToDo;
+        public StoreDB () {
+            context = new Context ();
+            context.Database.EnsureCreated ();
         }
         //Add a ToDo object set ID
-        public void addNew(string task){
-            context.toDos.Add(new ToDo(task));
-            context.SaveChanges();
+        public void addNew (string task, _Priority priority, _Status status, DateTime createdDate) {
+            context.toDos.Add (new ToDo (task, priority, status, createdDate));
+            context.SaveChanges ();
         }
-        public List<ToDo> addList() {
+        public List<ToDo> addList () {
             List<ToDo> addList = new List<ToDo> ();
             foreach (ToDo something in context.toDos) {
-                addList.Add(something);
+                addList.Add (something);
             }
             return addList;
         }
 
         //Update a ToDo object
+        //update a task on a single Todo
+        public void updateTask () {
 
+        }
+        //update a priority on a single Todo
+        public void updatePriority () {
+
+        }
+        //update a status on a single Todo
+        public void updateStatus () {
+
+        }
         //List ToDo objects
 
         //Remove a ToDo objects
@@ -103,34 +122,34 @@ namespace ToDoApp {
         /* COOKIE CUTTER - This is the model for the To-Do item. */
         //ID
         public int id { get; set; }
-        //Priority
-        public _Priority priority = _Priority.low;
-        //Status
-        public _Status status = _Status.@new;
         //Task
         public string task { get; set; }
+        //Priority
+        public _Priority priority { get; set; }
+        //Status
+        public _Status status { get; set; }
         //Created Date
-        public DateTime createdDate = DateTime.Now;
+        public DateTime createdDate { get; set; }
         //Closed Date
         //public DateTime closedDate;
         //Deleted Date
         //public DateTime deletedDate;
         // ToDo Constructor
-        public ToDo (int id, _Priority priority, _Status status, string task, DateTime createdDate) {
+        public ToDo (int id, string task, _Priority priority, _Status status, DateTime createdDate) {
             this.id = id;
-            this.priority = _Priority.low;
-            this.status = _Status.@new;
             this.task = task;
-            this.createdDate = DateTime.Now;
+            this.priority = priority;
+            this.status = status;
+            this.createdDate = createdDate;
             //test instantiation
             //Console.WriteLine ("I can be made.");
             //Console.WriteLine ($"Test:\n{id}\n{priority}\n{status}\n{task}\n{createdDate}");
         }
-        public ToDo (string task) {
-            this.priority = _Priority.low;
-            this.status = _Status.@new;
+        public ToDo (string task, _Priority priority, _Status status, DateTime createdDate) {
             this.task = task;
-            this.createdDate = DateTime.Now;
+            this.priority = priority;
+            this.status = status;
+            this.createdDate = createdDate;
         }
     }
     public class Context : DbContext {

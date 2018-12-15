@@ -20,8 +20,9 @@ namespace ToDoApp {
             //test for instantiation of ToDo
             //ToDo one = new ToDo (1,_Priority.low, _Status.@new, "This is a task.",DateTime.Now);
             //UserSays.optionsMenu ();
-            //UserSays userInput = new UserSays ();
-            //userInput.addToDoUser ();
+            UserSays userInput = new UserSays ();
+            userInput.addToDoUser ();
+            userInput.userUpdateTask();
         }
     }
     /* This is the "brains" of the operation. It is going to control
@@ -68,6 +69,39 @@ namespace ToDoApp {
         }
 
         //User Update (any part of To-Do)
+        //update TASK
+        public void userUpdateTask() {
+            Console.Write("Would you like to update a task? Yes or No: ");
+            string userUpdateYn = Console.ReadLine ().ToLower().Trim();
+            if (userUpdateYn == "no" || userUpdateYn == "n") {
+                return;
+            } else if (userUpdateYn == "yes" || userUpdateYn == "y") {
+                Console.Write ("Enter a ToDo ID:");
+                string findID = Console.ReadLine ().ToString().ToLower().Trim();
+                theDao.findById(findID);
+                ToDo found = theDao.context.toDos.Find(Convert.ToInt32(findID));
+                string founded = found.ToString();
+                Console.Write ($"Do you want to update:\n{found}\nEnter Yes or No:");
+                string userWishUpdate = Console.ReadLine().ToLower().Trim();
+                    if (userWishUpdate == "no" || userWishUpdate == "n"){
+                        return;
+                    } else if (userWishUpdate == "yes" || userWishUpdate == "y") {
+                        Console.Write ("Enter updated task: ");
+                        string updatedTask = Console.ReadLine();
+                        theDao.updateTask(findID, updatedTask);
+                        ToDo updatedTask1 = theDao.context.toDos.Find(Convert.ToInt32(findID));
+                        Console.WriteLine ($"Task: {founded}\nUpdated to:\n{updatedTask1}");
+                    } else {
+                        //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
+                        Console.WriteLine ("Test: You didn't use yes or no.");
+                    }
+
+            } else {
+                //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
+                Console.WriteLine ("Test: You didn't use yes or no.");
+            }
+
+        }
 
         //User List (Lists All)
 
@@ -110,8 +144,11 @@ namespace ToDoApp {
             return null;
         }
         //update a task on a single Todo
-        public void updateTask () {
-
+        public void updateTask (string findId, string updatedTask) {
+            string find = findId;
+            ToDo _updateTask = findById(find);
+            _updateTask.task = updatedTask;
+            context.SaveChanges();
         }
         //update a priority on a single Todo
         public void updatePriority () {

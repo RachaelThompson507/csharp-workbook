@@ -8,21 +8,21 @@ using Microsoft.EntityFrameworkCore;
 namespace ToDoApp {
     // enum for priority
     public enum _Priority { high, medium, low };
-    // enum for status
-    public enum _Status { @new, active, complete };
-    class Program {
-        /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
-        public static void Main (string[] args) {
-            Console.WriteLine ("Yet another ToDo application... \nBy: Rachael Thompson");
+ // enum for status
+ public enum _Status { @new, active, complete };
+ class Program {
+ /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
+ public static void Main (string[] args) {
+ Console.WriteLine ("Yet another ToDo application... \nBy: Rachael Thompson");
 
-            //keep for debug- comment out later
-            //Console.WriteLine ("Hello World!");
-            //test for instantiation of ToDo
-            //ToDo one = new ToDo (1,_Priority.low, _Status.@new, "This is a task.",DateTime.Now);
-            //UserSays.optionsMenu ();
-            UserSays userInput = new UserSays ();
-            userInput.addToDoUser ();
-            userInput.userUpdateTask();
+ //keep for debug- comment out later
+ //Console.WriteLine ("Hello World!");
+ //test for instantiation of ToDo
+ //ToDo one = new ToDo (1,_Priority.low, _Status.@new, "This is a task.",DateTime.Now);
+ //UserSays.optionsMenu ();
+ UserSays userInput = new UserSays ();
+ userInput.addToDoUser ();
+ userInput.userUpdateTask ();
         }
     }
     /* This is the "brains" of the operation. It is going to control
@@ -70,31 +70,31 @@ namespace ToDoApp {
 
         //User Update (any part of To-Do)
         //update TASK
-        public void userUpdateTask() {
-            Console.Write("Would you like to update a task? Yes or No: ");
-            string userUpdateYn = Console.ReadLine ().ToLower().Trim();
+        public void userUpdateTask () {
+            Console.Write ("Would you like to update a task? Yes or No: ");
+            string userUpdateYn = Console.ReadLine ().ToLower ().Trim ();
             if (userUpdateYn == "no" || userUpdateYn == "n") {
                 return;
             } else if (userUpdateYn == "yes" || userUpdateYn == "y") {
                 Console.Write ("Enter a ToDo ID:");
-                string findId = Console.ReadLine ().ToString().ToLower().Trim();
-                theDao.findById(findId);
-                ToDo found = theDao.context.toDos.Find(Convert.ToInt32(findId));
-                string founded = found.ToString();
+                string findId = Console.ReadLine ().ToString ().ToLower ().Trim ();
+                theDao.findById (findId);
+                ToDo found = theDao.context.toDos.Find (Convert.ToInt32 (findId));
+                string founded = found.ToString ();
                 Console.Write ($"Do you want to update:\n{found}\nEnter Yes or No:");
-                string userWishUpdate = Console.ReadLine().ToLower().Trim();
-                    if (userWishUpdate == "no" || userWishUpdate == "n"){
-                        return;
-                    } else if (userWishUpdate == "yes" || userWishUpdate == "y") {
-                        Console.Write ("Enter updated task: ");
-                        string updatedTask = Console.ReadLine();
-                        theDao.updateTask(findId, updatedTask);
-                        ToDo updatedTask1 = theDao.context.toDos.Find(Convert.ToInt32(findId));
-                        Console.WriteLine ($"Task: {founded}\nUpdated to:\n{updatedTask1}");
-                    } else {
-                        //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
-                        Console.WriteLine ("Test: You didn't use yes or no.");
-                    }
+                string userWishUpdate = Console.ReadLine ().ToLower ().Trim ();
+                if (userWishUpdate == "no" || userWishUpdate == "n") {
+                    return;
+                } else if (userWishUpdate == "yes" || userWishUpdate == "y") {
+                    Console.Write ("Enter updated task: ");
+                    string updatedTask = Console.ReadLine ();
+                    theDao.updateTask (findId, updatedTask);
+                    ToDo updatedTask1 = theDao.context.toDos.Find (Convert.ToInt32 (findId));
+                    Console.WriteLine ($"Task: {founded}\nUpdated to:\n{updatedTask1}");
+                } else {
+                    //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
+                    Console.WriteLine ("Test: You didn't use yes or no.");
+                }
 
             } else {
                 //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
@@ -103,37 +103,68 @@ namespace ToDoApp {
 
         }
         //update priority
-        public void userUpdatePriority() {
-            Console.Write("Would you like to update a priority? Yes or No: ");
-            string userUpdateYn = Console.ReadLine ().ToLower().Trim();
+        public void userUpdatePriority () {
+            Console.Write ("Would you like to update a priority? Yes or No: ");
+            string userUpdateYn = Console.ReadLine ().ToLower ().Trim ();
             if (userUpdateYn == "no" || userUpdateYn == "n") {
                 return;
             } else if (userUpdateYn == "yes" || userUpdateYn == "y") {
                 Console.Write ("Enter a ToDo ID:");
-                string findId = Console.ReadLine ().ToString().ToLower().Trim();
-                theDao.findById(findId);
-                ToDo found = theDao.context.toDos.Find(Convert.ToInt32(findId));
-                string founded = found.ToString();
+                string findId = Console.ReadLine ().ToString ().ToLower ().Trim ();
+                theDao.findById (findId);
+                ToDo found = theDao.context.toDos.Find (Convert.ToInt32 (findId));
+                string founded = found.ToString ();
                 Console.Write ($"Do you want to update:\n{found}\nEnter Yes or No:");
-                string userWishUpdate = Console.ReadLine().ToLower().Trim();
-                    if (userWishUpdate == "no" || userWishUpdate == "n"){
-                        return;
-                    } else if (userWishUpdate == "yes" || userWishUpdate == "y") {
-                        Console.Write ("Enter updated priority, Options are: high, medium, low\nEnter Option:");
-                        _Priority updatedPriority = //(found.priority)Enum.Parse(typeof(found.priority), Console.ReadLine ());
-                        theDao.updatePriority(findId, updatedPriority);
-                        ToDo updatedPriority1 = theDao.context.toDos.Find(Convert.ToInt32(findId));
-                        Console.WriteLine ($"Task: {founded}\nUpdated to:\n{updatedPriority1}");
-                    } else {
-                        //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
-                        Console.WriteLine ("Test: You didn't use yes or no.");
-                    }
+                string userWishUpdate = Console.ReadLine ().ToLower ().Trim ();
+                if (userWishUpdate == "no" || userWishUpdate == "n") {
+                    return;
+                } else if (userWishUpdate == "yes" || userWishUpdate == "y") {
+                    Console.Write ("Enter updated priority, Options are: high, medium, low\nEnter Option:");
+                    _Priority updatedPriority = (_Priority)Enum.Parse(typeof(_Priority), Console.ReadLine ());
+                    theDao.updatePriority (findId, updatedPriority);
+                    ToDo updatedPriority1 = theDao.context.toDos.Find (Convert.ToInt32 (findId));
+                    Console.WriteLine ($"Task: {founded}\nUpdated to:\n{updatedPriority1}");
+                } else {
+                    //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
+                    Console.WriteLine ("Test: You didn't use yes or no.");
+                }
 
             } else {
                 //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
                 Console.WriteLine ("Test: You didn't use yes or no.");
             }
+        }
+        //update status
+        public void userUpdateStatus () {
+            Console.Write ("Would you like to update a status? Yes or No: ");
+            string userUpdateYn = Console.ReadLine ().ToLower ().Trim ();
+            if (userUpdateYn == "no" || userUpdateYn == "n") {
+                return;
+            } else if (userUpdateYn == "yes" || userUpdateYn == "y") {
+                Console.Write ("Enter a ToDo ID:");
+                string findId = Console.ReadLine ().ToString ().ToLower ().Trim ();
+                theDao.findById (findId);
+                ToDo found = theDao.context.toDos.Find (Convert.ToInt32 (findId));
+                string founded = found.ToString ();
+                Console.Write ($"Do you want to update:\n{found}\nEnter Yes or No:");
+                string userWishUpdate = Console.ReadLine ().ToLower ().Trim ();
+                if (userWishUpdate == "no" || userWishUpdate == "n") {
+                    return;
+                } else if (userWishUpdate == "yes" || userWishUpdate == "y") {
+                    Console.Write ("Enter updated priority, Options are: high, medium, low\nEnter Option:");
+                    _Status updatedStatus = (_Status)Enum.Parse(typeof(_Status), Console.ReadLine ());
+                    theDao.updateStatus (findId, updatedStatus);
+                    ToDo updatedStatus1 = theDao.context.toDos.Find (Convert.ToInt32 (findId));
+                    Console.WriteLine ($"Task: {founded}\nUpdated to:\n{updatedStatus1}");
+                } else {
+                    //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
+                    Console.WriteLine ("Test: You didn't use yes or no.");
+                }
 
+            } else {
+                //throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
+                Console.WriteLine ("Test: You didn't use yes or no.");
+            }
         }
 
         //User List (Lists All)
@@ -170,7 +201,7 @@ namespace ToDoApp {
         //Update a ToDo object by getting one first
         public ToDo findById (string findId) {
             foreach (ToDo _id in context.toDos) {
-                if(_id.id.ToString() == findId){
+                if (_id.id.ToString () == findId) {
                     return _id;
                 }
             }
@@ -180,26 +211,26 @@ namespace ToDoApp {
         //update a task on a single Todo
         public void updateTask (string findId, string updatedTask) {
             string find = findId;
-            ToDo _updateTask = findById(find);
+            ToDo _updateTask = findById (find);
             _updateTask.task = updatedTask;
-            context.SaveChanges();
+            context.SaveChanges ();
             //update List object from addList
 
         }
         //update a priority on a single Todo
         public void updatePriority (string findId, _Priority updatedPriority) {
             string find = findId;
-            ToDo _updatePriority = findById(find);
+            ToDo _updatePriority = findById (find);
             _updatePriority.priority = updatedPriority;
-            context.SaveChanges();
+            context.SaveChanges ();
             //update List object from addList
         }
         //update a status on a single Todo
         public void updateStatus (string findId, _Status updatedStatus) {
             string find = findId;
-            ToDo _updateStatus = findById(find);
+            ToDo _updateStatus = findById (find);
             _updateStatus.status = updatedStatus;
-            context.SaveChanges();
+            context.SaveChanges ();
             //update List object from addList
         }
         //List ToDo objects
@@ -247,9 +278,9 @@ namespace ToDoApp {
             this.createdDate = createdDate;
         }
         //
-        public override string ToString() {
+        public override string ToString () {
             return
-                id+"|| "+task+" || Priority: "+priority+" || Status: "+status+" || Created on: "+createdDate;
+            id + "|| " + task + " || Priority: " + priority + " || Status: " + status + " || Created on: " + createdDate;
         }
     }
     public class Context : DbContext {

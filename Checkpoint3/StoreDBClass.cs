@@ -22,12 +22,12 @@ namespace ToDoApp {
             context.toDos.Add (new ToDo (task, priority, status, createdDate));
             context.SaveChanges ();
         }
-        public List<ToDo> addList () {
-            List<ToDo> addList = new List<ToDo> ();
+        public List<ToDo> listToDo () {
+            List<ToDo> _listToDo = new List<ToDo> ();
             foreach (ToDo something in context.toDos) {
-                addList.Add (something);
+                _listToDo.Add (something);
             }
-            return addList;
+            return _listToDo;
         }
 
         //Update a ToDo object by getting one first
@@ -41,35 +41,45 @@ namespace ToDoApp {
         }
 
         //update a task on a single Todo
-        public void updateTask (string findId, string updatedTask) {
+        public void updateTask (string findId, string updatedTask, List<ToDo> _listToDo) {
             string find = findId;
             ToDo _updateTask = findById (find);
             _updateTask.task = updatedTask;
             context.SaveChanges ();
             //update List object from addList
+            _listToDo.Clear();
+            listToDo();
 
         }
         //update a priority on a single Todo
-        public void updatePriority (string findId, _Priority updatedPriority) {
+        public void updatePriority (string findId, _Priority updatedPriority, List<ToDo> _listToDo) {
             string find = findId;
             ToDo _updatePriority = findById (find);
             _updatePriority.priority = updatedPriority;
             context.SaveChanges ();
             //update List object from addList
+            _listToDo.Clear();
+            listToDo();
         }
         //update a status on a single Todo
-        public void updateStatus (string findId, _Status updatedStatus) {
+        public void updateStatus (string findId, _Status updatedStatus, List<ToDo> _listToDo) {
             string find = findId;
             ToDo _updateStatus = findById (find);
             _updateStatus.status = updatedStatus;
             context.SaveChanges ();
             //update List object from addList
+            _listToDo.Clear();
+            listToDo();
         }
-        //List ToDo objects
-
-        //Remove a ToDo objects
-
-        //
-
+        //Remove/Delete a ToDo objects
+        public void deleteToDo (string findId, List<ToDo> _listToDo) {
+            string find = findId;
+            ToDo _deleteToDo = findById(find);
+            context.toDos.Remove(_deleteToDo);
+            context.SaveChanges();
+            //update List object from addList
+            _listToDo.Clear();
+            listToDo();
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace ToDoApp {
             while (running) {
                 try {
                     userInput.optionsMenu ();
+                    Console.Clear();
                     userInput.userSelectOption ();
                 } catch (Exception e) {
                     Console.WriteLine (e.Message);

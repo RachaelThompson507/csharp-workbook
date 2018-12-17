@@ -33,31 +33,31 @@ namespace ToDoApp {
             _Options userSelect = (_Options)Enum.Parse(typeof (_Options), Console.ReadLine());
             switch (userSelect){
                 case _Options.Add:
-                    Console.Clear();
+                    //Console.Clear();
                     addToDoUser ();
                     break;
                 case _Options.UpdateTask:
-                    Console.Clear();
+                    //Console.Clear();
                     userUpdateTask();
                     break;
                 case _Options.UpdatePriority:
-                    Console.Clear();
+                    //Console.Clear();
                     userUpdatePriority();
                     break;
                 case _Options.UpdateStatus:
-                    Console.Clear();
+                    //Console.Clear();
                     userUpdateStatus();
                     break;
                 case _Options.DeleteToDo:
-                    Console.Clear();
+                    //Console.Clear();
                     userDeleteToDo();
                     break;
                 case _Options.ShowAll:
-                    Console.Clear();
+                    //Console.Clear();
                     userShowAll();
                     break;
                 case _Options.Quit:
-                    Console.Clear();
+                    //Console.Clear();
                     Console.WriteLine ();
                     Console.WriteLine ("Thank You for Using ToDo App.");
                     Controller.running = false;

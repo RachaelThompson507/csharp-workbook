@@ -17,6 +17,8 @@ namespace ToDoApp {
                 try {
                     userInput.optionsMenu ();
                     userInput.userSelectOption ();
+                    Console.Write("To return to the main screen, tap Enter:");
+                    Console.ReadLine();
                     Console.Clear();
                 } catch (Exception e) {
                     Console.WriteLine (e.Message);

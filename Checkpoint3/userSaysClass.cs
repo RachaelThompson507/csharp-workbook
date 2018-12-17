@@ -178,7 +178,7 @@ namespace ToDoApp {
                     return;
                 } else if (userWishUpdate == "yes" || userWishUpdate == "y") {
                     theDao.deleteToDo (findId, _listToDo);
-                    Console.Write ($"ToDo item [ {found} ] has been deleted.");
+                    Console.WriteLine ($"ToDo item [ {found} ] has been deleted.");
                 } else {
                     throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
                     //Console.WriteLine ("Test: You didn't use yes or no.");

@@ -14,6 +14,7 @@ namespace ToDoApp {
         /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
         public static void Main (string[] args) {
             //WELCOME:
+            Console.Clear();
             Console.WriteLine ("Yet another ToDo application... \nBy: Rachael Thompson");
             //create controller instance- run program
             bool run = true;
@@ -26,6 +27,7 @@ namespace ToDoApp {
                     Console.WriteLine (e.Message);
                     continue;
                 } finally {
+                    Console.Clear();
                     Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Console.WriteLine("Thank You for using ToDo App.");
                     Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

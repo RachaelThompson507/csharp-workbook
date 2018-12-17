@@ -46,7 +46,7 @@ namespace ToDoApp {
         //
         public override string ToString () {
             return
-            "ID: [" + id + "] " + task + "  |Priority: " + priority + "  |Status: " + status + "  |Created on: " + createdDate.ToString("g");
+            "ID: [" + id + "] |Task: "+ task + "  |Priority: " + priority + "  |Status: " + status + "  |Created on: " + createdDate.ToString("g");
         }
     }
 }

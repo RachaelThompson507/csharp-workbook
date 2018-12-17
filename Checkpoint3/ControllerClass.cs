@@ -21,16 +21,16 @@ namespace ToDoApp {
                     Console.WriteLine (e.Message);
                     continue;
                 } finally {
-                    Console.Write ("Do you wish to continue using ToDo App? Yes or No: ");
-                    string input = Console.ReadLine ().ToLower ().Trim ();
-                    if (input == "no" || input == "n") {
-                        running = false;
-                    } else if (input == "yes" || input == "y") {
-                        running = true;
-                    } else {
-                        running = true;
+                    // Console.Write ("Do you wish to continue using ToDo App? Yes or No: ");
+                    // string input = Console.ReadLine ().ToLower ().Trim ();
+                    // if (input == "no" || input == "n") {
+                    //     running = false;
+                    // } else if (input == "yes" || input == "y") {
+                    //     running = true;
+                    // } else {
+                    //     running = true;
                         throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
-                    }
+                    //}
                 }
             }
         }

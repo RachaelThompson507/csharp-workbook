@@ -28,9 +28,6 @@ namespace ToDoApp {
                     continue;
                 } finally {
                     Console.Clear();
-                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                    Console.WriteLine("Thank You for using ToDo App.");
-                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 }
                 break;
             }

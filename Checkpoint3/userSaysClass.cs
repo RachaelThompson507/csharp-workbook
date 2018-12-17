@@ -58,6 +58,8 @@ namespace ToDoApp {
                     break;
                 case _Options.Quit:
                     Console.Clear();
+                    Console.WriteLine ();
+                    Console.WriteLine ("Thank You for Using ToDo App.");
                     Controller.running = false;
                     break;
                 default:
@@ -73,7 +75,7 @@ namespace ToDoApp {
             _Status status = _Status.@new;
             DateTime createdDate = DateTime.Now;
             theDao.addNew (task, priority, status, createdDate);
-            Console.Clear();
+            //Console.Clear();
             theDao.listToDo();
         }
 
@@ -103,6 +105,8 @@ namespace ToDoApp {
                     theDao.updateTask (findId, updatedTask, _listToDo);
                     ToDo updatedTask1 = theDao.context.toDos.Find (Convert.ToInt32 (findId));
                     Console.WriteLine ($"Task: {founded}\nUpdated to:\n{updatedTask1}");
+                    Console.Write("To return to the main screen, tap Enter:");
+                    Console.ReadLine();
                 } else {
                     throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
                     //Console.WriteLine ("Test: You didn't use yes or no.");
@@ -139,6 +143,8 @@ namespace ToDoApp {
                     theDao.updatePriority (findId, updatedPriority,_listToDo);
                     ToDo updatedPriority1 = theDao.context.toDos.Find (Convert.ToInt32 (findId));
                     Console.WriteLine ($"Task: {founded}\nUpdated to:\n{updatedPriority1}");
+                    Console.Write("To return to the main screen, tap Enter:");
+                    Console.ReadLine();
                 } else {
                     throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
                     //Console.WriteLine ("Test: You didn't use yes or no.");
@@ -174,6 +180,8 @@ namespace ToDoApp {
                     theDao.updateStatus (findId, updatedStatus, _listToDo);
                     ToDo updatedStatus1 = theDao.context.toDos.Find (Convert.ToInt32 (findId));
                     Console.WriteLine ($"Task: {founded}\nUpdated to:\n{updatedStatus1}");
+                    Console.Write("To return to the main screen, tap Enter:");
+                    Console.ReadLine();
                 } else {
                     throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
                     //Console.WriteLine ("Test: You didn't use yes or no.");
@@ -205,6 +213,8 @@ namespace ToDoApp {
                     //Console.Clear();
                     theDao.deleteToDo (findId, _listToDo);
                     Console.WriteLine ($"ToDo item [ {found} ] has been deleted.");
+                    Console.Write("To return to the main screen, tap Enter:");
+                    Console.ReadLine();
                 } else {
                     throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
                     //Console.WriteLine ("Test: You didn't use yes or no.");

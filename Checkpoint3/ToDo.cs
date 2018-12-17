@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ToDoApp {
     // enum for priority
     public enum _Priority { high, medium, low };
- // enum for status
+    // enum for status
     public enum _Status { @new, active, complete };
     class Program {
         /* WELCOMES USER and Instantiates a Controller that then does EVERYTHING */
@@ -18,6 +18,7 @@ namespace ToDoApp {
             //create controller instance- run program
             bool run = true;
             while (run) {
+                //try catch for exception in controller -- this mitigates impact from exception
                 try {
                     Controller runProgram = new Controller ();
                 } catch (Exception e) {
@@ -29,8 +30,6 @@ namespace ToDoApp {
                 }
                 break;
             }
-
-
             //keep for debug- comment out later- tests
             //Console.WriteLine ("Hello World!");
             //test for instantiation of ToDo
@@ -44,45 +43,6 @@ namespace ToDoApp {
                         // userInput.userUpdateStatus();
                         // userInput.userDeleteToDo();
                         // userInput.userShowAll();
-        }
-    }
-    /* This is the "brains" of the operation. It is going to control
-    what happens and when it happens inside of a loop that will run based on the users input */
-    class Controller {
-        public Controller () {
-            //create an instance of userSays
-            UserSays userInput = new UserSays ();
-            bool running = true;
-            while (running) {
-                try {
-                    userInput.optionsMenu();
-                    userInput.userSelectOption();
-                } catch (Exception e) {
-                    Console.WriteLine (e.Message);
-                    continue;
-                } finally {
-                    Console.Write ("Do you wish to continue using ToDo App? Yes or No: ");
-                    string input = Console.ReadLine ().ToLower().Trim();
-                    if (input == "no" || input == "n") {
-                        running = false;
-                    } else if (input == "yes" || input == "y") {
-                        running = true;
-                    } else {
-                        running = true;
-                        throw new Exception ("The input did not match Yes or No.\nYou will be directed to the options menu.");
-                    }
-                }
-            }
-        }
-
-    }
-
-    public class Context : DbContext {
-        public DbSet<ToDo> toDos { get; set; }
-
-        override
-        protected void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseSqlite ("Filename=./ToDo.db");
         }
     }
 }

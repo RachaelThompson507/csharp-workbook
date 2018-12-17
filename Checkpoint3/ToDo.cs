@@ -26,7 +26,9 @@ namespace ToDoApp {
                     Console.WriteLine (e.Message);
                     continue;
                 } finally {
+                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Console.WriteLine("Thank You for using ToDo App.");
+                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 }
                 break;
             }

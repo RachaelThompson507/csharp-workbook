@@ -17,11 +17,11 @@ namespace ToDoApp {
                 try {
                     userInput.optionsMenu ();
                     userInput.userSelectOption ();
-                    Console.Write("To return to the main screen, tap Enter:");
-                    Console.ReadLine();
                     Console.Clear();
                 } catch (Exception e) {
                     Console.WriteLine (e.Message);
+                    Console.Write("To return to the main screen, tap Enter:");
+                    Console.ReadLine();
                     continue;
                 } finally {
                     // Console.Write ("Do you wish to continue using ToDo App? Yes or No: ");

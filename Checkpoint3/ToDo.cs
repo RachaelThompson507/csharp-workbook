@@ -25,6 +25,8 @@ namespace ToDoApp {
                 } catch (Exception e) {
                     Console.WriteLine (" ");
                     Console.WriteLine (e.Message);
+                    Console.Write("To return to the main screen, tap Enter:");
+                    Console.ReadLine();
                     continue;
                 } finally {
                     Console.Clear();

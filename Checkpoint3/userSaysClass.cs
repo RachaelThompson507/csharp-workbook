@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 namespace ToDoApp {
-    enum _Options { Add = 1, UpdateTask = 2, UpdatePriority = 3, UpdateStatus = 4, DeleteToDo = 5, ShowAll = 6, Quit = 7};
+    enum _Options { Add = 1, UpdateTask = 2, UpdatePriority = 3, UpdateStatus = 4, DeleteToDo = 5, ShowAll = 6, ShowCompleted = 7, Quit = 8};
     /* This is to help the code to be cleaner so that the user interaction methods are here.*/
     class UserSays {
         StoreDB theDao = new StoreDB ();
@@ -23,8 +23,9 @@ namespace ToDoApp {
             Console.WriteLine (" 3- Update Priority:    Updates an existing new ToDo, using ToDo's ID ");
             Console.WriteLine (" 4- Update Status:      Updates an existing new ToDo, using ToDo's ID ");
             Console.WriteLine (" 5- Delete:             Deletes an existing new ToDo, using ToDo's ID ");
-            Console.WriteLine (" 6- Show All:           Shows all ToDos ");
-            Console.WriteLine (" 7- Quit:               Exit Program Menu");
+            Console.WriteLine (" 6- Show All:           Shows All ToDos ");
+            Console.WriteLine (" 7- Show Completed:     Show the Completed ToDos ");
+            Console.WriteLine (" 8- Quit:               Exit Program Menu");
             Console.WriteLine ("--------------------------------------------------------------------");
         }
         // method to select the right method from user input based on menu choice
@@ -55,6 +56,9 @@ namespace ToDoApp {
                 case _Options.ShowAll:
                     //Console.Clear();
                     userShowAll();
+                    break;
+                case _Options.ShowCompleted:
+                    userCompleteToDo ();
                     break;
                 case _Options.Quit:
                     //Console.Clear();
@@ -236,6 +240,16 @@ namespace ToDoApp {
             Console.Write("To return to the main screen, tap Enter:");
             Console.ReadLine();
             //Console.WriteLine();
+        }
+        public void userCompleteToDo () {
+            List<ToDo> Completed = theDao.completeToDo();
+            Console.Write ("Current ToDos:");
+            Console.WriteLine();
+            foreach (ToDo completed in Completed) {
+                Console.WriteLine (completed);
+            }
+            Console.Write("To return to the main screen, tap Enter:");
+            Console.ReadLine();
         }
     }
 }

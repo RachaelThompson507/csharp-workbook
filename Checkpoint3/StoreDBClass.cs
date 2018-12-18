@@ -29,6 +29,16 @@ namespace ToDoApp {
             }
             return _listToDo;
         }
+      //  list complete
+        public List<ToDo> completeToDo() {
+            List<ToDo> _completeToDo = new List<ToDo> ();
+            foreach (ToDo complete in context.toDos) {
+                if (complete.status == _Status.complete ) {
+                    _completeToDo.Add (complete);
+                }
+            }
+            return _completeToDo;
+        }
 
         //Update a ToDo object by getting one first
         public ToDo findById (string findId) {

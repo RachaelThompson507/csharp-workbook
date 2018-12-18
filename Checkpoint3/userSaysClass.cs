@@ -11,7 +11,7 @@ namespace ToDoApp {
     class UserSays {
         StoreDB theDao = new StoreDB ();
         List <ToDo> _listToDo = new List<ToDo> ();
-        //ToDo theToDo;
+        //ToDo theToDo = null;
         //Menu (what the user can do: add, update, list, delete)
         public void optionsMenu () {
             //Console.Clear();
@@ -79,6 +79,8 @@ namespace ToDoApp {
             _Status status = _Status.@new;
             DateTime createdDate = DateTime.Now;
             theDao.addNew (task, priority, status, createdDate);
+            Console.Write("To return to the main screen, tap Enter:");
+            Console.ReadLine();
             //Console.Clear();
             theDao.listToDo();
         }
